@@ -1,0 +1,21 @@
+# =============================================================================
+# CERTIFICATES
+# Fields:
+#   date     : YYYY-MM-DD (used for sorting, newest first)
+#   title    : certificate/credential name
+#   issuer   : who issued it
+#   link     : optional URL to verify/view the certificate
+#   template : optional template override
+# =============================================================================
+
+- date: "2025-03-01"
+  title: "Placeholder Certificate Name"
+  issuer: "Placeholder Issuing Organization"
+  link: "https://example.com"
+  template: "default"
+
+- date: "2023-09-01"
+  title: "Another Placeholder Certificate"
+  issuer: "Placeholder Issuing Organization"
+  link: "https://example.com"
+  template: "default"

@@ -1,0 +1,13 @@
+<div class="project-item project-item--detailed">
+  {{#if image}}
+  <div class="project-image">
+    <img src="{{image}}" alt="{{title}}" loading="lazy" />
+  </div>
+  {{/if}}
+  <div class="project-body">
+    <div class="project-title">
+      {{#if link}}<a href="{{link}}" target="_blank" rel="noopener">{{title}}</a>{{else}}{{title}}{{/if}}
+    </div>
+    <div class="project-description">{{description}}</div>
+  </div>
+</div>

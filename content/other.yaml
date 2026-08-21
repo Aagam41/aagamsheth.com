@@ -1,0 +1,9 @@
+# =============================================================================
+# OTHER — freeform personal section (hobbies, misc interests, etc).
+# Fields:
+#   text     : freeform text, markdown-style [links](https://url.com) supported
+#   template : optional template override
+# =============================================================================
+
+- text: "Placeholder: I also enjoy [hobby placeholder](https://example.com) and would love any recommendations in my city!"
+  template: "default"

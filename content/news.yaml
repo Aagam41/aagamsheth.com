@@ -1,0 +1,23 @@
+# =============================================================================
+# NEWS — each "-" starts a new news item.
+# Fields:
+#   date     : YYYY-MM-DD (used for sorting, newest first)
+#   text     : the news text. You can write [link text](https://url.com) for links.
+#   template : optional — "default" or "compact" (leave out to use the section default)
+# =============================================================================
+
+- date: "2026-02-01"
+  text: "Placeholder: My paper *Example Paper Title* was accepted to [Some Conference 2026](https://example.com)!"
+  template: "default"
+
+- date: "2025-11-01"
+  text: "Placeholder: Presented a poster at [Some Workshop](https://example.com)."
+  template: "compact"
+
+- date: "2025-08-01"
+  text: "Placeholder: Started my PhD at [Example University](https://example.com) advised by Professor Placeholder."
+  template: "default"
+
+- date: "2025-05-01"
+  text: "Placeholder: Graduated from Example University with a B.S. in Computer Science."
+  template: "default"

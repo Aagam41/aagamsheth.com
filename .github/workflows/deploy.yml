@@ -1,0 +1,66 @@
+name: Build and Deploy Site
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate content (yaml + references)
+        run: npm run validate
+
+      - name: Build site (yaml -> index.html)
+        run: npm run build
+
+      - name: Build CSS
+        run: npm run css
+
+      - name: Assemble deploy folder
+        run: |
+          mkdir -p _site/assets
+          cp index.html _site/index.html
+          cp -r assets/css _site/assets/css
+          cp -r assets/img _site/assets/img
+          cp -r assets/files _site/assets/files
+          touch _site/.nojekyll
+          if [ -f CNAME ]; then cp CNAME _site/CNAME; fi
+
+      - name: Upload build artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

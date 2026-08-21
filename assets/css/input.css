@@ -1,0 +1,229 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* -----------------------------------------------------------------------
+   Fonts — self-hostable open-source fonts. Swap these @font-face blocks
+   for local files later if you want to drop the Google Fonts request.
+----------------------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-paper text-ink font-serif antialiased;
+    font-size: 17px;
+    line-height: 1.65;
+  }
+  a {
+    @apply text-accent underline decoration-1 underline-offset-2;
+    text-decoration-color: theme('colors.accent / 45%');
+  }
+  a:hover {
+    text-decoration-color: theme('colors.accent');
+  }
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid theme('colors.accent');
+    outline-offset: 3px;
+  }
+  ::selection {
+    background: theme('colors.accent / 20%');
+  }
+}
+
+@layer components {
+  .page {
+    @apply max-w-[680px] mx-auto px-6 sm:px-8 py-16 sm:py-20;
+  }
+
+  /* ---------- Hero / header ---------- */
+  .hero {
+    @apply flex flex-col sm:flex-row gap-6 sm:gap-8 items-start mb-10;
+  }
+  .hero-photo img {
+    @apply w-28 h-28 sm:w-32 sm:h-32 object-cover rounded-sm grayscale-[15%];
+    border: 1px solid theme('colors.hairline');
+  }
+  .hero-text {
+    @apply flex-1;
+  }
+  .hero-name {
+    @apply text-3xl sm:text-[2.1rem] font-semibold tracking-tight mb-2;
+  }
+  .hero-tagline {
+    @apply text-ink/90 mb-3 leading-relaxed;
+  }
+  .hero-email a {
+    @apply font-mono text-sm text-muted no-underline hover:text-accent;
+  }
+  .hero-links {
+    @apply mt-3 flex flex-wrap gap-x-3 gap-y-1 font-mono text-sm;
+  }
+  .hero-link {
+    @apply no-underline text-ink hover:text-accent;
+  }
+
+  /* ---------- Section nav ---------- */
+  .section-nav {
+    @apply flex flex-wrap gap-x-4 gap-y-1 font-mono text-xs uppercase tracking-wide text-muted mb-14 pb-6;
+    border-bottom: 1px solid theme('colors.hairline');
+  }
+  .section-nav a {
+    @apply no-underline text-muted hover:text-accent;
+  }
+
+  /* ---------- Sections ---------- */
+  .content-section {
+    @apply mb-14 scroll-mt-8;
+  }
+  .section-title {
+    @apply font-mono text-xs uppercase tracking-[0.14em] text-muted mb-5 pb-2;
+    border-bottom: 1px solid theme('colors.hairline');
+  }
+
+  /* ---------- News ---------- */
+  .entry-list {
+    @apply space-y-3 list-none;
+  }
+  .news-item {
+    @apply flex gap-4 items-baseline;
+  }
+  .news-date {
+    @apply font-mono text-xs text-muted shrink-0 w-14;
+  }
+  .news-text {
+    @apply text-ink/95;
+  }
+
+  /* ---------- Education ---------- */
+  #education .section-body {
+    @apply space-y-5;
+  }
+  .edu-item {
+    @apply flex gap-4;
+  }
+  .edu-dates {
+    @apply font-mono text-xs text-muted shrink-0 w-24 pt-0.5;
+  }
+  .edu-institution {
+    @apply font-medium;
+  }
+  .edu-degree {
+    @apply text-ink/85 text-[0.95rem];
+  }
+  .edu-detail {
+    @apply text-muted text-sm mt-0.5;
+  }
+  .edu-item--compact {
+    @apply text-[0.95rem];
+  }
+
+  /* ---------- Publications ---------- */
+  #publications .section-body {
+    @apply space-y-8;
+  }
+  .pub-item--detailed {
+    @apply flex flex-col sm:flex-row gap-4 sm:gap-5;
+  }
+  .pub-image img {
+    @apply w-full sm:w-32 h-20 sm:h-20 object-cover rounded-sm border shrink-0;
+    border-color: theme('colors.hairline');
+  }
+  .pub-title {
+    @apply font-medium leading-snug;
+  }
+  .pub-authors {
+    @apply text-sm text-ink/80 mt-1;
+  }
+  .pub-authors strong {
+    @apply text-ink font-semibold;
+  }
+  .pub-venue {
+    @apply text-sm italic text-muted mt-1;
+  }
+  .pub-venue-inline {
+    @apply text-sm text-muted mt-1;
+  }
+  .pub-links {
+    @apply mt-2 flex flex-wrap gap-x-3 font-mono text-xs;
+  }
+  .pub-link {
+    @apply no-underline text-muted hover:text-accent;
+  }
+  .pub-item--compact .pub-link {
+    @apply no-underline text-muted hover:text-accent;
+  }
+
+  /* ---------- Projects ---------- */
+  #projects .section-body {
+    @apply space-y-6;
+  }
+  .project-item--detailed {
+    @apply flex flex-col sm:flex-row gap-4 sm:gap-5;
+  }
+  .project-image img {
+    @apply w-full sm:w-32 h-20 sm:h-20 object-cover rounded-sm border shrink-0;
+    border-color: theme('colors.hairline');
+  }
+  .project-title a {
+    @apply font-medium no-underline hover:underline text-ink;
+  }
+  .project-description {
+    @apply text-sm text-ink/80 mt-1;
+  }
+  .project-item--compact {
+    @apply text-[0.95rem];
+  }
+  .project-item--compact .project-title a {
+    @apply text-ink;
+  }
+
+  /* ---------- Experience ---------- */
+  #experience .section-body {
+    @apply space-y-5;
+  }
+  .exp-item {
+    @apply flex gap-4;
+  }
+  .exp-dates {
+    @apply font-mono text-xs text-muted shrink-0 w-24 pt-0.5;
+  }
+  .exp-role {
+    @apply font-medium;
+  }
+  .exp-org {
+    @apply text-ink/85 text-[0.95rem];
+  }
+  .exp-description {
+    @apply text-muted text-sm mt-0.5;
+  }
+
+  /* ---------- Other / Contact ---------- */
+  .other-item,
+  .contact-item {
+    @apply text-ink/90;
+  }
+
+  /* ---------- Certificates ---------- */
+  #certificates .section-body {
+    @apply space-y-2.5;
+  }
+  .cert-item {
+    @apply flex flex-wrap gap-x-3 items-baseline text-[0.95rem];
+  }
+  .cert-date {
+    @apply font-mono text-xs text-muted w-14 shrink-0;
+  }
+  .cert-issuer {
+    @apply text-muted text-sm;
+  }
+
+  /* ---------- Footer ---------- */
+  .site-footer {
+    @apply mt-20 pt-6 font-mono text-xs text-muted;
+    border-top: 1px solid theme('colors.hairline');
+  }
+}

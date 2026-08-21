@@ -1,0 +1,28 @@
+# =============================================================================
+# EDUCATION — each "-" is one degree/school, listed in the order you want
+# them to appear (sort is "manual" for this section — see site.yaml).
+# Fields:
+#   dates       : e.g. "2024 - Present" or "2020 - 2024"
+#   institution : school name
+#   degree      : degree name
+#   detail      : optional extra line (advisor, honors, minor, etc.)
+#   template    : optional template override
+# =============================================================================
+
+- dates: "2024 - Present"
+  institution: "Example University"
+  degree: "Ph.D. in Computer Science"
+  detail: "Advised by Professor Placeholder"
+  template: "default"
+
+- dates: "2020 - 2024"
+  institution: "Example College"
+  degree: "B.S. in Computer Science"
+  detail: "Minor in Data Science"
+  template: "default"
+
+- dates: "2016 - 2020"
+  institution: "Example High School"
+  degree: "High School Diploma"
+  detail: "Placeholder honors line"
+  template: "default"

@@ -1,0 +1,9 @@
+# =============================================================================
+# CONTACT — freeform closing section.
+# Fields:
+#   text     : freeform text, markdown-style [links](https://url.com) supported
+#   template : optional template override
+# =============================================================================
+
+- text: "Placeholder: The best way to reach me is by email at jane.doe@example.edu. You can also find me on the links above."
+  template: "default"

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{site.title}}</title>
+  <meta name="description" content="{{site.meta_description}}" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="icon" href="data:,">
+</head>
+<body>
+  <div class="page">
+
+    <header class="hero">
+      <div class="hero-photo">
+        <img src="{{header.photo}}" alt="{{header.name}}" />
+      </div>
+      <div class="hero-text">
+        <h1 class="hero-name">{{header.name}}</h1>
+        <p class="hero-tagline">{{header.tagline}}</p>
+        <p class="hero-email"><a href="mailto:{{header.email}}">{{header.email}}</a></p>
+        <div class="hero-links">
+          {{#each header.links}}<a href="{{this.url}}" class="hero-link" target="_blank" rel="noopener">[{{this.label}}]</a>{{/each}}
+        </div>
+      </div>
+    </header>
+
+    <nav class="section-nav">
+      {{#each sections}}<a href="#{{this.id}}">{{this.title}}</a>{{/each}}
+    </nav>
+
+    <main>
+      {{#each sections}}
+      <section class="content-section" id="{{this.id}}">
+        <h2 class="section-title">{{this.title}}</h2>
+        <div class="section-body section-body--{{this.id}}">
+          {{{this.html}}}
+        </div>
+      </section>
+      {{/each}}
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; {{currentYear}} {{header.name}}. Built with a static, open-source site generator.</p>
+    </footer>
+
+  </div>
+</body>
+</html>

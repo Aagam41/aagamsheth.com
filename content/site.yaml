@@ -1,0 +1,112 @@
+# =============================================================================
+# SITE.YAML — master control file
+# =============================================================================
+# Edit this file to:
+#   - change your name, bio, photo, and contact links in the header
+#   - reorder sections (just reorder the list under "sections")
+#   - rename a section's display title
+#   - hide a section without deleting its content (set enabled: false)
+#   - change which default template a section uses for its entries
+#
+# Each entry under "sections" points to a content file in /content/
+# and a template folder in /templates/. You do not need to touch any
+# other file to reorder or rename sections.
+# =============================================================================
+
+site:
+  title: "Jane A. Doe"
+  meta_description: "Personal academic site of Jane A. Doe."
+
+header:
+  name: "Jane A. Doe"
+  tagline: "I'm a placeholder bio line. Replace me in content/site.yaml — describe who you are, what you study, and who advises you."
+  photo: "assets/img/headshot.jpg"
+  email: "jane.doe@example.edu"
+  links:
+    - label: "CV"
+      url: "assets/files/cv-placeholder.pdf"
+    - label: "Google Scholar"
+      url: "https://scholar.google.com/"
+    - label: "LinkedIn"
+      url: "https://www.linkedin.com/"
+    - label: "GitHub"
+      url: "https://github.com/"
+
+# -----------------------------------------------------------------------------
+# SECTIONS — order in this list = order on the page.
+# -----------------------------------------------------------------------------
+# id            : internal id, used for the file name lookup + anchor link (#id)
+# title         : heading shown on the page
+# enabled       : true/false — false hides the section entirely
+# content_file  : yaml file in /content/ holding this section's entries
+# template_dir  : folder in /templates/ holding this section's .hbs templates
+# default_template : which .hbs file (without extension) to use if an entry
+#                     doesn't specify its own "template:" field
+# sort          : "date" (newest first, uses each entry's "date" field)
+#                 or "manual" (use the order entries appear in the yaml file)
+# -----------------------------------------------------------------------------
+
+sections:
+  - id: news
+    title: "News"
+    enabled: true
+    content_file: "content/news.yaml"
+    template_dir: "templates/news"
+    default_template: "default"
+    sort: "date"
+
+  - id: education
+    title: "Education"
+    enabled: true
+    content_file: "content/education.yaml"
+    template_dir: "templates/education"
+    default_template: "default"
+    sort: "manual"
+
+  - id: publications
+    title: "Publications"
+    enabled: true
+    content_file: "content/publications.yaml"
+    template_dir: "templates/publications"
+    default_template: "detailed"
+    sort: "date"
+
+  - id: projects
+    title: "Projects"
+    enabled: true
+    content_file: "content/projects.yaml"
+    template_dir: "templates/projects"
+    default_template: "detailed"
+    sort: "manual"
+
+  - id: experience
+    title: "Experience"
+    enabled: true
+    content_file: "content/experience.yaml"
+    template_dir: "templates/experience"
+    default_template: "default"
+    sort: "date"
+
+  - id: other
+    title: "Other"
+    enabled: true
+    content_file: "content/other.yaml"
+    template_dir: "templates/other"
+    default_template: "default"
+    sort: "manual"
+
+  - id: certificates
+    title: "Certificates"
+    enabled: true
+    content_file: "content/certificates.yaml"
+    template_dir: "templates/certificates"
+    default_template: "default"
+    sort: "date"
+
+  - id: contact
+    title: "Contact"
+    enabled: true
+    content_file: "content/contact.yaml"
+    template_dir: "templates/contact"
+    default_template: "default"
+    sort: "manual"

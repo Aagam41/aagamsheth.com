@@ -1,0 +1,31 @@
+# =============================================================================
+# EXPERIENCE
+# Fields:
+#   date        : YYYY-MM-DD — start date of the role, used for sorting (newest first)
+#   dates_label : the human-readable date range shown on the page, e.g. "Summer 2026"
+#   role        : job title / role
+#   org         : company or lab name
+#   description : one or two sentences on what you did
+#   template    : optional template override
+# =============================================================================
+
+- date: "2026-06-01"
+  dates_label: "Summer 2026"
+  role: "Student Researcher (Placeholder)"
+  org: "Example Company"
+  description: "Placeholder description of the internship or role — what you worked on and with whom."
+  template: "default"
+
+- date: "2024-08-01"
+  dates_label: "2024 - Present"
+  role: "Graduate Researcher"
+  org: "Example University Lab"
+  description: "Placeholder description of ongoing PhD research work."
+  template: "default"
+
+- date: "2023-05-01"
+  dates_label: "Summer 2023"
+  role: "Research Assistant (Placeholder)"
+  org: "Example College Lab"
+  description: "Placeholder description of undergraduate research experience."
+  template: "default"

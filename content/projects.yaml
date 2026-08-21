@@ -1,0 +1,26 @@
+# =============================================================================
+# PROJECTS
+# Fields:
+#   title       : project name
+#   description : one or two sentences
+#   link        : optional URL (repo, demo, writeup)
+#   image       : optional path to a project image
+#   template    : "detailed" (image + description) or "compact" (text-only)
+# =============================================================================
+
+- title: "Placeholder Project One"
+  description: "A short placeholder description of what this project does and why it's interesting."
+  link: "https://github.com/"
+  image: "assets/img/project-placeholder-1.png"
+  template: "detailed"
+
+- title: "Placeholder Project Two"
+  description: "Another short placeholder description of a side project or research tool."
+  link: "https://github.com/"
+  image: "assets/img/project-placeholder-2.png"
+  template: "detailed"
+
+- title: "Placeholder Project Three"
+  description: "A smaller project, shown compact — just a title, link, and one line."
+  link: "https://github.com/"
+  template: "compact"

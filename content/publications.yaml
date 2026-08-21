@@ -1,0 +1,59 @@
+# =============================================================================
+# PUBLICATIONS
+# Fields:
+#   date      : YYYY-MM-DD (used for sorting, newest first)
+#   title     : paper title
+#   authors   : list of author names. Put "**Your Name**" in bold via markdown-style **
+#               to highlight yourself (rendered automatically as bold).
+#   venue     : e.g. "CVPR 2025 (Oral)"
+#   image     : optional path to a teaser image, e.g. assets/img/pub-teaser-1.png
+#   links     : list of {label, url} — shown as [label] pills
+#   template  : "detailed" (image + full author list) or "compact" (text-only, one line)
+# =============================================================================
+
+- date: "2026-02-01"
+  title: "Example Paper Title: A Placeholder Framework for Doing The Thing"
+  authors:
+    - "Alex Placeholder"
+    - "**Jane A. Doe**"
+    - "Sam Example"
+    - "Professor Advisor Name"
+  venue: "Some Conference 2026 (Oral)"
+  image: "assets/img/pub-placeholder-1.png"
+  links:
+    - label: "website"
+      url: "https://example.com"
+    - label: "pdf"
+      url: "https://example.com/paper.pdf"
+    - label: "arxiv"
+      url: "https://arxiv.org/"
+    - label: "code"
+      url: "https://github.com/"
+  template: "detailed"
+
+- date: "2025-06-01"
+  title: "Another Placeholder Paper on a Related Topic"
+  authors:
+    - "Jordan Example"
+    - "**Jane A. Doe**"
+    - "Professor Advisor Name"
+  venue: "Some Other Conference 2025"
+  image: "assets/img/pub-placeholder-2.png"
+  links:
+    - label: "pdf"
+      url: "https://example.com/paper2.pdf"
+    - label: "code"
+      url: "https://github.com/"
+  template: "detailed"
+
+- date: "2024-10-01"
+  title: "An Earlier Placeholder Publication"
+  authors:
+    - "Taylor Example"
+    - "**Jane A. Doe**"
+    - "Casey Placeholder"
+  venue: "Workshop on Placeholder Methods 2024"
+  links:
+    - label: "paper"
+      url: "https://example.com"
+  template: "compact"

@@ -1,0 +1,10 @@
+<div class="pub-item pub-item--compact">
+  <div class="pub-title">{{title}}</div>
+  <div class="pub-authors">{{{authorsHtml}}}</div>
+  <div class="pub-venue-inline">
+    {{venue}}
+    {{#if links}}
+      {{#each links}} · <a href="{{this.url}}" class="pub-link" target="_blank" rel="noopener">[{{this.label}}]</a>{{/each}}
+    {{/if}}
+  </div>
+</div>
