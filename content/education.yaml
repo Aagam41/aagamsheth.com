@@ -6,6 +6,10 @@
 #   institution : school name
 #   degree      : degree name
 #   detail      : optional extra line (advisor, honors, minor, etc.)
+#   logo        : optional path to a small institution logo/crest image,
+#                 shown as a small circular badge next to the institution
+#                 name. Hover over it to see it full-size. Leave out to
+#                 show no logo for that entry.
 #   template    : optional template override
 # =============================================================================
 
@@ -13,22 +17,26 @@
   institution: "Ahmedabad University"
   degree: "M.Tech in Computer Science and Engineering"
   detail: "School of Engineering and Applied Science · Advised by JB Sir · CGPA 3.45/4.00 (in progress)"
+  logo: "assets/img/logo-ahmedabad-university.png"
   template: "default"
 
 - dates: "2021 - 2024"
   institution: "New L. J. Institute of Engineering and Technology"
   degree: "B.E. in Computer Science and Engineering (Artificial Intelligence and Machine Learning)"
   detail: "Gujarat Technological University · CGPA 9.71"
+  logo: "assets/img/logo-lj-institute.png"
   template: "default"
 
 - dates: "2018 - 2021"
   institution: "Government Polytechnic, Ahmedabad"
   degree: "HSC (Diploma in Information Technology)"
   detail: "Gujarat Technological University · CGPA 9.76"
+  logo: "assets/img/logo-govt-polytechnic.png"
   template: "default"
 
 - dates: "2018"
   institution: "Ahmedabad International School"
   degree: "SSC"
   detail: "Gujarat Secondary and Higher Secondary Education Board · 81.5%"
+  logo: "assets/img/logo-ais.png"
   template: "compact"

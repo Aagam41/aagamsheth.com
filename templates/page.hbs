@@ -15,13 +15,11 @@
       <div class="hero-photo">
         <img src="{{header.photo}}" alt="{{header.name}}" />
       </div>
-      <div class="hero-text">
-        <h1 class="hero-name">{{header.name}}</h1>
-        <p class="hero-tagline">{{{header.tagline}}}</p>
-        <p class="hero-email"><a href="mailto:{{header.email}}">{{header.email}}</a></p>
-        <div class="hero-links">
-          {{#each header.links}}<a href="{{this.url}}" class="hero-link" target="_blank" rel="noopener">[{{this.label}}]</a>{{/each}}
-        </div>
+      <h1 class="hero-name">{{header.name}}</h1>
+      <p class="hero-tagline">{{{header.tagline}}}</p>
+      <p class="hero-email"><span class="hero-email-highlight"><a href="mailto:{{header.email}}">{{header.email}}</a></span></p>
+      <div class="hero-links">
+        {{#each header.links}}<p class="hero-link">[<a href="{{this.url}}" target="_blank" rel="noopener">{{this.label}}</a>]</p>{{/each}}
       </div>
     </header>
 
@@ -45,5 +43,41 @@
     </footer>
 
   </div>
+
+  <!-- Lightbox overlay: shared by education logos, publication thumbnails,
+       and project thumbnails. Hover over any element with a
+       data-lightbox-src attribute to preview it full-size; move the
+       mouse away (or off the page) to close. -->
+  <div id="lightbox-overlay" class="lightbox-overlay" aria-hidden="true">
+    <img id="lightbox-image" class="lightbox-image" src="" alt="" />
+  </div>
+  <script>
+    (function () {
+      var overlay = document.getElementById("lightbox-overlay");
+      var overlayImg = document.getElementById("lightbox-image");
+      var triggers = document.querySelectorAll("[data-lightbox-src]");
+
+      function showLightbox(src, alt) {
+        overlayImg.src = src;
+        overlayImg.alt = alt || "";
+        overlay.classList.add("is-visible");
+        overlay.setAttribute("aria-hidden", "false");
+      }
+
+      function hideLightbox() {
+        overlay.classList.remove("is-visible");
+        overlay.setAttribute("aria-hidden", "true");
+      }
+
+      triggers.forEach(function (el) {
+        el.addEventListener("mouseenter", function () {
+          showLightbox(el.getAttribute("data-lightbox-src"), el.getAttribute("data-lightbox-alt"));
+        });
+        el.addEventListener("mouseleave", hideLightbox);
+      });
+
+      overlay.addEventListener("mouseenter", hideLightbox);
+    })();
+  </script>
 </body>
 </html>

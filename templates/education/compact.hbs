@@ -1,3 +1,4 @@
 <div class="edu-item edu-item--compact">
-  <span class="edu-dates">{{dates}}</span> — <span class="edu-institution">{{institution}}</span>, <span class="edu-degree">{{degree}}</span>
+  {{#if logo}}<img src="{{logo}}" alt="{{institution}} logo" class="edu-logo edu-logo--inline" />{{/if}}
+  <span class="edu-institution">{{institution}}</span> — <span class="edu-dates">{{dates}}</span>, <span class="edu-degree">{{degree}}</span>
 </div>

@@ -85,7 +85,7 @@ sections:
     content_file: "content/experience.yaml"
     template_dir: "templates/experience"
     default_template: "default"
-    sort: "date"
+    sort: "manual"
 
   - id: skills
     title: "Skills"

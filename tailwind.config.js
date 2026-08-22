@@ -5,14 +5,14 @@ module.exports = {
     extend: {
       colors: {
         paper: "#FFFFFF",
-        ink: "#1A1A1A",
+        ink: "#333332",
         muted: "#666666",
-        accent: "#A03C3C",
+        accent: "#2673B9",
         hairline: "#E5E5E5",
+        highlight: "#FFF3A3",
       },
       fontFamily: {
-        serif: ["'Source Serif 4'", "Georgia", "serif"],
-        mono: ["'IBM Plex Mono'", "ui-monospace", "monospace"],
+        serif: ["Georgia", "'Times New Roman'", "serif"],
       },
       maxWidth: {
         page: "50%",

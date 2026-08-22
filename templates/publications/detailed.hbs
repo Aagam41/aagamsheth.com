@@ -1,7 +1,11 @@
 <div class="pub-item pub-item--detailed">
   {{#if image}}
-  <div class="pub-image">
+  <div class="pub-image" data-lightbox-src="{{image}}" data-lightbox-alt="{{title}} teaser">
     <img src="{{image}}" alt="{{title}} teaser" loading="lazy" />
+  </div>
+  {{else}}
+  <div class="pub-image pub-image--placeholder">
+    <span class="pub-image-placeholder-text">{{title}}</span>
   </div>
   {{/if}}
   <div class="pub-body">

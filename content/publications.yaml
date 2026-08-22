@@ -38,7 +38,6 @@
     - "**Jane A. Doe**"
     - "Professor Advisor Name"
   venue: "Some Other Conference 2025"
-  image: "assets/img/pub-placeholder-2.png"
   links:
     - label: "pdf"
       url: "https://example.com/paper2.pdf"

@@ -1,3 +1,4 @@
 <div class="exp-item exp-item--compact">
-  <span class="exp-dates">{{dates_label}}</span> — <span class="exp-role">{{role}}</span>, <span class="exp-org">{{org}}</span>
+  {{#if logo}}<img src="{{logo}}" alt="{{org}} logo" class="exp-logo exp-logo--inline" />{{/if}}
+  <span class="exp-role">{{role}}</span> — <span class="exp-dates">{{dates_label}}</span>, <span class="exp-org">{{org}}</span>
 </div>

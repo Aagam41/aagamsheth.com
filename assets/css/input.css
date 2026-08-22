@@ -3,10 +3,12 @@
 @tailwind utilities;
 
 /* -----------------------------------------------------------------------
-   Fonts — self-hostable open-source fonts. Swap these @font-face blocks
-   for local files later if you want to drop the Google Fonts request.
+   Font: Georgia everywhere (headings + body), matching the reference
+   site's WordPress "Independent Publisher 2" theme, which uses
+   Georgia / "Times New Roman" / serif for all text — no separate
+   display or monospace font. This is a system font stack, so there's
+   no @font-face / Google Fonts request needed at all.
 ----------------------------------------------------------------------- */
-@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
 @layer base {
   html {
@@ -14,15 +16,14 @@
   }
   body {
     @apply bg-paper text-ink font-serif antialiased;
-    font-size: 16px;
+    font-size: 17px;
     line-height: 1.6;
   }
   a {
     @apply text-accent underline decoration-1 underline-offset-2;
-    text-decoration-color: theme('colors.accent / 45%');
   }
   a:hover {
-    text-decoration-color: theme('colors.accent');
+    @apply text-ink;
   }
   a:focus-visible,
   button:focus-visible {
@@ -30,13 +31,16 @@
     outline-offset: 3px;
   }
   ::selection {
-    background: theme('colors.accent / 20%');
+    background: theme('colors.highlight');
+  }
+  strong {
+    @apply font-bold;
   }
 }
 
 @layer components {
   .page {
-    @apply mx-auto px-5 sm:px-8 py-12 sm:py-16;
+    @apply mx-auto px-5 sm:px-8 py-10 sm:py-14;
     /* Responsive width: ~92% on phones, ~85% on tablets, 50% of viewport
        on large desktop screens — capped so lines never get too long to
        read, and floored so it never gets uncomfortably narrow. */
@@ -62,163 +66,237 @@
     }
   }
 
-  /* ---------- Hero / header ---------- */
+  /* ---------- Hero / header ----------
+     Matches the reference: a plain, full-width headshot sits above the
+     name and bio — no circular crop, no side-by-side layout, no frame. */
   .hero {
-    @apply flex flex-col sm:flex-row gap-5 sm:gap-6 items-start mb-8;
+    @apply mb-8;
   }
   .hero-photo img {
-    @apply w-24 h-24 sm:w-28 sm:h-28 object-cover rounded-full;
-  }
-  .hero-text {
-    @apply flex-1;
+    @apply w-full h-auto max-h-80 object-cover mb-6 rounded-sm;
   }
   .hero-name {
-    @apply text-2xl sm:text-[1.85rem] font-semibold tracking-tight mb-2;
+    @apply text-[1.9rem] sm:text-[2.1rem] font-bold tracking-tight mb-3 leading-tight;
   }
   .hero-tagline {
-    @apply text-ink/90 mb-2 leading-relaxed text-[0.98rem];
+    @apply text-ink mb-4 leading-relaxed;
+  }
+  .hero-email {
+    @apply mb-3;
+  }
+  .hero-email-highlight {
+    background: theme('colors.highlight');
+    @apply px-1 py-0.5;
   }
   .hero-email a {
-    @apply font-mono text-xs text-muted no-underline hover:text-accent;
+    @apply text-ink no-underline;
   }
   .hero-links {
-    @apply mt-2.5 flex flex-wrap gap-x-3 gap-y-1 font-mono text-xs;
+    @apply flex flex-col gap-1;
   }
   .hero-link {
-    @apply no-underline text-muted hover:text-accent;
+    @apply text-ink;
+  }
+  .hero-link a {
+    @apply text-accent;
   }
 
   /* ---------- Section nav ---------- */
   .section-nav {
-    @apply flex flex-wrap gap-x-4 gap-y-1 font-mono text-[0.7rem] uppercase tracking-wide text-muted mb-10 pb-5;
+    @apply flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted mb-10 pb-4;
     border-bottom: 1px solid theme('colors.hairline');
   }
   .section-nav a {
-    @apply no-underline text-muted hover:text-accent;
+    @apply text-muted hover:text-accent;
   }
 
-  /* ---------- Sections ---------- */
+  /* ---------- Sections ----------
+     Plain bold headings, no divider rule under the title — matches the
+     reference site's simple "### News" style headers. */
   .content-section {
-    @apply mb-12 scroll-mt-8;
+    @apply mb-10 scroll-mt-8;
   }
   .section-title {
-    @apply font-semibold text-lg mb-4 pb-1;
-    border-bottom: 1px solid theme('colors.hairline');
+    @apply font-bold text-xl mb-4;
   }
 
-  /* ---------- News ---------- */
+  /* ---------- News ----------
+     Flat bulleted list, bold date inline at the start of each item —
+     matches "- **2/25.** *Thinking in Space* has been accepted..." */
   .entry-list {
-    @apply space-y-2 list-none;
+    @apply space-y-2 list-disc pl-5;
   }
   .news-item {
-    @apply flex gap-3 items-baseline text-[0.95rem];
+    @apply text-[0.98rem] leading-relaxed;
   }
   .news-date {
-    @apply font-mono text-xs text-muted shrink-0 w-12;
+    @apply font-bold;
   }
   .news-text {
-    @apply text-ink/95;
+    @apply text-ink;
   }
 
-  /* ---------- Education ---------- */
+  /* ---------- Education ----------
+     LinkedIn-style row: small logo top-aligned on the left, institution
+     name + year inline on the first line, degree and details stacked
+     below. Logos are static (no hover-zoom) — they're identity marks,
+     not content to inspect. */
   #education .section-body {
     @apply space-y-4;
   }
   .edu-item {
-    @apply flex gap-4;
+    @apply flex items-start gap-3 leading-snug;
+  }
+  .edu-logo {
+    @apply w-9 h-9 rounded-full object-cover shrink-0 mt-0.5;
+  }
+  .edu-logo--inline {
+    @apply w-4 h-4 rounded-full inline-block align-middle mr-1 shrink-0;
+  }
+  .edu-body {
+    @apply flex-1 min-w-0;
+  }
+  .edu-institution-line {
+    @apply font-bold;
   }
   .edu-dates {
-    @apply font-mono text-xs text-muted shrink-0 w-24 pt-0.5;
-  }
-  .edu-institution {
-    @apply font-medium text-[0.98rem];
+    @apply font-normal italic text-muted;
   }
   .edu-degree {
-    @apply text-ink/80 text-[0.92rem];
+    @apply text-ink block;
   }
   .edu-detail {
-    @apply text-muted text-sm mt-0.5;
+    @apply text-muted text-[0.95rem] block;
   }
   .edu-item--compact {
-    @apply text-[0.92rem];
+    @apply flex items-center gap-0 text-[0.95rem];
   }
 
-  /* ---------- Publications ---------- */
+  /* ---------- Publications ----------
+     Image stacked ABOVE the text block (not beside it), bold title,
+     authors on their own line with your name bolded, italic venue,
+     bracket-style links inline underneath — matches the reference
+     exactly. */
   #publications .section-body {
-    @apply space-y-6;
+    @apply space-y-8;
   }
   .pub-item--detailed {
-    @apply flex flex-col sm:flex-row gap-3 sm:gap-4;
+    @apply block;
+  }
+  .pub-image {
+    @apply cursor-zoom-in;
   }
   .pub-image img {
-    @apply w-full sm:w-28 h-20 sm:h-20 object-cover rounded-sm shrink-0;
+    @apply w-full h-auto object-cover mb-3 rounded-sm;
+  }
+  .pub-image--placeholder {
+    @apply w-full aspect-video mb-3 rounded-sm flex items-center justify-center text-center px-4 cursor-default;
+    background: theme('colors.hairline' / 60%);
+  }
+  .pub-image-placeholder-text {
+    @apply font-bold text-ink/70 text-sm;
   }
   .pub-title {
-    @apply font-medium leading-snug text-[0.98rem];
+    @apply font-bold leading-snug text-[1.02rem] mb-1;
   }
   .pub-authors {
-    @apply text-sm text-ink/75 mt-0.5;
+    @apply text-ink mb-1;
   }
   .pub-authors strong {
-    @apply text-ink font-semibold;
+    @apply font-bold;
   }
   .pub-venue {
-    @apply text-sm italic text-muted mt-0.5;
+    @apply italic text-ink mb-1;
   }
   .pub-venue-inline {
-    @apply text-sm text-muted mt-0.5;
+    @apply text-ink mb-1;
   }
   .pub-links {
-    @apply mt-1.5 flex flex-wrap gap-x-2.5 font-mono text-xs;
+    @apply flex flex-wrap gap-x-2;
   }
   .pub-link {
-    @apply no-underline text-accent hover:underline;
+    @apply text-accent;
   }
   .pub-item--compact .pub-link {
-    @apply no-underline text-accent hover:underline;
+    @apply text-accent;
   }
 
-  /* ---------- Projects ---------- */
+  /* ---------- Projects ----------
+     Clean minimal list: a small fixed-size thumbnail on the left,
+     plain (not heavily bold) title, description, and an inline
+     [GitHub] link — closer to the reference site's plain, unadorned
+     style rather than a portfolio "card" look. */
   #projects .section-body {
-    @apply space-y-5;
+    @apply space-y-4;
   }
   .project-item--detailed {
-    @apply flex flex-col sm:flex-row gap-3 sm:gap-4;
+    @apply flex items-start gap-3;
+  }
+  .project-image {
+    @apply w-16 h-16 shrink-0 cursor-zoom-in;
   }
   .project-image img {
-    @apply w-full sm:w-28 h-20 sm:h-20 object-cover rounded-sm shrink-0;
+    @apply w-16 h-16 object-cover rounded-sm;
   }
-  .project-title a {
-    @apply font-medium no-underline hover:underline text-ink text-[0.98rem];
+  .project-image--placeholder {
+    @apply w-16 h-16 rounded-sm flex items-center justify-center text-center px-1 cursor-default;
+    background: theme('colors.hairline' / 60%);
+  }
+  .project-image-placeholder-text {
+    @apply font-normal text-ink/60 text-[0.6rem] leading-tight;
+  }
+  .project-body {
+    @apply flex-1 min-w-0;
+  }
+  .project-title {
+    @apply font-medium text-ink text-[0.98rem] leading-snug;
   }
   .project-description {
-    @apply text-sm text-ink/75 mt-0.5;
+    @apply text-ink/85 text-[0.92rem] mt-0.5 leading-snug;
+  }
+  .project-link {
+    @apply text-accent text-sm;
   }
   .project-item--compact {
-    @apply text-[0.92rem];
+    @apply text-[0.95rem];
   }
-  .project-item--compact .project-title a {
-    @apply text-ink;
+  .project-item--compact .project-title {
+    @apply font-medium text-ink;
+  }
+  .project-item--compact .project-link {
+    @apply text-accent;
   }
 
-  /* ---------- Experience ---------- */
+  /* ---------- Experience ----------
+     Same LinkedIn-style row as Education: logo top-aligned on the left,
+     role + year inline on the first line, company and description
+     stacked below. */
   #experience .section-body {
     @apply space-y-4;
   }
   .exp-item {
-    @apply flex gap-4;
+    @apply flex items-start gap-3 leading-snug;
+  }
+  .exp-logo {
+    @apply w-9 h-9 rounded-full object-cover shrink-0 mt-0.5;
+  }
+  .exp-logo--inline {
+    @apply w-4 h-4 rounded-full inline-block align-middle mr-1 shrink-0;
+  }
+  .exp-body {
+    @apply flex-1 min-w-0;
+  }
+  .exp-role-line {
+    @apply font-bold;
   }
   .exp-dates {
-    @apply font-mono text-xs text-muted shrink-0 w-24 pt-0.5;
-  }
-  .exp-role {
-    @apply font-medium text-[0.98rem];
+    @apply font-normal italic text-muted;
   }
   .exp-org {
-    @apply text-ink/80 text-[0.92rem];
+    @apply text-ink block;
   }
   .exp-description {
-    @apply text-muted text-sm mt-0.5;
+    @apply text-muted text-[0.95rem] block mt-0.5;
   }
 
   /* ---------- Skills ---------- */
@@ -226,48 +304,76 @@
     @apply space-y-3;
   }
   .skill-group {
-    @apply flex flex-col sm:flex-row sm:gap-4;
+    @apply leading-relaxed;
   }
   .skill-category {
-    @apply font-mono text-xs uppercase tracking-wide text-muted shrink-0 w-full sm:w-40 pt-0.5;
+    @apply font-bold block mb-1;
   }
   .skill-items {
-    @apply flex flex-wrap gap-1.5 mt-1 sm:mt-0;
+    @apply text-ink;
   }
   .skill-pill {
-    @apply text-xs px-2 py-0.5 rounded-full text-ink/80;
-    background: theme('colors.hairline' / 60%);
+    @apply inline;
+  }
+  .skill-pill:not(:last-child)::after {
+    content: ", ";
   }
   .skill-group--compact {
-    @apply text-sm;
+    @apply text-[0.95rem];
   }
   .skill-inline {
-    @apply text-ink/80;
+    @apply text-ink;
   }
 
   /* ---------- Other / Contact ---------- */
   .other-item,
   .contact-item {
-    @apply text-ink/90;
+    @apply text-ink leading-relaxed;
   }
 
   /* ---------- Certificates ---------- */
   #certificates .section-body {
-    @apply space-y-2 list-none;
+    @apply space-y-1.5 list-disc pl-5;
   }
   .cert-item {
-    @apply flex flex-wrap gap-x-3 items-baseline text-[0.92rem];
+    @apply text-[0.95rem];
   }
   .cert-date {
-    @apply font-mono text-xs text-muted w-12 shrink-0;
+    @apply italic text-muted mr-2;
   }
   .cert-issuer {
-    @apply text-muted text-sm;
+    @apply text-muted;
+  }
+  .cert-issuer::before {
+    content: " — ";
   }
 
   /* ---------- Footer ---------- */
   .site-footer {
-    @apply mt-20 pt-6 font-mono text-xs text-muted;
+    @apply mt-16 pt-5 text-xs text-muted;
     border-top: 1px solid theme('colors.hairline');
+  }
+
+  /* ---------- Lightbox ----------
+     Full-screen overlay triggered by hovering any element with a
+     data-lightbox-src attribute (education logos, publication and
+     project thumbnails). Pure show/hide via a class toggled in JS;
+     see the script at the bottom of templates/page.hbs. */
+  .lightbox-overlay {
+    @apply fixed inset-0 z-50 flex items-center justify-center p-8;
+    background: rgba(0, 0, 0, 0.82);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.15s ease;
+    pointer-events: none;
+  }
+  .lightbox-overlay.is-visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  .lightbox-image {
+    @apply max-w-full max-h-full rounded-sm;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
   }
 }

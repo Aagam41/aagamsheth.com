@@ -1,13 +1,16 @@
 <div class="project-item project-item--detailed">
   {{#if image}}
-  <div class="project-image">
+  <div class="project-image" data-lightbox-src="{{image}}" data-lightbox-alt="{{title}}">
     <img src="{{image}}" alt="{{title}}" loading="lazy" />
+  </div>
+  {{else}}
+  <div class="project-image project-image--placeholder">
+    <span class="project-image-placeholder-text">{{title}}</span>
   </div>
   {{/if}}
   <div class="project-body">
-    <div class="project-title">
-      {{#if link}}<a href="{{link}}" target="_blank" rel="noopener">{{title}}</a>{{else}}{{title}}{{/if}}
-    </div>
+    <div class="project-title">{{title}}</div>
     <div class="project-description">{{description}}</div>
+    {{#if link}}<a href="{{link}}" class="project-link" target="_blank" rel="noopener">[GitHub]</a>{{/if}}
   </div>
 </div>

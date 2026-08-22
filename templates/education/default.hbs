@@ -1,7 +1,13 @@
 <div class="edu-item">
-  <div class="edu-dates">{{dates}}</div>
+  {{#if logo}}
+  <img
+    src="{{logo}}"
+    alt="{{institution}} logo"
+    class="edu-logo"
+  />
+  {{/if}}
   <div class="edu-body">
-    <div class="edu-institution">{{institution}}</div>
+    <div class="edu-institution-line">{{institution}} — <span class="edu-dates">{{dates}}</span></div>
     <div class="edu-degree">{{degree}}</div>
     {{#if detail}}<div class="edu-detail">{{detail}}</div>{{/if}}
   </div>
