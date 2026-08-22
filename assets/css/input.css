@@ -14,8 +14,8 @@
   }
   body {
     @apply bg-paper text-ink font-serif antialiased;
-    font-size: 17px;
-    line-height: 1.65;
+    font-size: 16px;
+    line-height: 1.6;
   }
   a {
     @apply text-accent underline decoration-1 underline-offset-2;
@@ -36,39 +36,61 @@
 
 @layer components {
   .page {
-    @apply max-w-[680px] mx-auto px-6 sm:px-8 py-16 sm:py-20;
+    @apply mx-auto px-5 sm:px-8 py-12 sm:py-16;
+    /* Responsive width: ~92% on phones, ~85% on tablets, 50% of viewport
+       on large desktop screens — capped so lines never get too long to
+       read, and floored so it never gets uncomfortably narrow. */
+    width: 92%;
+    max-width: 640px;
+  }
+  @media (min-width: 640px) {
+    .page {
+      width: 85%;
+      max-width: 700px;
+    }
+  }
+  @media (min-width: 1024px) {
+    .page {
+      width: 65%;
+      max-width: 760px;
+    }
+  }
+  @media (min-width: 1440px) {
+    .page {
+      width: 50%;
+      max-width: 820px;
+    }
   }
 
   /* ---------- Hero / header ---------- */
   .hero {
-    @apply flex flex-col sm:flex-row gap-6 sm:gap-8 items-start mb-10;
+    @apply flex flex-col sm:flex-row gap-5 sm:gap-6 items-start mb-8;
   }
   .hero-photo img {
-    @apply w-28 h-28 sm:w-32 sm:h-32 object-cover rounded-sm grayscale-[15%];
-    border: 1px solid theme('colors.hairline');
+    @apply w-24 h-24 sm:w-28 sm:h-28 object-cover rounded-full;
   }
   .hero-text {
     @apply flex-1;
   }
   .hero-name {
-    @apply text-3xl sm:text-[2.1rem] font-semibold tracking-tight mb-2;
+    @apply text-2xl sm:text-[1.85rem] font-semibold tracking-tight mb-2;
   }
   .hero-tagline {
-    @apply text-ink/90 mb-3 leading-relaxed;
+    @apply text-ink/90 mb-2 leading-relaxed text-[0.98rem];
   }
   .hero-email a {
-    @apply font-mono text-sm text-muted no-underline hover:text-accent;
+    @apply font-mono text-xs text-muted no-underline hover:text-accent;
   }
   .hero-links {
-    @apply mt-3 flex flex-wrap gap-x-3 gap-y-1 font-mono text-sm;
+    @apply mt-2.5 flex flex-wrap gap-x-3 gap-y-1 font-mono text-xs;
   }
   .hero-link {
-    @apply no-underline text-ink hover:text-accent;
+    @apply no-underline text-muted hover:text-accent;
   }
 
   /* ---------- Section nav ---------- */
   .section-nav {
-    @apply flex flex-wrap gap-x-4 gap-y-1 font-mono text-xs uppercase tracking-wide text-muted mb-14 pb-6;
+    @apply flex flex-wrap gap-x-4 gap-y-1 font-mono text-[0.7rem] uppercase tracking-wide text-muted mb-10 pb-5;
     border-bottom: 1px solid theme('colors.hairline');
   }
   .section-nav a {
@@ -77,22 +99,22 @@
 
   /* ---------- Sections ---------- */
   .content-section {
-    @apply mb-14 scroll-mt-8;
+    @apply mb-12 scroll-mt-8;
   }
   .section-title {
-    @apply font-mono text-xs uppercase tracking-[0.14em] text-muted mb-5 pb-2;
+    @apply font-semibold text-lg mb-4 pb-1;
     border-bottom: 1px solid theme('colors.hairline');
   }
 
   /* ---------- News ---------- */
   .entry-list {
-    @apply space-y-3 list-none;
+    @apply space-y-2 list-none;
   }
   .news-item {
-    @apply flex gap-4 items-baseline;
+    @apply flex gap-3 items-baseline text-[0.95rem];
   }
   .news-date {
-    @apply font-mono text-xs text-muted shrink-0 w-14;
+    @apply font-mono text-xs text-muted shrink-0 w-12;
   }
   .news-text {
     @apply text-ink/95;
@@ -100,7 +122,7 @@
 
   /* ---------- Education ---------- */
   #education .section-body {
-    @apply space-y-5;
+    @apply space-y-4;
   }
   .edu-item {
     @apply flex gap-4;
@@ -109,73 +131,71 @@
     @apply font-mono text-xs text-muted shrink-0 w-24 pt-0.5;
   }
   .edu-institution {
-    @apply font-medium;
+    @apply font-medium text-[0.98rem];
   }
   .edu-degree {
-    @apply text-ink/85 text-[0.95rem];
+    @apply text-ink/80 text-[0.92rem];
   }
   .edu-detail {
     @apply text-muted text-sm mt-0.5;
   }
   .edu-item--compact {
-    @apply text-[0.95rem];
+    @apply text-[0.92rem];
   }
 
   /* ---------- Publications ---------- */
   #publications .section-body {
-    @apply space-y-8;
+    @apply space-y-6;
   }
   .pub-item--detailed {
-    @apply flex flex-col sm:flex-row gap-4 sm:gap-5;
+    @apply flex flex-col sm:flex-row gap-3 sm:gap-4;
   }
   .pub-image img {
-    @apply w-full sm:w-32 h-20 sm:h-20 object-cover rounded-sm border shrink-0;
-    border-color: theme('colors.hairline');
+    @apply w-full sm:w-28 h-20 sm:h-20 object-cover rounded-sm shrink-0;
   }
   .pub-title {
-    @apply font-medium leading-snug;
+    @apply font-medium leading-snug text-[0.98rem];
   }
   .pub-authors {
-    @apply text-sm text-ink/80 mt-1;
+    @apply text-sm text-ink/75 mt-0.5;
   }
   .pub-authors strong {
     @apply text-ink font-semibold;
   }
   .pub-venue {
-    @apply text-sm italic text-muted mt-1;
+    @apply text-sm italic text-muted mt-0.5;
   }
   .pub-venue-inline {
-    @apply text-sm text-muted mt-1;
+    @apply text-sm text-muted mt-0.5;
   }
   .pub-links {
-    @apply mt-2 flex flex-wrap gap-x-3 font-mono text-xs;
+    @apply mt-1.5 flex flex-wrap gap-x-2.5 font-mono text-xs;
   }
   .pub-link {
-    @apply no-underline text-muted hover:text-accent;
+    @apply no-underline text-accent hover:underline;
   }
   .pub-item--compact .pub-link {
-    @apply no-underline text-muted hover:text-accent;
+    @apply no-underline text-accent hover:underline;
   }
 
   /* ---------- Projects ---------- */
   #projects .section-body {
-    @apply space-y-6;
+    @apply space-y-5;
   }
   .project-item--detailed {
-    @apply flex flex-col sm:flex-row gap-4 sm:gap-5;
+    @apply flex flex-col sm:flex-row gap-3 sm:gap-4;
   }
   .project-image img {
-    @apply w-full sm:w-32 h-20 sm:h-20 object-cover rounded-sm border shrink-0;
-    border-color: theme('colors.hairline');
+    @apply w-full sm:w-28 h-20 sm:h-20 object-cover rounded-sm shrink-0;
   }
   .project-title a {
-    @apply font-medium no-underline hover:underline text-ink;
+    @apply font-medium no-underline hover:underline text-ink text-[0.98rem];
   }
   .project-description {
-    @apply text-sm text-ink/80 mt-1;
+    @apply text-sm text-ink/75 mt-0.5;
   }
   .project-item--compact {
-    @apply text-[0.95rem];
+    @apply text-[0.92rem];
   }
   .project-item--compact .project-title a {
     @apply text-ink;
@@ -183,7 +203,7 @@
 
   /* ---------- Experience ---------- */
   #experience .section-body {
-    @apply space-y-5;
+    @apply space-y-4;
   }
   .exp-item {
     @apply flex gap-4;
@@ -192,13 +212,37 @@
     @apply font-mono text-xs text-muted shrink-0 w-24 pt-0.5;
   }
   .exp-role {
-    @apply font-medium;
+    @apply font-medium text-[0.98rem];
   }
   .exp-org {
-    @apply text-ink/85 text-[0.95rem];
+    @apply text-ink/80 text-[0.92rem];
   }
   .exp-description {
     @apply text-muted text-sm mt-0.5;
+  }
+
+  /* ---------- Skills ---------- */
+  #skills .section-body {
+    @apply space-y-3;
+  }
+  .skill-group {
+    @apply flex flex-col sm:flex-row sm:gap-4;
+  }
+  .skill-category {
+    @apply font-mono text-xs uppercase tracking-wide text-muted shrink-0 w-full sm:w-40 pt-0.5;
+  }
+  .skill-items {
+    @apply flex flex-wrap gap-1.5 mt-1 sm:mt-0;
+  }
+  .skill-pill {
+    @apply text-xs px-2 py-0.5 rounded-full text-ink/80;
+    background: theme('colors.hairline' / 60%);
+  }
+  .skill-group--compact {
+    @apply text-sm;
+  }
+  .skill-inline {
+    @apply text-ink/80;
   }
 
   /* ---------- Other / Contact ---------- */
@@ -209,13 +253,13 @@
 
   /* ---------- Certificates ---------- */
   #certificates .section-body {
-    @apply space-y-2.5;
+    @apply space-y-2 list-none;
   }
   .cert-item {
-    @apply flex flex-wrap gap-x-3 items-baseline text-[0.95rem];
+    @apply flex flex-wrap gap-x-3 items-baseline text-[0.92rem];
   }
   .cert-date {
-    @apply font-mono text-xs text-muted w-14 shrink-0;
+    @apply font-mono text-xs text-muted w-12 shrink-0;
   }
   .cert-issuer {
     @apply text-muted text-sm;

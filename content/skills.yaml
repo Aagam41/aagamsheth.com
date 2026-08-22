@@ -1,0 +1,66 @@
+# =============================================================================
+# SKILLS — grouped technical skills.
+# Fields:
+#   category : group heading, e.g. "Languages", "Frameworks / Libraries"
+#   items    : list of skill names in that category
+#   template : optional template override
+# =============================================================================
+
+- category: "Languages"
+  items:
+    - "Python"
+    - "C# / VB.NET"
+    - "JavaScript"
+    - "SQL"
+    - "C/C++"
+    - "HTML/CSS"
+  template: "default"
+
+- category: "Frameworks / Libraries"
+  items:
+    - "TensorFlow/Keras"
+    - "PyTorch"
+    - "Scikit-Learn"
+    - "Ultralytics YOLO"
+    - "Pandas"
+    - "NumPy"
+    - "OpenCV"
+    - "Matplotlib"
+    - "Seaborn"
+    - "Django"
+    - "Django REST Framework"
+    - "Next.js"
+    - ".NET Framework"
+    - "React.js"
+    - "jQuery"
+    - "Tailwind CSS"
+    - "shadcn/ui"
+    - "DataTables.js"
+    - "Chart.js"
+  template: "default"
+
+- category: "Tools / Technologies"
+  items:
+    - "PostgreSQL"
+    - "MS SQL Server"
+    - "MongoDB"
+    - "Redis"
+    - "Apache httpd"
+    - "Nginx"
+    - "RabbitMQ"
+  template: "default"
+
+- category: "Software & Platforms"
+  items:
+    - "AWS (Elastic Services, RDS, SageMaker, LightSail)"
+    - "Git / Gitea"
+    - "Docker"
+    - "Cron / Celery"
+    - "Figma"
+    - "Postman / Insomnia"
+    - "LaTeX"
+    - "JupyterLab"
+    - "Power BI"
+    - "Prometheus / Grafana"
+    - "Ubuntu / RHEL / Windows Server"
+  template: "default"

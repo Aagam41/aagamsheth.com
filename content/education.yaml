@@ -9,20 +9,26 @@
 #   template    : optional template override
 # =============================================================================
 
-- dates: "2024 - Present"
-  institution: "Example University"
-  degree: "Ph.D. in Computer Science"
-  detail: "Advised by Professor Placeholder"
+- dates: "2025 - Present"
+  institution: "Ahmedabad University"
+  degree: "M.Tech in Computer Science and Engineering"
+  detail: "School of Engineering and Applied Science · Advised by JB Sir · CGPA 3.45/4.00 (in progress)"
   template: "default"
 
-- dates: "2020 - 2024"
-  institution: "Example College"
-  degree: "B.S. in Computer Science"
-  detail: "Minor in Data Science"
+- dates: "2021 - 2024"
+  institution: "New L. J. Institute of Engineering and Technology"
+  degree: "B.E. in Computer Science and Engineering (Artificial Intelligence and Machine Learning)"
+  detail: "Gujarat Technological University · CGPA 9.71"
   template: "default"
 
-- dates: "2016 - 2020"
-  institution: "Example High School"
-  degree: "High School Diploma"
-  detail: "Placeholder honors line"
+- dates: "2018 - 2021"
+  institution: "Government Polytechnic, Ahmedabad"
+  degree: "HSC (Diploma in Information Technology)"
+  detail: "Gujarat Technological University · CGPA 9.76"
   template: "default"
+
+- dates: "2018"
+  institution: "Ahmedabad International School"
+  degree: "SSC"
+  detail: "Gujarat Secondary and Higher Secondary Education Board · 81.5%"
+  template: "compact"

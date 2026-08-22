@@ -17,7 +17,7 @@
       </div>
       <div class="hero-text">
         <h1 class="hero-name">{{header.name}}</h1>
-        <p class="hero-tagline">{{header.tagline}}</p>
+        <p class="hero-tagline">{{{header.tagline}}}</p>
         <p class="hero-email"><a href="mailto:{{header.email}}">{{header.email}}</a></p>
         <div class="hero-links">
           {{#each header.links}}<a href="{{this.url}}" class="hero-link" target="_blank" rel="noopener">[{{this.label}}]</a>{{/each}}

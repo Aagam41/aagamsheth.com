@@ -57,11 +57,22 @@ function escapeHtml(str) {
 
 function mdToHtml(str) {
   if (!str) return "";
-  let out = escapeHtml(str);
-  // links: [label](url)
-  out = out.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (m, label, url) => {
-    return `<a href="${url}" target="_blank" rel="noopener">${label}</a>`;
+  // Extract markdown links first (before escaping), replacing them with
+  // placeholders, so the raw URL/label text doesn't get HTML-escaped twice.
+  const linkStash = [];
+  let working = String(str).replace(/\[([^\]]+)\]\(([^)]+)\)/g, (m, label, url) => {
+    const token = `\u0000LINK${linkStash.length}\u0000`;
+    linkStash.push(
+      `<a href="${escapeHtml(url)}" target="_blank" rel="noopener">${escapeHtml(label)}</a>`
+    );
+    return token;
   });
+
+  let out = escapeHtml(working);
+
+  // restore stashed links (already-escaped-safe HTML)
+  out = out.replace(/\u0000LINK(\d+)\u0000/g, (m, idx) => linkStash[Number(idx)]);
+
   // bold: **text**
   out = out.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
   // italics: *text*
@@ -100,6 +111,9 @@ function prepEntry(entry) {
   if (entry.text) prepped.textHtml = mdToHtml(entry.text);
   if (entry.authors) {
     prepped.authorsHtml = entry.authors.map((a) => mdToHtml(a)).join(", ");
+  }
+  if (entry.items && Array.isArray(entry.items)) {
+    prepped.itemsJoined = entry.items.join(", ");
   }
   return prepped;
 }

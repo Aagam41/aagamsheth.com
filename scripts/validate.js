@@ -52,6 +52,7 @@ const REQUIRED_FIELDS = {
   publications: ["title", "venue"],
   projects: ["title", "description"],
   experience: ["role", "org"],
+  skills: ["category", "items"],
   other: ["text"],
   certificates: ["title", "issuer"],
   contact: ["text"],

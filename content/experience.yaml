@@ -9,23 +9,16 @@
 #   template    : optional template override
 # =============================================================================
 
-- date: "2026-06-01"
-  dates_label: "Summer 2026"
-  role: "Student Researcher (Placeholder)"
-  org: "Example Company"
-  description: "Placeholder description of the internship or role — what you worked on and with whom."
+- date: "2022-01-01"
+  dates_label: "2022 - Present"
+  role: "Chief Technology Officer"
+  org: "Tirth Infotech"
+  description: "Lead systems architecture and full-stack development for government and enterprise IT projects, including secure Django/PostgreSQL deployments, large-scale document retrieval systems, and high-throughput recruitment platforms handling thousands of requests per minute."
   template: "default"
 
-- date: "2024-08-01"
-  dates_label: "2024 - Present"
-  role: "Graduate Researcher"
-  org: "Example University Lab"
-  description: "Placeholder description of ongoing PhD research work."
-  template: "default"
-
-- date: "2023-05-01"
-  dates_label: "Summer 2023"
-  role: "Research Assistant (Placeholder)"
-  org: "Example College Lab"
-  description: "Placeholder description of undergraduate research experience."
+- date: "2023-01-01"
+  dates_label: "Jan 2023 - Aug 2025"
+  role: "Systems Architect & Full Stack Developer"
+  org: "Archives Portal — Gujarat State Archives (FDCA), Ahmedabad"
+  description: "Deployed a Django/DRF application on GSDC with a DMZ architecture using PostgreSQL and MongoDB. Implemented PostgreSQL full-text search with a Gujarati dictionary and TsVector for archival queries, dynamic metadata-driven APIs and admin panels, and RFC7233 range requests for efficient large-file retrieval. Passed two CERT-In security audits for government hosting compliance."
   template: "default"

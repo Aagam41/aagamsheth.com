@@ -14,23 +14,23 @@
 # =============================================================================
 
 site:
-  title: "Jane A. Doe"
-  meta_description: "Personal academic site of Jane A. Doe."
+  title: "Aagam Sheth"
+  meta_description: "Aagam Sheth — Master's student in Computer Science at Ahmedabad University, working on computer vision and applied machine learning. CTO at Tirth Infotech."
 
 header:
-  name: "Jane A. Doe"
-  tagline: "I'm a placeholder bio line. Replace me in content/site.yaml — describe who you are, what you study, and who advises you."
+  name: "Aagam Sheth"
+  tagline: "I'm a Master's student in Computer Science at Ahmedabad University, advised by JB Sir, working on computer vision, deep learning architectures, and applied ML systems. I'm also the CTO at [Tirth Infotech](https://github.com/aagam41), where I've spent the last several years building and deploying production systems for government and enterprise clients."
   photo: "assets/img/headshot.jpg"
-  email: "jane.doe@example.edu"
+  email: "contact.me@aagamsheth.com"
   links:
     - label: "CV"
       url: "assets/files/cv-placeholder.pdf"
-    - label: "Google Scholar"
-      url: "https://scholar.google.com/"
-    - label: "LinkedIn"
-      url: "https://www.linkedin.com/"
     - label: "GitHub"
-      url: "https://github.com/"
+      url: "https://github.com/aagam41"
+    - label: "LeetCode"
+      url: "https://leetcode.com/u/Aagam41/"
+    - label: "Kaggle"
+      url: "https://www.kaggle.com/aagamsheth"
 
 # -----------------------------------------------------------------------------
 # SECTIONS — order in this list = order on the page.
@@ -86,6 +86,14 @@ sections:
     template_dir: "templates/experience"
     default_template: "default"
     sort: "date"
+
+  - id: skills
+    title: "Skills"
+    enabled: true
+    content_file: "content/skills.yaml"
+    template_dir: "templates/skills"
+    default_template: "default"
+    sort: "manual"
 
   - id: other
     title: "Other"

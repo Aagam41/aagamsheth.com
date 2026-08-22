@@ -4,15 +4,18 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        paper: "#FAF9F6",
+        paper: "#FFFFFF",
         ink: "#1A1A1A",
-        muted: "#6B6558",
-        accent: "#8B3A3A",
-        hairline: "#E3DFD3",
+        muted: "#666666",
+        accent: "#A03C3C",
+        hairline: "#E5E5E5",
       },
       fontFamily: {
         serif: ["'Source Serif 4'", "Georgia", "serif"],
         mono: ["'IBM Plex Mono'", "ui-monospace", "monospace"],
+      },
+      maxWidth: {
+        page: "50%",
       },
     },
   },

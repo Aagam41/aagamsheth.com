@@ -8,19 +8,49 @@
 #   template    : "detailed" (image + description) or "compact" (text-only)
 # =============================================================================
 
-- title: "Placeholder Project One"
-  description: "A short placeholder description of what this project does and why it's interesting."
-  link: "https://github.com/"
-  image: "assets/img/project-placeholder-1.png"
-  template: "detailed"
+- title: "Improving Online Trackers via Classical ML Feature Evolution"
+  description: "A classical machine-learning-based re-identification system using SIFT and Random Forest to improve UAV multi-object tracking, achieving better identity consistency than baseline methods. Ahmedabad University, Jan–Apr 2026."
+  template: "compact"
 
-- title: "Placeholder Project Two"
-  description: "Another short placeholder description of a side project or research tool."
-  link: "https://github.com/"
-  image: "assets/img/project-placeholder-2.png"
-  template: "detailed"
+- title: "Small Object Detection & Tracking for UAV Videos"
+  description: "A deep learning pipeline combining YOLOv11, SAHI tiling, and Siamese re-identification with contrastive learning to improve small-object detection and tracking in UAV footage — reduced false positives by 21.5%. Ahmedabad University, Jan–Apr 2026."
+  template: "compact"
 
-- title: "Placeholder Project Three"
-  description: "A smaller project, shown compact — just a title, link, and one line."
-  link: "https://github.com/"
+- title: "Unsupervised Denoising for Fluorescence Microscopy"
+  description: "Unsupervised deep learning models (3D U-Net, Noise2Noise) for calcium imaging denoising without ground-truth data. Placed 4th in the AI4Life Grand Challenge, improving from 5th place. Ahmedabad University, Jan–Apr 2026."
+  template: "compact"
+
+- title: "Early Sepsis Detection from Electronic Health Records"
+  description: "An ML pipeline for early sepsis prediction from ICU EHR data (MIMIC-IV), using feature engineering, SMOTE, and ensemble models (LightGBM, XGBoost). Achieved a 0.921 ROC-AUC and ~83.6% recall. Ahmedabad University, Jan–Mar 2026."
+  template: "compact"
+
+- title: "LayoutLM vs. RoBERTa for Document Understanding"
+  description: "A comparative analysis of RoBERTa and LayoutLMv3 for classification and key information extraction on the DocILE dataset, showing multimodal models significantly outperform text-only models — 0.756 accuracy and 0.704 F1 with LayoutLMv3. Ahmedabad University, Aug–Nov 2025."
+  template: "compact"
+
+- title: "Reflex-Based Control & A* Planning for a Planetary Rover"
+  description: "An autonomous rover using reflex-based control and A* path planning with custom terrain-aware heuristics to optimize navigation and energy usage. Ahmedabad University, Oct–Nov 2025."
+  template: "compact"
+
+- title: "SahajPranali — Digital Revenue Records System"
+  description: "A digital archive for the Collector Office, Buldhana (Government of Maharashtra) providing citizen and official access to revenue records with search by district, taluka, village, and case number. Includes a secure dual-login system with OTP for citizens, role-based access for officials, watermarking, and audit logging. Built at Tirth Infotech, Jul 2024 – Mar 2025."
+  template: "compact"
+
+- title: "React Headless Token Auth"
+  description: "Open-source contribution improving a headless React authentication library — fixed token expiration issues and added hooks, contexts, and Axios request interceptors for better developer experience."
+  link: "https://github.com/aagam41"
+  template: "compact"
+
+- title: "Django Dynamic Models"
+  description: "Open-source contribution to a runtime model generation system for Django, improving stability, usability, and documentation for dynamically creating models at runtime."
+  link: "https://github.com/aagam41"
+  template: "compact"
+
+- title: "Django DB File Storage"
+  description: "Forked and patched a Django file storage library for Django 4.x compatibility, fixing cross-platform path bugs. Contribution recognized by the Berlin Institute of Health; patch submitted upstream."
+  link: "https://github.com/aagam41"
+  template: "compact"
+
+- title: "SPAPAS — Student Prediction and Performance Analysis System"
+  description: "A Django-based system using linear and logistic regression to predict student performance and visualize insights through dashboards for data-driven academic evaluation. Government Polytechnic Ahmedabad, Jan–Mar 2021."
   template: "compact"
