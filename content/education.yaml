@@ -8,8 +8,7 @@
 #   detail      : optional extra line (advisor, honors, minor, etc.)
 #   logo        : optional path to a small institution logo/crest image,
 #                 shown as a small circular badge next to the institution
-#                 name. Hover over it to see it full-size. Leave out to
-#                 show no logo for that entry.
+#                 name. Leave out to show no logo for that entry.
 #   template    : optional template override
 # =============================================================================
 
@@ -37,6 +36,12 @@
 - dates: "2018"
   institution: "Ahmedabad International School"
   degree: "SSC"
-  detail: "Gujarat Secondary and Higher Secondary Education Board · 81.5%"
+  detail: "GSEB curriculum, Grades 7-10 · Gujarat Secondary and Higher Secondary Education Board · 81.5%"
   logo: "assets/img/logo-ais.png"
-  template: "compact"
+  template: "default"
+
+- dates: "Grades 1-5"
+  institution: "Ahmedabad International School"
+  degree: "Primary Years Programme (PYP)"
+  logo: "assets/img/logo-ais.png"
+  template: "default"

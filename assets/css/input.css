@@ -4,10 +4,7 @@
 
 /* -----------------------------------------------------------------------
    Font: Georgia everywhere (headings + body), matching the reference
-   site's WordPress "Independent Publisher 2" theme, which uses
-   Georgia / "Times New Roman" / serif for all text — no separate
-   display or monospace font. This is a system font stack, so there's
-   no @font-face / Google Fonts request needed at all.
+   site's WordPress "Independent Publisher 2" theme.
 ----------------------------------------------------------------------- */
 
 @layer base {
@@ -41,9 +38,6 @@
 @layer components {
   .page {
     @apply mx-auto px-5 sm:px-8 py-10 sm:py-14;
-    /* Responsive width: ~92% on phones, ~85% on tablets, 50% of viewport
-       on large desktop screens — capped so lines never get too long to
-       read, and floored so it never gets uncomfortably narrow. */
     width: 92%;
     max-width: 640px;
   }
@@ -67,38 +61,34 @@
   }
 
   /* ---------- Hero / header ----------
-     Matches the reference: a plain, full-width headshot sits above the
-     name and bio — no circular crop, no side-by-side layout, no frame. */
+     Photo fixed-size on the left, name + bio + contact filling the
+     right column — side-by-side "business card" layout. */
   .hero {
-    @apply mb-8;
+    @apply flex gap-5 sm:gap-6 items-start mb-8;
   }
   .hero-photo img {
-    @apply w-full h-auto max-h-80 object-cover mb-6 rounded-sm;
+    @apply w-24 h-24 sm:w-32 sm:h-32 object-cover rounded-full shrink-0;
+  }
+  .hero-text {
+    @apply flex-1 min-w-0;
   }
   .hero-name {
-    @apply text-[1.9rem] sm:text-[2.1rem] font-bold tracking-tight mb-3 leading-tight;
+    @apply text-[1.5rem] sm:text-[1.8rem] font-bold tracking-tight mb-2 leading-tight;
   }
   .hero-tagline {
-    @apply text-ink mb-4 leading-relaxed;
+    @apply text-ink mb-3 leading-relaxed text-[0.97rem];
   }
-  .hero-email {
-    @apply mb-3;
+  .hero-contact-row {
+    @apply flex flex-wrap items-center gap-x-3 gap-y-1.5;
   }
-  .hero-email-highlight {
-    background: theme('colors.highlight');
-    @apply px-1 py-0.5;
+  .hero-email-icon {
+    @apply inline-flex items-center justify-center text-muted hover:text-accent;
   }
-  .hero-email a {
-    @apply text-ink no-underline;
-  }
-  .hero-links {
-    @apply flex flex-col gap-1;
+  .hero-email-icon svg {
+    @apply w-[18px] h-[18px];
   }
   .hero-link {
-    @apply text-ink;
-  }
-  .hero-link a {
-    @apply text-accent;
+    @apply text-muted text-sm no-underline hover:text-ink;
   }
 
   /* ---------- Section nav ---------- */
@@ -110,9 +100,7 @@
     @apply text-muted hover:text-accent;
   }
 
-  /* ---------- Sections ----------
-     Plain bold headings, no divider rule under the title — matches the
-     reference site's simple "### News" style headers. */
+  /* ---------- Sections ---------- */
   .content-section {
     @apply mb-10 scroll-mt-8;
   }
@@ -120,9 +108,19 @@
     @apply font-bold text-xl mb-4;
   }
 
-  /* ---------- News ----------
-     Flat bulleted list, bold date inline at the start of each item —
-     matches "- **2/25.** *Thinking in Space* has been accepted..." */
+  /* ---------- Shared: bracket-style [link] tags -----------
+     Used for publication links, project GitHub links, hero social
+     links, etc. — subtle boxed tag rather than plain underlined text. */
+  .tag-link {
+    @apply inline-block text-xs px-2 py-0.5 rounded-full no-underline text-muted;
+    background: theme('colors.hairline' / 70%);
+  }
+  .tag-link:hover {
+    @apply text-ink;
+    background: theme('colors.hairline');
+  }
+
+  /* ---------- News ---------- */
   .entry-list {
     @apply space-y-2 list-disc pl-5;
   }
@@ -139,8 +137,7 @@
   /* ---------- Education ----------
      LinkedIn-style row: small logo top-aligned on the left, institution
      name + year inline on the first line, degree and details stacked
-     below. Logos are static (no hover-zoom) — they're identity marks,
-     not content to inspect. */
+     below. Logos are static, no hover behavior. */
   #education .section-body {
     @apply space-y-4;
   }
@@ -173,28 +170,35 @@
   }
 
   /* ---------- Publications ----------
-     Image stacked ABOVE the text block (not beside it), bold title,
-     authors on their own line with your name bolded, italic venue,
-     bracket-style links inline underneath — matches the reference
-     exactly. */
+     Small thumbnail on the LEFT, text on the right (title, authors,
+     venue, link tags). Hover the thumbnail to enlarge it in place;
+     move the mouse off to shrink back — pure CSS, no JS. */
   #publications .section-body {
-    @apply space-y-8;
+    @apply space-y-6;
   }
   .pub-item--detailed {
-    @apply block;
+    @apply flex items-start gap-4;
   }
   .pub-image {
-    @apply cursor-zoom-in;
+    @apply w-20 h-20 shrink-0 overflow-visible relative;
   }
   .pub-image img {
-    @apply w-full h-auto object-cover mb-3 rounded-sm;
+    @apply w-20 h-20 object-cover rounded-sm relative z-10 transition-transform duration-200 ease-out;
+    transform-origin: top left;
+  }
+  .pub-image:hover img {
+    transform: scale(2.6);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
   }
   .pub-image--placeholder {
-    @apply w-full aspect-video mb-3 rounded-sm flex items-center justify-center text-center px-4 cursor-default;
+    @apply w-20 h-20 rounded-sm flex items-center justify-center text-center px-1;
     background: theme('colors.hairline' / 60%);
   }
   .pub-image-placeholder-text {
-    @apply font-bold text-ink/70 text-sm;
+    @apply font-normal text-ink/60 text-[0.6rem] leading-tight;
+  }
+  .pub-body {
+    @apply flex-1 min-w-0;
   }
   .pub-title {
     @apply font-bold leading-snug text-[1.02rem] mb-1;
@@ -206,40 +210,37 @@
     @apply font-bold;
   }
   .pub-venue {
-    @apply italic text-ink mb-1;
+    @apply italic text-ink mb-1.5;
   }
   .pub-venue-inline {
-    @apply text-ink mb-1;
+    @apply text-ink mb-1.5;
   }
   .pub-links {
-    @apply flex flex-wrap gap-x-2;
-  }
-  .pub-link {
-    @apply text-accent;
-  }
-  .pub-item--compact .pub-link {
-    @apply text-accent;
+    @apply flex flex-wrap gap-1.5;
   }
 
   /* ---------- Projects ----------
-     Clean minimal list: a small fixed-size thumbnail on the left,
-     plain (not heavily bold) title, description, and an inline
-     [GitHub] link — closer to the reference site's plain, unadorned
-     style rather than a portfolio "card" look. */
+     Same pattern as Publications: small thumbnail on the left, text
+     on the right, hover-to-enlarge in place. */
   #projects .section-body {
-    @apply space-y-4;
+    @apply space-y-5;
   }
   .project-item--detailed {
-    @apply flex items-start gap-3;
+    @apply flex items-start gap-4;
   }
   .project-image {
-    @apply w-16 h-16 shrink-0 cursor-zoom-in;
+    @apply w-20 h-20 shrink-0 overflow-visible relative;
   }
   .project-image img {
-    @apply w-16 h-16 object-cover rounded-sm;
+    @apply w-20 h-20 object-cover rounded-sm relative z-10 transition-transform duration-200 ease-out;
+    transform-origin: top left;
+  }
+  .project-image:hover img {
+    transform: scale(2.6);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
   }
   .project-image--placeholder {
-    @apply w-16 h-16 rounded-sm flex items-center justify-center text-center px-1 cursor-default;
+    @apply w-20 h-20 rounded-sm flex items-center justify-center text-center px-1;
     background: theme('colors.hairline' / 60%);
   }
   .project-image-placeholder-text {
@@ -249,28 +250,19 @@
     @apply flex-1 min-w-0;
   }
   .project-title {
-    @apply font-medium text-ink text-[0.98rem] leading-snug;
+    @apply font-bold text-ink text-[1.02rem] leading-snug;
   }
   .project-description {
-    @apply text-ink/85 text-[0.92rem] mt-0.5 leading-snug;
-  }
-  .project-link {
-    @apply text-accent text-sm;
+    @apply text-ink/85 text-[0.92rem] mt-1 leading-snug;
   }
   .project-item--compact {
     @apply text-[0.95rem];
   }
   .project-item--compact .project-title {
-    @apply font-medium text-ink;
-  }
-  .project-item--compact .project-link {
-    @apply text-accent;
+    @apply font-bold text-ink;
   }
 
-  /* ---------- Experience ----------
-     Same LinkedIn-style row as Education: logo top-aligned on the left,
-     role + year inline on the first line, company and description
-     stacked below. */
+  /* ---------- Experience ---------- */
   #experience .section-body {
     @apply space-y-4;
   }
@@ -299,30 +291,30 @@
     @apply text-muted text-[0.95rem] block mt-0.5;
   }
 
-  /* ---------- Skills ---------- */
+  /* ---------- Skills ----------
+     Original style: bold category label, then skill names as small
+     tag pills inline in a row next to it. */
   #skills .section-body {
     @apply space-y-3;
   }
   .skill-group {
-    @apply leading-relaxed;
+    @apply flex flex-col sm:flex-row sm:gap-4;
   }
   .skill-category {
-    @apply font-bold block mb-1;
+    @apply text-xs uppercase tracking-wide text-muted shrink-0 w-full sm:w-40 pt-0.5 font-bold;
   }
   .skill-items {
-    @apply text-ink;
+    @apply flex flex-wrap gap-1.5 mt-1 sm:mt-0;
   }
   .skill-pill {
-    @apply inline;
-  }
-  .skill-pill:not(:last-child)::after {
-    content: ", ";
+    @apply text-xs px-2 py-0.5 rounded-full text-ink/80;
+    background: theme('colors.hairline' / 60%);
   }
   .skill-group--compact {
-    @apply text-[0.95rem];
+    @apply text-sm;
   }
   .skill-inline {
-    @apply text-ink;
+    @apply text-ink/80;
   }
 
   /* ---------- Other / Contact ---------- */
@@ -331,49 +323,26 @@
     @apply text-ink leading-relaxed;
   }
 
-  /* ---------- Certificates ---------- */
+  /* ---------- Certificates ----------
+     Original style: no bullets, each row is a month/year tag followed
+     by the certificate title and issuer. */
   #certificates .section-body {
-    @apply space-y-1.5 list-disc pl-5;
+    @apply space-y-2.5;
   }
   .cert-item {
-    @apply text-[0.95rem];
+    @apply flex flex-wrap gap-x-3 items-baseline text-[0.95rem];
   }
   .cert-date {
-    @apply italic text-muted mr-2;
+    @apply text-xs px-2 py-0.5 rounded-full text-muted shrink-0;
+    background: theme('colors.hairline' / 60%);
   }
   .cert-issuer {
-    @apply text-muted;
-  }
-  .cert-issuer::before {
-    content: " — ";
+    @apply text-muted text-sm;
   }
 
   /* ---------- Footer ---------- */
   .site-footer {
     @apply mt-16 pt-5 text-xs text-muted;
     border-top: 1px solid theme('colors.hairline');
-  }
-
-  /* ---------- Lightbox ----------
-     Full-screen overlay triggered by hovering any element with a
-     data-lightbox-src attribute (education logos, publication and
-     project thumbnails). Pure show/hide via a class toggled in JS;
-     see the script at the bottom of templates/page.hbs. */
-  .lightbox-overlay {
-    @apply fixed inset-0 z-50 flex items-center justify-center p-8;
-    background: rgba(0, 0, 0, 0.82);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.15s ease;
-    pointer-events: none;
-  }
-  .lightbox-overlay.is-visible {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-  }
-  .lightbox-image {
-    @apply max-w-full max-h-full rounded-sm;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
   }
 }

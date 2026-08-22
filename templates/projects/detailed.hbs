@@ -1,6 +1,6 @@
 <div class="project-item project-item--detailed">
   {{#if image}}
-  <div class="project-image" data-lightbox-src="{{image}}" data-lightbox-alt="{{title}}">
+  <div class="project-image">
     <img src="{{image}}" alt="{{title}}" loading="lazy" />
   </div>
   {{else}}
@@ -11,6 +11,6 @@
   <div class="project-body">
     <div class="project-title">{{title}}</div>
     <div class="project-description">{{description}}</div>
-    {{#if link}}<a href="{{link}}" class="project-link" target="_blank" rel="noopener">[GitHub]</a>{{/if}}
+    {{#if link}}<a href="{{link}}" class="tag-link" target="_blank" rel="noopener">GitHub</a>{{/if}}
   </div>
 </div>

@@ -150,7 +150,7 @@ function build() {
 
     entries = sortEntries(entries, section.sort);
 
-    const isListSection = ["news", "certificates"].includes(section.id);
+    const isListSection = ["news"].includes(section.id);
     const htmlParts = entries.map((entry) => {
       const templateName = entry.template || section.default_template;
       const renderFn = readTemplate(section.template_dir, templateName);
