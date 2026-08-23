@@ -128,6 +128,12 @@
     font-size: clamp(0.85rem, 0.85rem + ((1vw - 0.2rem) * 0.65), 1.2rem);
     line-height: 1.4;
   }
+  .hero-intro p {
+    @apply m-0;
+  }
+  .hero-intro p + p {
+    @apply mt-3;
+  }
   .hero-socials {
     @apply mt-4 mb-0 flex flex-wrap items-center text-sm;
   }

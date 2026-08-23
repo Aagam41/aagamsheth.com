@@ -174,3 +174,19 @@ All other decisions stand. (Owner's list item 5 was empty — nothing omitted in
    procedures, mod_wsgi, GitHub. 58 pills across 7 categories.
 4. **Correction**: AI4Life Grand Challenge result corrected to **1st place in
    both tracks** (was "4th, improving from 5th") — research.yaml and news.yaml.
+
+## Amendment 2026-08-24 — Round-8: three-paragraph tagline + email display
+
+1. **Tagline**: `header.tagline` now accepts a LIST — each item becomes its own
+   `<p>` inside the hero intro (page.hbs wrapper is a `<div class="hero-intro">`;
+   build.js maps items through mdToHtml and wraps them; `.hero-intro p + p`
+   spacing). Single-string form still supported. Owner supplied the three
+   paragraphs (research focus / CTO role / coffee-and-cycling outreach).
+2. **Email display**: visible obfuscation is now
+   "contact [dot] me [at] aagamsheth [dot] com" — dots inside the local part are
+   spelled out too. emailParts helper normalizes either raw or pre-obfuscated
+   yaml values, so data-user/data-domain still carry the real address for the
+   runtime mailto assembly.
+3. **Owner edits folded in**: News section disabled (enabled: false) and its
+   smoke checks inverted accordingly; education degrees/courses updated;
+   headshot/logos replaced.

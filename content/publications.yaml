@@ -52,6 +52,7 @@
   links:
     - label: "code"
       url: "https://github.com/Aagam41/ieee-ijcb-ssbc-2026"
+  image: "assets/img/pub-ssbc10th.png"
   template: "detailed"
 
 - date: "2026-06-01"
@@ -91,4 +92,5 @@
     - "J. Deschamps"
   description: "Report on three open calls and three public image-restoration challenges run by the AI4Life consortium between 2023 and 2025: 22 supported projects from 151 applications, and 225 challenge participants. Includes an analysis of winning approaches — among them our Restormer3D in the calcium-imaging denoising challenge — and the core lesson that data, annotations, and shared infrastructure, not models, are the rate-limiting step."
   venue: "Preprint, 2026"
+  image: "assets/img/pub-ai4life.png"
   template: "detailed"

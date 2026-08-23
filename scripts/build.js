@@ -38,10 +38,15 @@ function readYaml(relPath) {
 // data attributes, displayed in classic [at]/[dot] form. A few lines of JS in
 // page.hbs assemble the real mailto: at runtime (the visible label keeps its
 // [at]/[dot] form), so the plaintext address never appears in the static HTML.
+// The yaml field accepts either the raw address or an already-obfuscated
+// display string ("me [at] host [dot] com") — both normalize to the same output.
 Handlebars.registerHelper("emailParts", function (email) {
-  const [user, domain] = String(email).split("@");
-  if (!user || !domain) return new Handlebars.SafeString("");
-  const display = `${user} [at] ${domain.replace(/\./g, " [dot] ")}`;
+  const addr = String(email)
+    .replace(/\s*\[\s*at\s*\]\s*/gi, "@")
+    .replace(/\s*\[\s*dot\s*\]\s*/gi, ".");
+  const [user, domain] = addr.split("@");
+  if (!user || !domain || domain.includes(" ")) return new Handlebars.SafeString("");
+  const display = `${user.replace(/\./g, " [dot] ")} [at] ${domain.replace(/\./g, " [dot] ")}`;
   return new Handlebars.SafeString(
     `<a class="js-email" href="#" data-user="${user}" data-domain="${domain}">${display}</a>`
   );
@@ -195,10 +200,17 @@ function build() {
     });
   }
 
-  // Prep header links / bio text through the same mini-markdown helper
+  // Prep header links / bio text through the same mini-markdown helper.
+  // tagline may be a single string or a list — each list item becomes its own
+  // <p> paragraph inside the hero-intro block.
+  const taglineParts = Array.isArray(header.tagline)
+    ? header.tagline
+    : [header.tagline].filter(Boolean);
   const preppedHeader = {
     ...header,
-    tagline: mdToHtml(header.tagline || ""),
+    tagline: Array.isArray(header.tagline)
+      ? taglineParts.map((t) => `<p>${mdToHtml(t)}</p>`).join("")
+      : mdToHtml(header.tagline || ""),
   };
   preppedHeader.taglineHtml = preppedHeader.tagline;
 

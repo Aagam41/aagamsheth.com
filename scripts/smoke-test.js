@@ -92,7 +92,6 @@ console.log("\nAsserting against emitted artifacts...\n");
 // -----------------------------------------------------------------------------
 
 const expectedOrder = [
-  "News",
   "Education",
   "Publications",
   "Research Projects",
@@ -258,6 +257,21 @@ ok(/\.hero\{margin-bottom/.test(css), "hero block carries bottom spacing before 
 
 ok(extractSection(html, "contact") === null, "contact section removed from the page");
 ok(html.includes("[at]") && html.includes("[dot]"), "email display uses [at] / [dot] obfuscation");
+ok(/contact \[dot\] me \[at\] aagamsheth \[dot\] com/.test(html),
+  "email displays as 'contact [dot] me [at] aagamsheth [dot] com'");
+ok(!/contact\.me \[at\]/.test(html), "old 'contact.me [at]' display form is gone");
+ok(/data-user="contact\.me"/.test(html) && /data-domain="aagamsheth\.com"/.test(html),
+  "email data attributes still carry the real address parts");
+ok(!/contact\.me@aagamsheth\.com/.test(html), "no plaintext address in static HTML");
+
+// Tagline: three paragraphs, markdown links live
+const heroRegion = (html.match(/<header class="hero">[\s\S]*?<\/header>/) || [""])[0];
+const taglinePs = heroRegion.match(/<div class="hero-intro">[\s\S]*?<\/div>/);
+ok(!!taglinePs && (taglinePs[0].match(/<p>/g) || []).length === 3,
+  "tagline renders as exactly three paragraphs");
+ok(/intersection of computer vision/.test(heroRegion) && /Chief Technology Officer at/.test(heroRegion)
+  && /cycling route/.test(heroRegion), "all three tagline paragraphs present");
+ok(/<a href="https:\/\/tirthinfotech\.com"/.test(heroRegion), "tagline markdown link rendered");
 ok(!html.includes("contact.me@aagamsheth.com"), "email address never appears as plaintext in the static HTML");
 ok(!/mailto:[a-z0-9._%+-]+@/.test(html), "no plaintext mailto: links in the static HTML");
 ok(/class="js-email"/.test(hero) && /data-domain=/.test(html), "email assembled client-side from data attributes");
@@ -287,15 +301,16 @@ ok(renderedPills === expectedPills, `skill pills (${renderedPills}) == skills.ya
 ok(/\.site-footer-line\{[^}]*text-align:center/.test(css), "footer line is centered");
 
 // -----------------------------------------------------------------------------
-// 9. News: bold numeric M/YY. prefix
+// 9. News: section disabled by owner — must not render; CSS kept for reference
 // -----------------------------------------------------------------------------
 
+const newsEnabled = (() => {
+  const cfg = readYaml("content/site.yaml");
+  const s = (cfg.sections || []).find((x) => x.id === "news");
+  return !!(s && s.enabled);
+})();
 const newsItems = [...html.matchAll(/<li class="news-item">(.*?)<\/li>/gs)].map((m) => m[1]);
-ok(newsItems.length > 0, "news items rendered");
-ok(
-  newsItems.every((item) => /^<strong class="news-date">\d{1,2}\/\d{2}\.<\/strong>/.test(item.trim())),
-  "every news item starts with a bold M/YY. prefix"
-);
+ok(!newsEnabled && newsItems.length === 0, "news section disabled and renders nothing");
 ok(/\.news-date\{[^}]*font-weight:(700|800|900)/.test(css), "news date prefix styled bold in CSS");
 
 // -----------------------------------------------------------------------------
