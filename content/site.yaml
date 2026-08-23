@@ -19,7 +19,7 @@ site:
 
 header:
   name: "Aagam Sheth"
-  tagline: "I'm a Master's student in Computer Science at Ahmedabad University, advised by JB Sir, working on computer vision, deep learning architectures, and applied ML systems. I'm also the CTO at [Tirth Infotech](https://github.com/aagam41), where I've spent the last several years building and deploying production systems for government and enterprise clients."
+  tagline: "I'm an M.Tech student in Computer Science at Ahmedabad University working on computer vision, deep learning architectures, and applied ML systems — from UAV tracking and biomedical imaging to document AI. I also serve as CTO at [Tirth Infotech](https://github.com/aagam41), shipping secure production platforms for government and enterprise clients."
   photo: "assets/img/headshot.jpg"
   email: "contact.me@aagamsheth.com"
   links:

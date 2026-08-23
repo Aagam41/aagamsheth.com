@@ -24,7 +24,7 @@
   dates: "Jan–Apr 2026"
   links:
     - label: "GitHub"
-      url: "https://github.com/aagam41"
+      url: "https://github.com/Aagam41/ML_2026_5_Epochalypse"
   image: "assets/img/project-placeholder-1.png"
   template: "detailed"
 
@@ -34,7 +34,7 @@
   dates: "Jan–Apr 2026"
   links:
     - label: "GitHub"
-      url: "https://github.com/aagam41"
+      url: "https://github.com/Aagam41/CV_2026_7_TheConvolutioners"
     - label: "Video"
       url: "https://github.com/aagam41"
   image: "assets/img/project-placeholder-2.png"
@@ -46,7 +46,7 @@
   dates: "Jan–Apr 2026"
   links:
     - label: "GitHub"
-      url: "https://github.com/aagam41"
+      url: "https://github.com/Aagam41/DL_2026_FMIDenoising"
     - label: "Paper"
       url: "https://github.com/aagam41"
   template: "detailed"
