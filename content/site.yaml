@@ -118,11 +118,3 @@ sections:
     template_dir: "templates/certificates"
     default_template: "compact"
     sort: "date"
-
-  - id: contact
-    title: "Contact"
-    enabled: true
-    content_file: "content/contact.yaml"
-    template_dir: "templates/contact"
-    default_template: "default"
-    sort: "manual"

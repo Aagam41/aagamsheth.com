@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="icon" href="data:,">
 </head>
-<body>
+<body id="top">
 
   <nav class="site-nav" id="site-nav">
     <div class="site-nav-inner">
@@ -21,16 +21,19 @@
         </svg>
       </button>
       <div class="nav-links">
-        <a class="nav-link" href="#news">News</a><a class="nav-link" href="#education">Education</a><a class="nav-link" href="#publications">Publications</a><a class="nav-link" href="#research">Research Projects</a><a class="nav-link" href="#engineering-oss">Engineering Projects</a><a class="nav-link" href="#experience">Work Experience</a><a class="nav-link" href="#skills">Skills</a><a class="nav-link" href="#other">Other</a><a class="nav-link" href="#certificates">Certificates</a><a class="nav-link" href="#contact">Contact</a>
+        <a class="nav-link" href="#top">home</a>
+        <a class="nav-link" href="#news">News</a><a class="nav-link" href="#education">Education</a><a class="nav-link" href="#publications">Publications</a><a class="nav-link" href="#research">Research Projects</a><a class="nav-link" href="#engineering-oss">Engineering Projects</a><a class="nav-link" href="#experience">Work Experience</a><a class="nav-link" href="#skills">Skills</a><a class="nav-link" href="#other">Other</a><a class="nav-link" href="#certificates">Certificates</a>
       </div>
     </div>
     <div class="nav-mobile" id="nav-mobile">
-      <a class="nav-link" href="#news">News</a><a class="nav-link" href="#education">Education</a><a class="nav-link" href="#publications">Publications</a><a class="nav-link" href="#research">Research Projects</a><a class="nav-link" href="#engineering-oss">Engineering Projects</a><a class="nav-link" href="#experience">Work Experience</a><a class="nav-link" href="#skills">Skills</a><a class="nav-link" href="#other">Other</a><a class="nav-link" href="#certificates">Certificates</a><a class="nav-link" href="#contact">Contact</a>
+      <a class="nav-link" href="#top">home</a>
+      <a class="nav-link" href="#news">News</a><a class="nav-link" href="#education">Education</a><a class="nav-link" href="#publications">Publications</a><a class="nav-link" href="#research">Research Projects</a><a class="nav-link" href="#engineering-oss">Engineering Projects</a><a class="nav-link" href="#experience">Work Experience</a><a class="nav-link" href="#skills">Skills</a><a class="nav-link" href="#other">Other</a><a class="nav-link" href="#certificates">Certificates</a>
     </div>
   </nav>
 
   <nav class="side-nav" aria-label="Section outline">
-    <a href="#news">News</a><a href="#education">Education</a><a href="#publications">Publications</a><a href="#research">Research Projects</a><a href="#engineering-oss">Engineering Projects</a><a href="#experience">Work Experience</a><a href="#skills">Skills</a><a href="#other">Other</a><a href="#certificates">Certificates</a><a href="#contact">Contact</a>
+    <a href="#top">home</a>
+    <a href="#news">News</a><a href="#education">Education</a><a href="#publications">Publications</a><a href="#research">Research Projects</a><a href="#engineering-oss">Engineering Projects</a><a href="#experience">Work Experience</a><a href="#skills">Skills</a><a href="#other">Other</a><a href="#certificates">Certificates</a>
   </nav>
 
   <div class="page">
@@ -45,7 +48,7 @@
         </div>
         <div class="hero-intro-col">
           <p class="hero-intro">I'm a Master's student in Computer Science at Ahmedabad University, advised by JB Sir, working on computer vision, deep learning architectures, and applied ML systems. I'm also the CTO at <a href="https://github.com/aagam41" target="_blank" rel="noopener">Tirth Infotech</a>, where I've spent the last several years building and deploying production systems for government and enterprise clients.</p>
-          <p class="hero-socials"><a class="js-email" href="#contact" data-user="contact.me" data-domain="aagamsheth.com"></a><span class="sep">|</span><a href="assets/files/cv-placeholder.pdf" target="_blank" rel="noopener">CV</a><span class="sep">|</span><a href="https://github.com/aagam41" target="_blank" rel="noopener">GitHub</a><span class="sep">|</span><a href="https://leetcode.com/u/Aagam41/" target="_blank" rel="noopener">LeetCode</a><span class="sep">|</span><a href="https://www.kaggle.com/aagamsheth" target="_blank" rel="noopener">Kaggle</a></p>
+          <p class="hero-socials"><a class="js-email" href="#" data-user="contact.me" data-domain="aagamsheth.com">contact.me [at] aagamsheth [dot] com</a><span class="sep">|</span><a href="assets/files/cv-placeholder.pdf" target="_blank" rel="noopener">CV</a><span class="sep">|</span><a href="https://github.com/aagam41" target="_blank" rel="noopener">GitHub</a><span class="sep">|</span><a href="https://leetcode.com/u/Aagam41/" target="_blank" rel="noopener">LeetCode</a><span class="sep">|</span><a href="https://www.kaggle.com/aagamsheth" target="_blank" rel="noopener">Kaggle</a></p>
         </div>
       </div>
     </header>
@@ -456,19 +459,6 @@
 
         </div>
       </section>
-      <section class="content-section" id="contact">
-        <h2 class="section-title">Contact</h2>
-        <div class="section-body section-body--contact">
-          <div class="contact-card">
-  <p class="contact-lead">The best way to reach me is by email.</p>
-  <div class="contact-channels">
-    <a class="js-email" href="#contact" data-user="contact.me" data-domain="aagamsheth.com"></a>
-    <span class="contact-location">Ahmedabad, India</span>
-  </div>
-</div>
-
-        </div>
-      </section>
     </main>
 
     <footer class="site-footer">
@@ -514,7 +504,6 @@
       }
       document.querySelectorAll(".js-email").forEach(function (el) {
         var addr = el.getAttribute("data-user") + "@" + el.getAttribute("data-domain");
-        el.textContent = addr;
         el.setAttribute("href", "mailto:" + addr);
       });
     })();

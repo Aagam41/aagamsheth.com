@@ -101,7 +101,6 @@ const expectedOrder = [
   "Skills",
   "Other",
   "Certificates",
-  "Contact",
 ];
 const actualHeadings = [...html.matchAll(/<h2 class="section-title">(.*?)<\/h2>/g)].map((m) =>
   decodeEntities(m[1])
@@ -128,6 +127,14 @@ for (const link of siteConfig.header.links) {
 ok(/class="hero-socials"/.test(hero), "socials rendered as a pipe-separated text row");
 ok(/class="hero-socials"[^<]*<a/.test(hero.replace(/\n\s*/g, "")), "email is the first item in the socials row");
 ok(/class="js-email"/.test(hero), "hero email rendered through the obfuscation hook");
+
+// -----------------------------------------------------------------------------
+// 3b. Nav: Home link + centered hero title
+// -----------------------------------------------------------------------------
+
+ok(count(html, 'href="#top"') === 3, "Home link present in side outline + desktop + mobile nav");
+ok(/id="top"/.test(html), "page carries an #top anchor");
+ok(/\.hero-name\{[^}]*text-align:center/.test(css), "hero name is horizontally centered");
 
 // -----------------------------------------------------------------------------
 // 3b. Hero photo: 25%-width portrait column
@@ -236,15 +243,14 @@ ok(/\.news-item\{[^}]*padding-left/.test(css) && /\.news-date\{position:absolute
 ok(/\.hero\{margin-bottom/.test(css), "hero block carries bottom spacing before News");
 
 // -----------------------------------------------------------------------------
-// 8b. Contact: card layout, obfuscated email, no phone number
+// 8b. Contact: section removed; email obfuscated as [at]/[dot], no phone
 // -----------------------------------------------------------------------------
 
-const contactSection = extractSection(html, "contact") || "";
-ok(/class="contact-card"/.test(contactSection) && /class="contact-channels"/.test(contactSection),
-  "contact section renders as a card with a channels row");
+ok(extractSection(html, "contact") === null, "contact section removed from the page");
+ok(html.includes("[at]") && html.includes("[dot]"), "email display uses [at] / [dot] obfuscation");
 ok(!html.includes("contact.me@aagamsheth.com"), "email address never appears as plaintext in the static HTML");
 ok(!/mailto:[a-z0-9._%+-]+@/.test(html), "no plaintext mailto: links in the static HTML");
-ok(/class="js-email"/.test(contactSection) && /data-domain=/.test(html), "contact email assembled client-side from data attributes");
+ok(/class="js-email"/.test(hero) && /data-domain=/.test(html), "email assembled client-side from data attributes");
 ok(!/\+91|78780/.test(html), "phone number removed from the page");
 ok(/\.site-footer-line\{[^}]*text-align:center/.test(css), "footer line is centered");
 

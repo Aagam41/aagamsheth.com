@@ -35,13 +35,15 @@ function readYaml(relPath) {
 }
 
 // Email obfuscation: emits an inert anchor carrying the address split across
-// data attributes. A few lines of JS in page.hbs assemble the real mailto:
-// at runtime, so the plaintext address never appears in the static HTML.
+// data attributes, displayed in classic [at]/[dot] form. A few lines of JS in
+// page.hbs assemble the real mailto: at runtime (the visible label keeps its
+// [at]/[dot] form), so the plaintext address never appears in the static HTML.
 Handlebars.registerHelper("emailParts", function (email) {
   const [user, domain] = String(email).split("@");
   if (!user || !domain) return new Handlebars.SafeString("");
+  const display = `${user} [at] ${domain.replace(/\./g, " [dot] ")}`;
   return new Handlebars.SafeString(
-    `<a class="js-email" href="#contact" data-user="${user}" data-domain="${domain}"></a>`
+    `<a class="js-email" href="#" data-user="${user}" data-domain="${domain}">${display}</a>`
   );
 });
 

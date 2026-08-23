@@ -130,3 +130,12 @@ All other decisions stand.
 6. **Other**: no longer a text wall — short lead line plus interests rendered as compact pills.
 
 All other decisions stand.
+
+## Amendment 2026-08-23 — Round-5 pass (mechanical items)
+
+1. **Nav**: "home" link prepended to the side outline, desktop bar, and mobile menu — scrolls to `#top`.
+2. **Hero title**: name centered horizontally.
+3. **Contact section**: removed entirely (email already lives in the hero socials row).
+4. **Email obfuscation display**: rendered in classic `[at]`/`[dot]` form (`contact.me [at] aagamsheth [dot] com`); JS still assembles the real mailto: for clicks, and the plaintext address never appears statically.
+
+Content enrichment (resumes, GitHub, LinkedIn) tracked separately in ticket 12 pending owner answers.
