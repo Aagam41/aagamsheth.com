@@ -1,6 +1,6 @@
 # Ticket 12 — Round-5 content enrichment (resumes + LinkedIn + GitHub)
 
-Status: needs-info
+Status: resolved (IEEE publication details still pending owner input)
 
 Owner supplied two resume PDFs (extracted via pdftotext), github.com/Aagam41, linkedin.com/in/aagamsheth.
 Mechanical items (home nav, centered name, contact removal, [at]/[dot]) landed with the round-5 spec amendment.
