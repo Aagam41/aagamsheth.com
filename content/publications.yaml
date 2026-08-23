@@ -6,6 +6,8 @@
 #   authors   : list of author names. Put "**Your Name**" in bold via markdown-style **
 #               to highlight yourself (rendered automatically as bold).
 #   venue     : e.g. "CVPR 2025 (Oral)"
+#   description: optional one-to-two-sentence summary, rendered between the
+#               authors and the venue line
 #   image     : teaser image path (every publication row shows a thumbnail;
 #               if left out, a placeholder box with the title is rendered)
 #   links     : list of {label, url} — shown as [label] pills
@@ -45,6 +47,7 @@
     - "U. Pal"
     - "P. Peer"
     - "V. Štruc"
+  description: "Competition summary paper for SSBC 2026 at IJCB: sclera segmentation under two tracks — foundation-model adaptation with fully annotated training data, and label-efficient learning restricted to unlabelled imagery. Adapted foundation backbones set a new state of the art, with the top label-efficient model nearly matching the fully supervised winner (F1 0.870 vs 0.876)."
   venue: "IEEE International Joint Conference on Biometrics (IJCB) 2026 — Sclera Segmentation Benchmarking Competition (SSBC)"
   links:
     - label: "code"
@@ -86,5 +89,6 @@
     - "W. Ouyang"
     - "F. Jug"
     - "J. Deschamps"
+  description: "Report on three open calls and three public image-restoration challenges run by the AI4Life consortium between 2023 and 2025: 22 supported projects from 151 applications, and 225 challenge participants. Includes an analysis of winning approaches — among them our Restormer3D in the calcium-imaging denoising challenge — and the core lesson that data, annotations, and shared infrastructure, not models, are the rate-limiting step."
   venue: "Preprint, 2026"
   template: "detailed"

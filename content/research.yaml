@@ -19,7 +19,7 @@
 # =============================================================================
 
 - title: "Improving Online Trackers via Classical ML Feature Evolution"
-  description: "Re-identification for UAV multi-object tracking that models how SIFT features evolve along a track, classified with Random Forests — steadier identity association and higher precision/MOTA than baseline methods."
+  description: "Re-identification is where UAV multi-object tracking usually falls apart, so this project models how SIFT features evolve along each track and trains Random Forest classifiers to decide when a new detection belongs to an existing identity. Plugged into a BoT-SORT-style association pipeline with Hungarian data assignment and Kalman filtering, the classical stack produced steadier identity consistency and higher precision and MOTA than the baseline trackers we measured against."
   org: "Ahmedabad University"
   dates: "Jan–Apr 2026"
   links:
@@ -29,7 +29,7 @@
   template: "detailed"
 
 - title: "Small Object Detection & Tracking for UAV Videos"
-  description: "YOLOv11 with SAHI tiling feeds a contrastively-trained Siamese Re-ID head, tuned via Bayesian hyperparameter search (Optuna) — false positives down 21.5% on small objects in UAV footage."
+  description: "Small objects shed pixels fast at altitude, so this pipeline pairs YOLOv11 with SAHI tiling to keep detections alive, then re-identifies targets across frames using Siamese networks trained with contrastive loss. Hyperparameters were tuned with Optuna's Bayesian optimisation over a focal-loss objective, and identities are maintained through Kalman-filtered tracking. On our UAV benchmarks the system cut false positives by 21.5% while improving overall tracking performance."
   org: "Ahmedabad University"
   dates: "Jan–Apr 2026"
   links:
@@ -41,7 +41,7 @@
   template: "detailed"
 
 - title: "Unsupervised Denoising for Fluorescence Microscopy"
-  description: "Developed Restormer3D — a 3D adaptation of Restormer built on multi-Dconv head transposed attention — for unsupervised calcium imaging denoising without ground-truth data. The model topped all four leaderboards of the AI4Life denoising challenge, and the effort placed 4th in the AI4Life Grand Challenge, improving from 5th place."
+  description: "Restormer3D is my 3D adaptation of Restormer — a U-Net built from multi-Dconv head transposed attention blocks — designed for fluorescence microscopy and calcium-imaging denoising without ground-truth data. In the AI4Life Grand Challenge the model topped every leaderboard, finishing 1st in both tracks. The work fed into the AI4Life consortium paper and is open-sourced on GitHub."
   org: "Ahmedabad University"
   dates: "Jan–Apr 2026"
   links:
@@ -52,7 +52,7 @@
   template: "detailed"
 
 - title: "Early Sepsis Detection from Electronic Health Records"
-  description: "Early sepsis prediction on MIMIC-IV ICU records: clinical feature engineering, SMOTE balancing, and LightGBM/XGBoost ensembles tuned for recall — 0.921 ROC-AUC, 0.812 PR-AUC, ~83.6% recall, explained with SHAP."
+  description: "Sepsis moves fast, so early warning matters. I built an ML pipeline over MIMIC-IV ICU electronic health records, engineering time-series clinical features and handling missingness with imputation strategies suited to irregular sampling. After SMOTE balancing for class rarity, LightGBM and XGBoost ensembles were tuned specifically for recall rather than raw accuracy, reaching 0.921 ROC-AUC and 0.812 PR-AUC at roughly 83.6% recall — with SHAP explanations keeping every alert interpretable."
   org: "Ahmedabad University"
   dates: "Jan–Mar 2026"
   links:
@@ -63,7 +63,7 @@
   template: "detailed"
 
 - title: "LayoutLM vs. RoBERTa for Document Understanding"
-  description: "Benchmarked text-only RoBERTa against multimodal LayoutLMv3 (full fine-tuning vs PEFT/LoRA) for classification and key-information extraction on DocILE — the layout-aware model wins decisively at 0.756 accuracy / 0.704 F1."
+  description: "How much does layout actually matter for document understanding? I benchmarked text-only RoBERTa against multimodal LayoutLMv3 on the DocILE dataset for classification and key-information extraction, contrasting full fine-tuning with parameter-efficient PEFT/LoRA adapters under OCR-based pipelines. The layout-aware transformer won decisively — 0.756 accuracy and 0.704 F1 against its text-only rival — validating multimodality as the right default for document AI."
   org: "Ahmedabad University"
   dates: "Aug–Nov 2025"
   links:
@@ -74,7 +74,7 @@
   template: "detailed"
 
 - title: "Reflex-Based Control & A* Planning for a Planetary Rover"
-  description: "An autonomous planetary rover pairing reflex-based control with A* path planning; custom terrain-aware heuristics kept paths near-optimal while energy-based variants traded ~30% extra traversal cost for safer routes."
+  description: "For planetary exploration, energy is scarcer than compute. This rover pairs reflex-based reactive control with A* path planning driven by custom terrain-aware and Euclidean heuristics on simulated grid worlds. Terrain-aware variants kept paths near-optimal, while an energy-cost heuristic deliberately traded about 30% more expanded nodes and runtime for routes that respect battery budgets — a study in matching search strategy to mission constraints."
   org: "Ahmedabad University"
   dates: "Oct–Nov 2025"
   links:

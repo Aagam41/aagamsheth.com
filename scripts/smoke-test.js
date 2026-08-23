@@ -166,6 +166,16 @@ const engSection = extractSection(html, "engineering-oss") || "";
 
 ok(/\[pdf\]|\[arxiv\]|\[code\]/.test(pubsSection) && /class="entry-link"/.test(pubsSection),
   "publication links render as bracketed [label] entry-links");
+const pubEntriesForSummaries = readYaml("content/publications.yaml") || [];
+const pubsSummariesExpected = pubEntriesForSummaries.filter((e) => e.description).length;
+ok(count(pubsSection, 'class="entry-summary"') === pubsSummariesExpected,
+  `publication summary lines (${count(pubsSection, 'class="entry-summary"')}) == entries with a description (${pubsSummariesExpected})`);
+{
+  const m = pubsSection.match(/entry-authors[\s\S]*?entry-summary[\s\S]*?entry-venue/);
+  ok(!!m, "summary line sits between authors and venue");
+}
+ok(!/[Pp]laced 4th|improving from 5th/.test(html), "stale 4th-place AI4Life claim removed");
+ok(/both tracks/.test(researchSection) || /1st place/.test(html), "AI4Life result stated as 1st on both tracks");
 const pubEntriesForThumbs = readYaml("content/publications.yaml") || [];
 const pubThumbRows =
   count(pubsSection, 'class="entry-thumb"') + count(pubsSection, 'class="entry-thumb ');

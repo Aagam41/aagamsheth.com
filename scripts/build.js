@@ -128,6 +128,7 @@ function prepEntry(entry) {
     }
   }
   if (entry.text) prepped.textHtml = mdToHtml(entry.text);
+  if (entry.description) prepped.descriptionHtml = mdToHtml(entry.description);
   if (entry.authors) {
     prepped.authorsHtml = entry.authors.map((a) => mdToHtml(a)).join(", ");
   }

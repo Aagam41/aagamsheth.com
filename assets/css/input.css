@@ -248,6 +248,9 @@
   .entry-authors strong {
     color: theme('colors.accent');
   }
+  .entry-summary {
+    @apply text-black/85 mt-0.5 leading-snug;
+  }
   .entry-venue {
     @apply italic text-black/85 mt-0.5;
   }

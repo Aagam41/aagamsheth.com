@@ -20,7 +20,7 @@
   org: "Tirth Infotech"
   context: "Technology strategy & delivery leadership"
   logo: "assets/img/logo-tirth-infotech.png"
-  description: "Own the technical direction of every engagement — architecture decisions, security and deployment reviews, infrastructure choices, and hands-on mentoring of the engineering team across government and enterprise projects."
+  description: "Own the technical direction of every Tirth Infotech engagement end to end, from bid-stage architecture and estimation through security reviews, deployment sign-off, and post-launch support. Set infrastructure standards for AWS and Gujarat State Data Centre hosting patterns, DMZ topologies, and CI conventions; choose stacks per project constraint rather than fashion; and mentor the engineering team through design and code review. Still hands-on: I review critical diffs personally and step into thorny performance or security problems directly."
   template: "default"
 
 - date: "2023-01-01"
@@ -29,7 +29,7 @@
   org: "Tirth Infotech"
   context: "Archives Portal — Gujarat State Archives & Food and Drugs Control Administration"
   logo: "assets/img/logo-tirth-infotech.png"
-  description: "Architected and shipped a state-scale archival platform on the Gujarat State Data Centre: Django/DRF with PostgreSQL and MongoDB across a DMZ topology, Gujarati full-text search over TsVector lexemes, dynamic metadata-driven APIs and admin panels, RFC 7233 ranged downloads, and hash-based caching. Cleared two CERT-In empanelled security audits."
+  description: "Architected and shipped the Archives Portal for the Gujarat State Archives and the Food and Drugs Control Administration, hosted on the Gujarat State Data Centre across three servers in a DMZ topology — one machine each for the Django/DRF application, PostgreSQL, and MongoDB. Built dynamic, metadata-driven APIs and admin panels so any archival schema can be modelled without code changes, added Gujarati full-text search over TsVector lexemes, RFC 7233 ranged downloads for large documents, and hash-table caching on hot client and server paths. The platform cleared two security audits by a CERT-In empanelled auditor and remains in production."
   template: "default"
 
 - date: "2024-07-01"
@@ -38,7 +38,7 @@
   org: "Tirth Infotech"
   context: "SahajPranali — Collector Office, Buldhana (Government of Maharashtra)"
   logo: "assets/img/logo-tirth-infotech.png"
-  description: "Digitised land-revenue records — 7/12 extracts, mutations, land-acquisition files, registers — for citizens and officials: district/taluka/village/case-number search, OTP dual-login with role-based access, watermarking, audit logging, and paid downloads."
+  description: "Built SahajPranali for the Collector Office in Buldhana, digitising land-revenue records — 7/12 extracts, mutation entries, land-acquisition files, and registers — behind search by district, taluka, village, and case number. Designed the secure dual-login model: OTP verification for citizens alongside role-based access for officials, plus watermarking and audit logging on every document view and download. Paid online downloads cut office visits and physical record handling, speeding up citizen services while preserving the legacy archive."
   template: "default"
 
 - date: "2022-05-01"
@@ -47,7 +47,7 @@
   org: "Tirth Infotech"
   context: "Document Retrieval Portal — GSHSEB"
   logo: "assets/img/logo-tirth-infotech.png"
-  description: "Delivered a Karobari document retrieval portal on a deliberately simple static-generation model chosen after analysing client needs, with an AJAX search-suggestion panel over uploaded metadata. Django + PostgreSQL on AWS LightSail."
+  description: "Shipped in weeks, not months. A Karobari document retrieval portal for GSHSEB built on a static-generation model I chose after analysing how often the client's metadata actually changed — rarely — so static pages plus an AJAX search-suggestion panel beat a heavier dynamic stack on cost, speed, and reliability. Deployed solo-instance on AWS LightSail with Django and PostgreSQL."
   template: "default"
 
 - date: "2022-03-01"
@@ -56,7 +56,7 @@
   org: "Tirth Infotech"
   context: "Objection Raising System — State Recruitment Boards"
   logo: "assets/img/logo-tirth-infotech.png"
-  description: "Built and continue to maintain the objection-management platform serving multiple State Recruitment Boards. Scaled to ~5,000 requests/min on one AWS instance by replacing a cryptographic hash with a custom XOR integrity check (~70% CPU saved across all 8 cores), moving hot paths to Transact-SQL stored procedures, and making Django thread-safe under Apache MPM Prefork."
+  description: "Recruitment exams attract objections by the thousand, and this platform is where candidates file them and boards resolve them. I developed the Django + MS SQL Server system deployed on AWS behind Apache Httpd and mod_wsgi, then made it fast: profiling showed a cryptographic hash burning CPU on every request, so a custom XOR integrity check replaced it — roughly 70% CPU saved across all eight cores and headroom for about 5,000 requests per minute on a single instance. Hot queries moved to Transact-SQL stored procedures, Django was hardened for thread safety under Apache MPM Prefork (10 processes x 100 threads), and I still maintain the system today."
   template: "default"
 
 - date: "2021-12-01"
@@ -65,7 +65,7 @@
   org: "Tirth Infotech"
   context: "Stock Management System — GSHSEB"
   logo: "assets/img/logo-tirth-infotech.png"
-  description: "Inventory, purchase/sales, and logistics tracking for the state education board: 10+ bespoke reports, spreadsheet bulk-upload admin tooling, and ACID-compliant accounting modules that kept the books consistent. Django + PostgreSQL on AWS LightSail."
+  description: "Custom stock management and tracking for GSHSEB covering purchase orders, sales orders, and internal and external transport movements across warehouses. Designed the ACID-compliant schema that kept accounting modules consistent, built more than ten reports shaped around how each office actually works, and gave administrators spreadsheet bulk-upload plus user management so operations never queued on developers. Django + PostgreSQL on AWS LightSail behind Apache."
   template: "default"
 
 - date: "2018-06-01"
@@ -73,5 +73,5 @@
   role: "Intern & Junior Developer"
   org: "Tirth Infotech"
   logo: "assets/img/logo-tirth-infotech.png"
-  description: "Learned production software the hands-on way — maintaining VB.NET and C# desktop applications, customising 50+ WinForms Crystal Reports to client specifications, and deploying on premise with in-person support."
+  description: "Where it all started: five summers and part-time years maintaining VB.NET and C# WinForms applications for real clients with real deadlines. Customised over fifty Crystal Reports to match exactly what each office wanted on paper, travelled to client sites for on-premise deployments and support, and learned early the discipline of shipping software other people depend on."
   template: "default"

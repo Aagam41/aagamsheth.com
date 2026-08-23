@@ -157,3 +157,20 @@ Research project "Unsupervised Denoising for Fluorescence Microscopy" updated ar
 4. **Skills**: new "Techniques" category (PEFT/LoRA, multi-object tracking, feature engineering & SMOTE, full-text search); Frameworks += Hugging Face Transformers, Optuna, SHAP, Noise2Noise/N2V; Tools += MySQL; Software += Crystal Reports.
 
 All other decisions stand. (Owner's list item 5 was empty — nothing omitted intentionally.)
+
+## Amendment 2026-08-23 — Round-7 depth pass
+
+1. **Longer descriptions**: Work Experience, Engineering Projects, and Research
+   Project descriptions expanded to richer multi-sentence narratives (motivation,
+   approach, outcome) while keeping every concrete number.
+2. **Publications**: new optional `description` field — a one-to-two-sentence
+   summary rendered between the authors and the venue line (`.entry-summary`,
+   prepEntry emits `descriptionHtml` via mdToHtml; supported in detailed and
+   compact templates). Both real papers now carry summaries.
+3. **Skills**: split "Frameworks / Libraries" into "ML / Deep Learning & Computer
+   Vision" and "Web & Backend Frameworks"; split databases/messaging out of
+   tools into "Databases & Messaging" and servers into "DevOps & Servers".
+   Added SAHI, SIFT/HoG/LBP descriptors, REST API design, T-SQL stored
+   procedures, mod_wsgi, GitHub. 58 pills across 7 categories.
+4. **Correction**: AI4Life Grand Challenge result corrected to **1st place in
+   both tracks** (was "4th, improving from 5th") — research.yaml and news.yaml.

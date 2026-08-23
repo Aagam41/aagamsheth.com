@@ -14,15 +14,15 @@
 # =============================================================================
 
 - title: "React Headless Token Auth"
-  description: "Hardened a headless React authentication library — fixed token-expiry handling, added hooks and contexts, and introduced Axios interceptors; contributions merged upstream through reviewed pull requests."
+  description: "Open-source contribution to a headless React authentication library. Token expiration was breaking sessions silently — I fixed the expiry handling with setTimeout and an expiration context, then improved the developer experience with new hooks, contexts, and Axios request interceptors that attach and refresh tokens automatically. All work went upstream through reviewed pull requests alongside general code reviews and maintenance."
   link: "https://github.com/aagam41"
 
 - title: "Django Dynamic Models"
-  description: "Runtime model generation for Django — resolved long-standing stability bugs, closed five issues, landed three accepted pull requests, and grew the contributor documentation."
+  description: "Contribution to django-dynamic-models, a library that creates Django models at runtime instead of in source code — useful for metadata-driven systems like our archival platform. I resolved long-standing stability bugs around dynamic model registration, closed five issues, landed three accepted pull requests, and rewrote the contributor documentation."
   link: "https://github.com/aagam41"
 
 - title: "Django DB File Storage"
-  description: "Patched a DB-backed file-storage library for Django 4.x, fixing cross-platform path separators — adopted by the Berlin Institute of Health and submitted upstream as a pull request."
+  description: "Fork-and-patch of django-db-file-storage, which stores uploaded files in the database rather than on the filesystem. I migrated the codebase to Django 4.x and fixed NameException crashes caused by Windows path-separator logic — a patch submitted upstream and publicly credited by the Berlin Institute of Health."
   link: "https://github.com/aagam41"
 
 - title: "SPAPAS — Student Prediction and Performance Analysis System"
