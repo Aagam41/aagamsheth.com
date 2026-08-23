@@ -10,7 +10,9 @@
   {{/if}}
   <div class="entry-info">
     <div class="entry-title">{{title}}</div>
-    <div class="entry-desc">{{description}}</div>
+    {{#if description}}<div class="entry-desc">{{description}}</div>{{/if}}
+    {{#if org}}<div class="entry-meta">{{org}}{{#if dates}} · {{dates}}{{/if}}</div>{{/if}}
+    {{#if authors}}<div class="entry-authors">{{{authorsHtml}}}</div>{{/if}}
     {{#if link}}<div class="entry-links"><a href="{{link}}" class="entry-link" target="_blank" rel="noopener">[GitHub]</a></div>{{/if}}
   </div>
 </div>

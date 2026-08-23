@@ -134,8 +134,10 @@ ok(/class="hero-socials"[^<]*<a/.test(hero.replace(/\n\s*/g, "")), "email is the
 ok(/fonts\.googleapis\.com[^"']*Inter/.test(html), "index.html references Inter via Google Fonts");
 ok(css.includes("Inter"), "built CSS sets Inter as font family");
 ok(!/prefers-color-scheme/.test(css), "no prefers-color-scheme rules (light only)");
-ok(css.includes("1100px"), "page column widened to 1100px");
-ok(/font-size:17px/.test(css), "body text sized ~17px");
+ok(css.includes("1000px"), "page column at Anjali's 1000px content size");
+ok(/font-size:clamp\(\.825rem[\s\S]*?1\.0625rem\)/.test(css), "body uses Anjali's exact fluid type clamp");
+ok(/clamp\(1\.743rem/.test(css), "name heading uses Anjali's exact clamp");
+ok(/1\.953rem/.test(css), "section headings use Anjali's x-large clamp");
 ok(/grid-template-columns:20% auto/.test(css), "entry rows use a 20% thumbnail column");
 
 // -----------------------------------------------------------------------------
@@ -150,6 +152,11 @@ ok(/\[pdf\]|\[arxiv\]|\[code\]/.test(pubsSection) && /class="entry-link"/.test(p
   "publication links render as bracketed [label] entry-links");
 ok(/\[GitHub\]<\/a>/.test(engSection) && /class="entry-link"/.test(engSection),
   "Engineering Projects rows carry bracketed [GitHub] entry-links");
+ok(/class="entry-meta"/.test(researchSection), "research rows carry an institute · date line");
+ok(/class="entry-meta"/.test(pubsSection) === false, "publication rows unchanged (venue line, no meta line)");
+const eduEntries = readYaml("content/education.yaml") || [];
+const coursesCount = eduEntries.filter((e) => e.courses).length;
+ok(count(html, 'class="edu-courses"') === coursesCount, `coursework lines (${count(html, 'class="edu-courses"')}) == education entries with courses (${coursesCount})`);
 
 // -----------------------------------------------------------------------------
 // 6. Count checks (not exact-match)

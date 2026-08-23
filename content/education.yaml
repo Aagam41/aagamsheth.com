@@ -6,6 +6,8 @@
 #   institution : school name
 #   degree      : degree name
 #   detail      : optional extra line (advisor, honors, minor, etc.)
+#   courses     : optional comma-separated coursework line shown under the
+#                 degree details
 #   logo        : optional path to a small institution logo/crest image,
 #                 shown as a small circular badge next to the institution
 #                 name. Leave out to show no logo for that entry.
@@ -16,6 +18,7 @@
   institution: "Ahmedabad University"
   degree: "M.Tech in Computer Science and Engineering"
   detail: "School of Engineering and Applied Science · Advised by JB Sir · CGPA 3.45/4.00 (in progress)"
+  courses: "Machine Learning, Deep Learning, Computer Vision, Research Methodology"
   logo: "assets/img/logo-ahmedabad-university.png"
   template: "default"
 
@@ -23,6 +26,7 @@
   institution: "New L. J. Institute of Engineering and Technology"
   degree: "B.E. in Computer Science and Engineering (Artificial Intelligence and Machine Learning)"
   detail: "Gujarat Technological University · CGPA 9.71"
+  courses: "Data Structures, Artificial Intelligence, Machine Learning, Computer Vision, Big Data Analytics"
   logo: "assets/img/logo-lj-institute.png"
   template: "default"
 
@@ -30,6 +34,7 @@
   institution: "Government Polytechnic, Ahmedabad"
   degree: "HSC (Diploma in Information Technology)"
   detail: "Gujarat Technological University · CGPA 9.76"
+  courses: "Programming Fundamentals, Web Technologies, Database Management, Computer Networks"
   logo: "assets/img/logo-govt-polytechnic.png"
   template: "default"
 

@@ -93,3 +93,19 @@ Owner reviewed the rebuilt page against two references and directed a second pas
 8. **Spacing**: tighter, Anjali-style (~30–40px between sections).
 
 All other Implementation Decisions (placeholders, YAML-only maintenance, light-only, validator contract) stand.
+
+## Amendment 2026-08-23 — Round-2 refinement pass (owner feedback)
+
+Owner reviewed the round-1 result and directed five further changes:
+
+1. **Column width**: "a bit less" than 1100px → 1000px, Anjali Gupta's exact content width (nav inner width matches).
+2. **Typography**: Anjali Gupta's exact values copied verbatim from her stylesheet —
+   body `clamp(0.825rem, 0.825rem + ((1vw - 0.2rem) * 0.389), 1.0625rem)` w400 lh1.6;
+   name h1 `clamp(1.743rem, 1.743rem + ((1vw - 0.2rem) * 2.052), 3rem)` w700 mb8px;
+   section headings `clamp(1.563rem, 1.563rem + ((1vw - 0.2rem) * 0.637), 1.953rem)` w600 lh1.2;
+   intro statement `clamp(0.929rem, 0.929rem + ((1vw - 0.2rem) * 0.769), 1.4rem)` lh1.4.
+3. **Section spacing**: noticeably MORE space between sections than round 1 (mb-10 → mb-16).
+4. **Education**: optional `courses` field; renders a muted "Coursework: …" line under the degree details for each school that has one.
+5. **Research & Engineering rows**: publication-style stacked lines — title / description / `institute · date` line / authors line — via new optional entry fields `org`, `dates`, `authors`; institute+date text removed from descriptions in research.yaml and engineering-oss.yaml.
+
+All other decisions stand.

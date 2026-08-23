@@ -15,7 +15,8 @@
   }
   body {
     @apply bg-white text-black font-sans antialiased;
-    font-size: 17px;
+    font-size: clamp(0.825rem, 0.825rem + ((1vw - 0.2rem) * 0.389), 1.0625rem);
+    font-weight: 400;
     line-height: 1.6;
   }
   a {
@@ -38,9 +39,9 @@
 }
 
 @layer components {
-  /* ---------- Page shell: centered 1100px column ---------- */
+  /* ---------- Page shell: centered 1000px column ---------- */
   .page {
-    @apply mx-auto w-full max-w-[1100px] px-5 sm:px-8 pt-[84px] pb-12;
+    @apply mx-auto w-full max-w-[1000px] px-5 sm:px-8 pt-[84px] pb-12;
   }
 
   /* ---------- Fixed navigation bar ----------
@@ -58,7 +59,7 @@
     @apply bg-white;
   }
   .site-nav-inner {
-    @apply mx-auto flex w-full max-w-[1100px] items-center px-5 sm:px-8 min-h-[56px];
+    @apply mx-auto flex w-full max-w-[1000px] items-center px-5 sm:px-8 min-h-[56px];
   }
   .nav-links {
     @apply hidden min-[600px]:flex flex-wrap items-center gap-x-5 gap-y-1 py-3;
@@ -88,7 +89,9 @@
      Socials follow the Ying Wang pattern: one plain pipe-separated
      row under the intro statement. */
   .hero-name {
-    @apply text-[34px] min-[600px]:text-[48px] font-bold leading-tight tracking-tight mb-6;
+    @apply font-bold tracking-normal mb-2;
+    font-size: clamp(1.743rem, 1.743rem + ((1vw - 0.2rem) * 2.052), 3rem);
+    line-height: 1.2;
   }
   .hero-row {
     @apply flex flex-col min-[600px]:flex-row gap-8 min-[600px]:gap-10;
@@ -103,7 +106,9 @@
     @apply flex-1 min-w-0;
   }
   .hero-intro {
-    @apply leading-relaxed m-0;
+    @apply m-0;
+    font-size: clamp(0.929rem, 0.929rem + ((1vw - 0.2rem) * 0.769), 1.4rem);
+    line-height: 1.4;
   }
   .hero-socials {
     @apply mt-4 mb-0 flex flex-wrap items-center text-[15px];
@@ -115,12 +120,14 @@
     @apply mx-2.5 text-neutral-300 select-none;
   }
 
-  /* ---------- Sections: whitespace-only separation, tight rhythm ---------- */
+  /* ---------- Sections: whitespace-only separation, generous rhythm ---------- */
   .content-section {
-    @apply mb-10 scroll-mt-[76px];
+    @apply mb-16 scroll-mt-[76px];
   }
   .section-title {
-    @apply text-[24px] min-[600px]:text-[31px] font-semibold leading-tight mb-4;
+    @apply font-semibold mb-4;
+    font-size: clamp(1.563rem, 1.563rem + ((1vw - 0.2rem) * 0.637), 1.953rem);
+    line-height: 1.2;
   }
 
   /* ---------- News ----------
@@ -167,6 +174,9 @@
   }
   .edu-detail {
     @apply text-neutral-500 text-[15px] block;
+  }
+  .edu-courses {
+    @apply text-neutral-500 text-[15px] block mt-0.5;
   }
 
   /* ---------- Shared entry-row anatomy (Publications / Research /
@@ -224,8 +234,12 @@
   .entry-venue-inline {
     @apply text-black/85 mt-0.5;
   }
+  /* Institute · date line for project-style rows */
+  .entry-meta {
+    @apply italic text-black/85 mt-0.5;
+  }
   .entry-desc {
-    @apply text-black/85 text-[16px] mt-0.5 leading-snug;
+    @apply text-black/85 mt-0.5 leading-snug;
   }
   .entry-links {
     @apply flex flex-wrap gap-x-3 gap-y-1 mt-1.5;

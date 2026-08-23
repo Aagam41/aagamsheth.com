@@ -4,8 +4,9 @@
 # Fields:
 #   title       : project name
 #   description : one or two sentences
-#   link        : optional GitHub repo URL — shown as a pill link that opens
-#                 the code in a new tab
+#   org         : optional institute / company line
+#   dates       : optional engagement dates — rendered with org as "org · dates"
+#   link        : optional GitHub repo URL — shown as a bracketed [GitHub] link
 #   image       : optional thumbnail override (compact one-line rows are the
 #                 default here; add an image + template only if ever needed)
 #   template    : "compact" (default — title, one-line description, GitHub pill)
@@ -25,7 +26,11 @@
   link: "https://github.com/aagam41"
 
 - title: "SahajPranali — Digital Revenue Records System"
-  description: "A digital archive for the Collector Office, Buldhana (Government of Maharashtra) providing citizen and official access to revenue records with search by district, taluka, village, and case number. Includes a secure dual-login system with OTP for citizens, role-based access for officials, watermarking, and audit logging. Built at Tirth Infotech, Jul 2024 – Mar 2025."
+  description: "A digital archive for the Collector Office, Buldhana (Government of Maharashtra) providing citizen and official access to revenue records with search by district, taluka, village, and case number. Includes a secure dual-login system with OTP for citizens, role-based access for officials, watermarking, and audit logging."
+  org: "Tirth Infotech"
+  dates: "Jul 2024 – Mar 2025"
 
 - title: "SPAPAS — Student Prediction and Performance Analysis System"
-  description: "A Django-based system using linear and logistic regression to predict student performance and visualize insights through dashboards for data-driven academic evaluation. Government Polytechnic Ahmedabad, Jan–Mar 2021."
+  description: "A Django-based system using linear and logistic regression to predict student performance and visualize insights through dashboards for data-driven academic evaluation."
+  org: "Government Polytechnic Ahmedabad"
+  dates: "Jan–Mar 2021"
