@@ -41,12 +41,12 @@
   template: "detailed"
 
 - title: "Unsupervised Denoising for Fluorescence Microscopy"
-  description: "Unsupervised deep learning models (3D U-Net, Noise2Noise) for calcium imaging denoising without ground-truth data. Placed 4th in the AI4Life Grand Challenge, improving from 5th place."
+  description: "Developed Restormer3D — a 3D adaptation of Restormer built on multi-Dconv head transposed attention — for unsupervised calcium imaging denoising without ground-truth data. The model topped all four leaderboards of the AI4Life denoising challenge, and the effort placed 4th in the AI4Life Grand Challenge, improving from 5th place."
   org: "Ahmedabad University"
   dates: "Jan–Apr 2026"
   links:
     - label: "GitHub"
-      url: "https://github.com/Aagam41/DL_2026_FMIDenoising"
+      url: "https://github.com/Aagam41/Restormer3D"
     - label: "Paper"
       url: "https://github.com/aagam41"
   template: "detailed"

@@ -139,3 +139,12 @@ All other decisions stand.
 4. **Email obfuscation display**: rendered in classic `[at]`/`[dot]` form (`contact.me [at] aagamsheth [dot] com`); JS still assembles the real mailto: for clicks, and the plaintext address never appears statically.
 
 Content enrichment (resumes, GitHub, LinkedIn) tracked separately in ticket 12 pending owner answers.
+
+## Amendment 2026-08-23 — Round-5b: real publications
+
+Placeholder publications replaced with two real papers (supplied as PDFs, text extracted via pdftotext):
+
+1. **Label-Efficient Sclera Segmentation with Foundation Models: SSBC 2026** — IEEE IJCB 2026 (SSBC competition); full 30-author list, self bolded; [code] links to the ieee-ijcb-ssbc-2026 repo.
+2. **AI4Life Open Calls and Public Challenges: why, how, and what we have learned.** — Preprint, 2026; full author list incl. AI4Life Consortium, self bolded.
+
+Research project "Unsupervised Denoising for Fluorescence Microscopy" updated around Restormer3D (topped all four AI4Life challenge leaderboards); [GitHub] now points at the Restormer3D repo.
