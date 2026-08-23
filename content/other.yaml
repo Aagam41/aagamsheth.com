@@ -1,9 +1,17 @@
 # =============================================================================
 # OTHER — freeform personal section (hobbies, misc interests, etc).
 # Fields:
-#   text     : freeform text, markdown-style [links](https://url.com) supported
+#   text     : short lead line, markdown-style [links](https://url.com) supported
+#   items    : list of short interest strings — rendered as compact pills so
+#              the section stays scannable instead of a text wall
 #   template : optional template override
 # =============================================================================
 
-- text: "Outside of research and work, I enjoy reading, photography, and playing guitar and other instruments. I'm also into cycling and brewing coffee — always happy to talk shop on pour-over ratios or good cycling routes around Ahmedabad."
+- text: "Outside of research and work:"
+  items:
+    - "Reading"
+    - "Photography"
+    - "Guitar & other instruments"
+    - "Cycling — happy to swap good routes around Ahmedabad"
+    - "Brewing coffee — always up for talking pour-over ratios"
   template: "default"

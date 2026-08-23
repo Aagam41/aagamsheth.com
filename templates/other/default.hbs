@@ -1,1 +1,8 @@
-<p class="other-item">{{{textHtml}}}</p>
+<div class="other-item">
+  {{#if text}}<p class="other-intro">{{{textHtml}}}</p>{{/if}}
+  {{#if items}}
+  <div class="other-pills">
+    {{#each items}}<span class="other-pill">{{this}}</span>{{/each}}
+  </div>
+  {{/if}}
+</div>

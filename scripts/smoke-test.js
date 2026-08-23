@@ -120,12 +120,21 @@ const heroEnd = html.indexOf("</header>");
 const hero = heroStart !== -1 && heroEnd !== -1 ? html.slice(heroStart, heroEnd) : "";
 
 const siteConfig = readYaml("content/site.yaml");
-ok(hero.includes(`href="mailto:${siteConfig.header.email}"`), `hero socials link email (${siteConfig.header.email})`);
+const [emailUser, emailDomain] = String(siteConfig.header.email).split("@");
+ok(hero.includes(`data-user="${emailUser}" data-domain="${emailDomain}"`), `hero socials link email (${siteConfig.header.email}, obfuscated)`);
 for (const link of siteConfig.header.links) {
   ok(hero.includes(`href="${link.url}"`), `hero socials link "${link.label}"`);
 }
 ok(/class="hero-socials"/.test(hero), "socials rendered as a pipe-separated text row");
 ok(/class="hero-socials"[^<]*<a/.test(hero.replace(/\n\s*/g, "")), "email is the first item in the socials row");
+ok(/class="js-email"/.test(hero), "hero email rendered through the obfuscation hook");
+
+// -----------------------------------------------------------------------------
+// 3b. Hero photo: 25%-width portrait column
+// -----------------------------------------------------------------------------
+
+ok(/\.hero-photo-col\{[^}]*width:25%/.test(css), "photo column takes 25% of the hero row");
+ok(/aspect-ratio:3\/4/.test(css) && /class="hero-photo"/.test(html), "photo renders in a portrait 3:4 frame");
 
 // -----------------------------------------------------------------------------
 // 4. Anjali Gupta typography: Inter, sizes, width
@@ -150,6 +159,16 @@ const engSection = extractSection(html, "engineering-oss") || "";
 
 ok(/\[pdf\]|\[arxiv\]|\[code\]/.test(pubsSection) && /class="entry-link"/.test(pubsSection),
   "publication links render as bracketed [label] entry-links");
+const pubEntriesForThumbs = readYaml("content/publications.yaml") || [];
+const pubThumbRows =
+  count(pubsSection, 'class="entry-thumb"') + count(pubsSection, 'class="entry-thumb ');
+ok(pubThumbRows === pubEntriesForThumbs.length,
+  `every publication row has a thumbnail (${pubThumbRows}/${pubEntriesForThumbs.length})`);
+const otherSection = extractSection(html, "other") || "";
+const otherEntries = readYaml("content/contact.yaml") && (readYaml("content/other.yaml") || []);
+const otherPillCount = otherEntries.reduce((n, e) => n + ((e.items && e.items.length) || 0), 0);
+ok(count(otherSection, 'class="other-pill"') === otherPillCount && otherPillCount > 0,
+  `Other section renders interests as pills (${count(otherSection, 'class="other-pill"')}/${otherPillCount})`);
 ok(/\[GitHub\]<\/a>/.test(engSection) && /class="entry-link"/.test(engSection),
   "Engineering Projects rows carry bracketed [GitHub] entry-links");
 ok(/class="entry-meta"/.test(researchSection), "research rows carry an institute · date line");
@@ -214,6 +233,19 @@ ok(/exp-org">[^<]*<span class="exp-dates"/.test(expSection.replace(/\n\s*/g, " "
   "experience rows show dates inline after the company (LinkedIn pattern)");
 ok(/\.news-item\{[^}]*padding-left/.test(css) && /\.news-date\{position:absolute/.test(css),
   "news items use a hanging indent (wrapped lines align past the date)");
+ok(/\.hero\{margin-bottom/.test(css), "hero block carries bottom spacing before News");
+
+// -----------------------------------------------------------------------------
+// 8b. Contact: card layout, obfuscated email, no phone number
+// -----------------------------------------------------------------------------
+
+const contactSection = extractSection(html, "contact") || "";
+ok(/class="contact-card"/.test(contactSection) && /class="contact-channels"/.test(contactSection),
+  "contact section renders as a card with a channels row");
+ok(!html.includes("contact.me@aagamsheth.com"), "email address never appears as plaintext in the static HTML");
+ok(!/mailto:[a-z0-9._%+-]+@/.test(html), "no plaintext mailto: links in the static HTML");
+ok(/class="js-email"/.test(contactSection) && /data-domain=/.test(html), "contact email assembled client-side from data attributes");
+ok(!/\+91|78780/.test(html), "phone number removed from the page");
 ok(/\.site-footer-line\{[^}]*text-align:center/.test(css), "footer line is centered");
 
 // -----------------------------------------------------------------------------

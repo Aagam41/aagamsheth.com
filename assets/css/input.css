@@ -100,7 +100,11 @@
 
   /* ---------- Hero: photo column + intro statement + socials ----------
      Socials follow the Ying Wang pattern: one plain pipe-separated
-     row under the intro statement. */
+     row under the intro statement. The hero carries its own bottom
+     margin so News doesn't crowd the intro. */
+  .hero {
+    @apply mb-16;
+  }
   .hero-name {
     @apply font-bold tracking-normal mb-2;
     font-size: clamp(1.563rem, 1.563rem + ((1vw - 0.2rem) * 1.7), 2.6rem);
@@ -110,10 +114,10 @@
     @apply flex flex-col min-[600px]:flex-row gap-8 min-[600px]:gap-10;
   }
   .hero-photo-col {
-    @apply shrink-0;
+    @apply w-40 min-[600px]:w-1/4 shrink-0;
   }
   .hero-photo img {
-    @apply w-44 h-auto rounded-lg object-cover;
+    @apply w-full aspect-[3/4] object-cover rounded-lg;
   }
   .hero-intro-col {
     @apply flex-1 min-w-0;
@@ -316,6 +320,27 @@
   .other-item,
   .contact-item {
     @apply text-black leading-relaxed;
+  }
+  .other-intro {
+    @apply text-black leading-relaxed m-0 mb-2;
+  }
+  .other-pills {
+    @apply flex flex-wrap gap-1.5;
+  }
+  .other-pill {
+    @apply text-xs px-2 py-0.5 rounded-full text-black bg-neutral-100;
+  }
+  .contact-card {
+    @apply bg-neutral-50 rounded-lg px-6 py-5;
+  }
+  .contact-lead {
+    @apply text-black leading-relaxed m-0;
+  }
+  .contact-channels {
+    @apply mt-3 flex flex-wrap items-center gap-x-4 gap-y-1;
+  }
+  .contact-location {
+    @apply text-neutral-500 text-sm;
   }
 
   /* ---------- Certificates: one line per credential ---------- */

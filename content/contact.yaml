@@ -1,9 +1,14 @@
 # =============================================================================
-# CONTACT — freeform closing section.
+# CONTACT — closing section.
 # Fields:
-#   text     : freeform text, markdown-style [links](https://url.com) supported
+#   text     : short lead line (markdown-style links supported)
+#   email    : address rendered through the obfuscation hook (never appears
+#              as plaintext mailto: in the static HTML)
+#   location : plain-text location chip
 #   template : optional template override
 # =============================================================================
 
-- text: "The best way to reach me is by email at contact.me@aagamsheth.com. I'm based in Ahmedabad, India, and can also be reached at +91 78780 46680."
+- text: "The best way to reach me is by email."
+  email: "contact.me@aagamsheth.com"
+  location: "Ahmedabad, India"
   template: "default"

@@ -45,7 +45,7 @@
         </div>
         <div class="hero-intro-col">
           <p class="hero-intro">{{{header.tagline}}}</p>
-          <p class="hero-socials"><a href="mailto:{{header.email}}">{{header.email}}</a>{{#each header.links}}<span class="sep">|</span><a href="{{this.url}}" target="_blank" rel="noopener">{{this.label}}</a>{{/each}}</p>
+          <p class="hero-socials">{{emailParts header.email}}{{#each header.links}}<span class="sep">|</span><a href="{{this.url}}" target="_blank" rel="noopener">{{this.label}}</a>{{/each}}</p>
         </div>
       </div>
     </header>
@@ -102,6 +102,11 @@
           spy.observe(section);
         });
       }
+      document.querySelectorAll(".js-email").forEach(function (el) {
+        var addr = el.getAttribute("data-user") + "@" + el.getAttribute("data-domain");
+        el.textContent = addr;
+        el.setAttribute("href", "mailto:" + addr);
+      });
     })();
   </script>
 </body>

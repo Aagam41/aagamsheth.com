@@ -119,3 +119,14 @@ All other decisions stand.
 5. **Type scale**: everything one notch smaller — body clamp(.78rem→.95rem), name clamp(1.563rem→2.6rem), section headings clamp(1.35rem→1.75rem), intro clamp(.85rem→1.2rem); entry titles 16px, socials/links/cert rows/details trimmed ~1px each.
 
 All other decisions stand.
+
+## Amendment 2026-08-23 — Round-4 refinement pass (owner feedback)
+
+1. **Contact**: redesigned as a soft card (`contact-card`) — short lead line plus a channels row (obfuscated email + location chip).
+2. **Email obfuscation / phone removal**: build emits an inert `<a class="js-email" data-user=… data-domain=…>` hook; a few lines of JS in page.hbs assemble the mailto at runtime, so the plaintext address and any `mailto:` never appear in the static HTML (hero socials + contact both use it). Phone number deleted from content.
+3. **Hero photo**: photo column takes 25% of the hero row width; image renders in a portrait 3:4 frame.
+4. **Spacing**: hero block carries its own bottom margin so News doesn't crowd the intro statement.
+5. **Publications**: every row shows a thumbnail — all entries use the detailed template; missing images fall back to the title placeholder box.
+6. **Other**: no longer a text wall — short lead line plus interests rendered as compact pills.
+
+All other decisions stand.

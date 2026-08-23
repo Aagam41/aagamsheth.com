@@ -6,7 +6,8 @@
 #   authors   : list of author names. Put "**Your Name**" in bold via markdown-style **
 #               to highlight yourself (rendered automatically as bold).
 #   venue     : e.g. "CVPR 2025 (Oral)"
-#   image     : optional path to a teaser image, e.g. assets/img/pub-teaser-1.png
+#   image     : teaser image path (every publication row shows a thumbnail;
+#               if left out, a placeholder box with the title is rendered)
 #   links     : list of {label, url} — shown as [label] pills
 #   template  : "detailed" (image + full author list) or "compact" (text-only, one line)
 # =============================================================================
@@ -52,7 +53,8 @@
     - "**Jane A. Doe**"
     - "Casey Placeholder"
   venue: "Workshop on Placeholder Methods 2024"
+  image: "assets/img/pub-placeholder-2.png"
   links:
     - label: "paper"
       url: "https://example.com"
-  template: "compact"
+  template: "detailed"

@@ -45,7 +45,7 @@
         </div>
         <div class="hero-intro-col">
           <p class="hero-intro">I'm a Master's student in Computer Science at Ahmedabad University, advised by JB Sir, working on computer vision, deep learning architectures, and applied ML systems. I'm also the CTO at <a href="https://github.com/aagam41" target="_blank" rel="noopener">Tirth Infotech</a>, where I've spent the last several years building and deploying production systems for government and enterprise clients.</p>
-          <p class="hero-socials"><a href="mailto:contact.me@aagamsheth.com">contact.me@aagamsheth.com</a><span class="sep">|</span><a href="assets/files/cv-placeholder.pdf" target="_blank" rel="noopener">CV</a><span class="sep">|</span><a href="https://github.com/aagam41" target="_blank" rel="noopener">GitHub</a><span class="sep">|</span><a href="https://leetcode.com/u/Aagam41/" target="_blank" rel="noopener">LeetCode</a><span class="sep">|</span><a href="https://www.kaggle.com/aagamsheth" target="_blank" rel="noopener">Kaggle</a></p>
+          <p class="hero-socials"><a class="js-email" href="#contact" data-user="contact.me" data-domain="aagamsheth.com"></a><span class="sep">|</span><a href="assets/files/cv-placeholder.pdf" target="_blank" rel="noopener">CV</a><span class="sep">|</span><a href="https://github.com/aagam41" target="_blank" rel="noopener">GitHub</a><span class="sep">|</span><a href="https://leetcode.com/u/Aagam41/" target="_blank" rel="noopener">LeetCode</a><span class="sep">|</span><a href="https://www.kaggle.com/aagamsheth" target="_blank" rel="noopener">Kaggle</a></p>
         </div>
       </div>
     </header>
@@ -179,11 +179,14 @@
   </div>
 </div>
 
-<div class="entry-row entry-row--textonly">
+<div class="entry-row">
+  <div class="entry-thumb">
+    <img src="assets/img/pub-placeholder-2.png" alt="An Earlier Placeholder Publication teaser" loading="lazy" />
+  </div>
   <div class="entry-info">
     <div class="entry-title">An Earlier Placeholder Publication</div>
     <div class="entry-authors">Taylor Example, <strong>Jane A. Doe</strong>, Casey Placeholder</div>
-    <div class="entry-venue-inline"><em>Workshop on Placeholder Methods 2024</em></div>
+    <div class="entry-venue"><em>Workshop on Placeholder Methods 2024</em></div>
     <div class="entry-links">
       <a href="https://example.com" class="entry-link" target="_blank" rel="noopener">[paper]</a>
     </div>
@@ -409,7 +412,12 @@
       <section class="content-section" id="other">
         <h2 class="section-title">Other</h2>
         <div class="section-body section-body--other">
-          <p class="other-item">Outside of research and work, I enjoy reading, photography, and playing guitar and other instruments. I'm also into cycling and brewing coffee — always happy to talk shop on pour-over ratios or good cycling routes around Ahmedabad.</p>
+          <div class="other-item">
+  <p class="other-intro">Outside of research and work:</p>
+  <div class="other-pills">
+    <span class="other-pill">Reading</span><span class="other-pill">Photography</span><span class="other-pill">Guitar &amp; other instruments</span><span class="other-pill">Cycling — happy to swap good routes around Ahmedabad</span><span class="other-pill">Brewing coffee — always up for talking pour-over ratios</span>
+  </div>
+</div>
 
         </div>
       </section>
@@ -451,7 +459,13 @@
       <section class="content-section" id="contact">
         <h2 class="section-title">Contact</h2>
         <div class="section-body section-body--contact">
-          <p class="contact-item">The best way to reach me is by email at contact.me@aagamsheth.com. I'm based in Ahmedabad, India, and can also be reached at +91 78780 46680.</p>
+          <div class="contact-card">
+  <p class="contact-lead">The best way to reach me is by email.</p>
+  <div class="contact-channels">
+    <a class="js-email" href="#contact" data-user="contact.me" data-domain="aagamsheth.com"></a>
+    <span class="contact-location">Ahmedabad, India</span>
+  </div>
+</div>
 
         </div>
       </section>
@@ -498,6 +512,11 @@
           spy.observe(section);
         });
       }
+      document.querySelectorAll(".js-email").forEach(function (el) {
+        var addr = el.getAttribute("data-user") + "@" + el.getAttribute("data-domain");
+        el.textContent = addr;
+        el.setAttribute("href", "mailto:" + addr);
+      });
     })();
   </script>
 </body>

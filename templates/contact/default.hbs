@@ -1,1 +1,7 @@
-<p class="contact-item">{{{textHtml}}}</p>
+<div class="contact-card">
+  {{#if text}}<p class="contact-lead">{{{textHtml}}}</p>{{/if}}
+  <div class="contact-channels">
+    {{#if email}}{{emailParts email}}{{/if}}
+    {{#if location}}<span class="contact-location">{{location}}</span>{{/if}}
+  </div>
+</div>
