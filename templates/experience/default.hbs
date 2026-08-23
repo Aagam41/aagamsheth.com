@@ -1,14 +1,13 @@
 <div class="exp-item">
-  {{#if logo}}
-  <img
-    src="{{logo}}"
-    alt="{{org}} logo"
-    class="exp-logo"
-  />
-  {{/if}}
   <div class="exp-body">
-    <div class="exp-role-line">{{role}}</div>
-    <div class="exp-org">{{org}} · <span class="exp-dates">{{dates_label}}</span></div>
+    {{#if companyHeader}}
+    <div class="exp-company-line">
+      {{#if logo}}<img src="{{logo}}" alt="{{org}} logo" class="exp-logo" />{{/if}}
+      <span class="exp-company">{{org}}</span>
+    </div>
+    {{/if}}
+    <div class="exp-role-line">{{role}} · <span class="exp-dates">{{dates_label}}</span></div>
+    {{#if context}}<div class="exp-context">{{context}}</div>{{/if}}
     {{#if description}}<div class="exp-description">{{description}}</div>{{/if}}
   </div>
 </div>

@@ -1,17 +1,16 @@
 # =============================================================================
-# EXPERIENCE
-# Sort is "manual" for this section (see site.yaml) — entries appear on
-# the page in the same order they're listed here, top to bottom.
+# EXPERIENCE — grouped LinkedIn-style: one header per company (org), then
+# roles beneath it. The first entry of each org renders the logo + name;
+# `context` optionally names the client/project for that role.
 # Fields:
-#   date        : YYYY-MM-DD — kept for reference, not used for sorting
-#                 while sort is "manual"
-#   dates_label : the human-readable date range shown on the page, e.g. "Summer 2026"
-#   role        : job title / role
-#   org         : company or lab name
-#   logo        : optional path to a small company/org logo, shown as a
-#                 circular badge to the left of the role (LinkedIn-style).
-#                 Leave out to show no logo for that entry.
-#   description : one or two sentences on what you did
+#   date        : YYYY-MM-DD — kept for reference, not used while sort is "manual"
+#   dates_label : human-readable range, e.g. "2026 - Present"
+#   role        : job title
+#   org         : company — consecutive entries with the same org are grouped
+#                 under a single header
+#   context     : optional client / project line under the role title
+#   logo        : path shown next to the company header
+#   description : one or two sentences on what you did/shipped
 #   template    : optional template override
 # =============================================================================
 
@@ -19,48 +18,54 @@
   dates_label: "2026 - Present"
   role: "Chief Technology Officer"
   org: "Tirth Infotech"
+  context: "Technology strategy & delivery leadership"
   logo: "assets/img/logo-tirth-infotech.png"
-  description: "Lead technology strategy and delivery across government and enterprise engagements — systems architecture, security and deployment reviews, and engineering execution."
+  description: "Own the technical direction of every engagement — architecture decisions, security and deployment reviews, infrastructure choices, and hands-on mentoring of the engineering team across government and enterprise projects."
   template: "default"
 
 - date: "2023-01-01"
   dates_label: "Jan 2023 - Aug 2025"
   role: "Systems Architect & Full Stack Developer"
-  org: "Archives Portal — Gujarat State Archives (FDCA), Ahmedabad"
-  logo: "assets/img/logo-gsa-archives.png"
-  description: "Deployed a Django/DRF application on GSDC with a DMZ architecture using PostgreSQL and MongoDB. Implemented PostgreSQL full-text search with a Gujarati dictionary and TsVector for archival queries, dynamic metadata-driven APIs and admin panels, and RFC7233 range requests for efficient large-file retrieval. Passed two CERT-In security audits for government hosting compliance."
+  org: "Tirth Infotech"
+  context: "Archives Portal — Gujarat State Archives & Food and Drugs Control Administration"
+  logo: "assets/img/logo-tirth-infotech.png"
+  description: "Architected and shipped a state-scale archival platform on the Gujarat State Data Centre: Django/DRF with PostgreSQL and MongoDB across a DMZ topology, Gujarati full-text search over TsVector lexemes, dynamic metadata-driven APIs and admin panels, RFC 7233 ranged downloads, and hash-based caching. Cleared two CERT-In empanelled security audits."
   template: "default"
 
 - date: "2024-07-01"
   dates_label: "Jul 2024 - Mar 2025"
-  role: "Full Stack Developer — SahajPranali"
-  org: "Tirth Infotech · Collector Office, Buldhana (Government of Maharashtra)"
+  role: "Full Stack Developer"
+  org: "Tirth Infotech"
+  context: "SahajPranali — Collector Office, Buldhana (Government of Maharashtra)"
   logo: "assets/img/logo-tirth-infotech.png"
-  description: "Built a digital revenue records archive enabling citizen and official access with search by district, taluka, village, and case number across record types (7/12, mutation, land acquisition, registers). Secure dual-login (OTP for citizens, role-based access for officials), watermarking, audit logging, paid downloads, and structured indexing for fast retrieval."
+  description: "Digitised land-revenue records — 7/12 extracts, mutations, land-acquisition files, registers — for citizens and officials: district/taluka/village/case-number search, OTP dual-login with role-based access, watermarking, audit logging, and paid downloads."
   template: "default"
 
 - date: "2022-05-01"
   dates_label: "May 2022"
-  role: "Developer — Document Retrieval Portal"
-  org: "Tirth Infotech · Gujarat Secondary and Higher Secondary Education Board (GSHSEB)"
+  role: "Developer"
+  org: "Tirth Infotech"
+  context: "Document Retrieval Portal — GSHSEB"
   logo: "assets/img/logo-tirth-infotech.png"
-  description: "Shipped a Karobari document retrieval site for GSHSEB on a static-generation model chosen after analyzing client requirements, with an AJAX search-suggestion panel over uploaded static metadata. Django + PostgreSQL deployed on a single AWS LightSail instance."
+  description: "Delivered a Karobari document retrieval portal on a deliberately simple static-generation model chosen after analysing client needs, with an AJAX search-suggestion panel over uploaded metadata. Django + PostgreSQL on AWS LightSail."
   template: "default"
 
 - date: "2022-03-01"
   dates_label: "Mar 2022 - Present"
-  role: "Developer — Objection Raising System"
-  org: "Tirth Infotech · State Recruitment Boards"
+  role: "Developer"
+  org: "Tirth Infotech"
+  context: "Objection Raising System — State Recruitment Boards"
   logo: "assets/img/logo-tirth-infotech.png"
-  description: "Built an objection raising and management platform for multiple State Recruitment Boards on Django + MS SQL Server (AWS, Apache Httpd + mod_wsgi). Sustained ~5000 requests/min by replacing a cryptographic hash with a custom XOR check (~70% CPU reduction across all 8 cores), converting queries to Transact-SQL stored procedures, and thread-safe Django under MPM Prefork (10 processes × 100 threads)."
+  description: "Built and continue to maintain the objection-management platform serving multiple State Recruitment Boards. Scaled to ~5,000 requests/min on one AWS instance by replacing a cryptographic hash with a custom XOR integrity check (~70% CPU saved across all 8 cores), moving hot paths to Transact-SQL stored procedures, and making Django thread-safe under Apache MPM Prefork."
   template: "default"
 
 - date: "2021-12-01"
   dates_label: "Dec 2021 - Aug 2022"
-  role: "Developer — Stock Management System"
-  org: "Tirth Infotech · Gujarat Secondary and Higher Secondary Education Board (GSHSEB)"
+  role: "Developer"
+  org: "Tirth Infotech"
+  context: "Stock Management System — GSHSEB"
   logo: "assets/img/logo-tirth-infotech.png"
-  description: "Developed a custom stock management and tracking system for GSHSEB covering purchase/sales orders, internal and external transports, and inventory workflows. Created 10+ client-specific reports, admin tooling for user management and spreadsheet bulk upload, and ACID-compliant accounting modules. Django + PostgreSQL on AWS LightSail."
+  description: "Inventory, purchase/sales, and logistics tracking for the state education board: 10+ bespoke reports, spreadsheet bulk-upload admin tooling, and ACID-compliant accounting modules that kept the books consistent. Django + PostgreSQL on AWS LightSail."
   template: "default"
 
 - date: "2018-06-01"
@@ -68,5 +73,5 @@
   role: "Intern & Junior Developer"
   org: "Tirth Infotech"
   logo: "assets/img/logo-tirth-infotech.png"
-  description: "Fixed bugs and provided support for VB.NET and C# desktop applications, customized 50+ WinForms Crystal Reports for clients, deployed applications on premise, and provided hands-on technical support at client sites."
+  description: "Learned production software the hands-on way — maintaining VB.NET and C# desktop applications, customising 50+ WinForms Crystal Reports to client specifications, and deploying on premise with in-person support."
   template: "default"

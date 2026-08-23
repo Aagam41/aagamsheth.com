@@ -19,7 +19,7 @@
 # =============================================================================
 
 - title: "Improving Online Trackers via Classical ML Feature Evolution"
-  description: "A classical machine-learning-based re-identification system using SIFT and Random Forest to improve UAV multi-object tracking, achieving better identity consistency than baseline methods."
+  description: "Re-identification for UAV multi-object tracking that models how SIFT features evolve along a track, classified with Random Forests — steadier identity association and higher precision/MOTA than baseline methods."
   org: "Ahmedabad University"
   dates: "Jan–Apr 2026"
   links:
@@ -29,7 +29,7 @@
   template: "detailed"
 
 - title: "Small Object Detection & Tracking for UAV Videos"
-  description: "A deep learning pipeline combining YOLOv11, SAHI tiling, and Siamese re-identification with contrastive learning to improve small-object detection and tracking in UAV footage — reduced false positives by 21.5%."
+  description: "YOLOv11 with SAHI tiling feeds a contrastively-trained Siamese Re-ID head, tuned via Bayesian hyperparameter search (Optuna) — false positives down 21.5% on small objects in UAV footage."
   org: "Ahmedabad University"
   dates: "Jan–Apr 2026"
   links:
@@ -52,7 +52,7 @@
   template: "detailed"
 
 - title: "Early Sepsis Detection from Electronic Health Records"
-  description: "An ML pipeline for early sepsis prediction from ICU EHR data (MIMIC-IV), using feature engineering, SMOTE, and ensemble models (LightGBM, XGBoost). Achieved a 0.921 ROC-AUC and ~83.6% recall."
+  description: "Early sepsis prediction on MIMIC-IV ICU records: clinical feature engineering, SMOTE balancing, and LightGBM/XGBoost ensembles tuned for recall — 0.921 ROC-AUC, 0.812 PR-AUC, ~83.6% recall, explained with SHAP."
   org: "Ahmedabad University"
   dates: "Jan–Mar 2026"
   links:
@@ -63,7 +63,7 @@
   template: "detailed"
 
 - title: "LayoutLM vs. RoBERTa for Document Understanding"
-  description: "A comparative analysis of RoBERTa and LayoutLMv3 for classification and key information extraction on the DocILE dataset, showing multimodal models significantly outperform text-only models — 0.756 accuracy and 0.704 F1 with LayoutLMv3."
+  description: "Benchmarked text-only RoBERTa against multimodal LayoutLMv3 (full fine-tuning vs PEFT/LoRA) for classification and key-information extraction on DocILE — the layout-aware model wins decisively at 0.756 accuracy / 0.704 F1."
   org: "Ahmedabad University"
   dates: "Aug–Nov 2025"
   links:
@@ -74,7 +74,7 @@
   template: "detailed"
 
 - title: "Reflex-Based Control & A* Planning for a Planetary Rover"
-  description: "An autonomous rover using reflex-based control and A* path planning with custom terrain-aware heuristics to optimize navigation and energy usage."
+  description: "An autonomous planetary rover pairing reflex-based control with A* path planning; custom terrain-aware heuristics kept paths near-optimal while energy-based variants traded ~30% extra traversal cost for safer routes."
   org: "Ahmedabad University"
   dates: "Oct–Nov 2025"
   links:

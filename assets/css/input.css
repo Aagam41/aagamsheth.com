@@ -268,35 +268,42 @@
     @apply text-accent no-underline hover:underline hover:text-accent text-sm font-medium;
   }
 
-  /* ---------- Experience (LinkedIn-style rows) ----------
-     Logo circle, bold role line, company with dates following it on
-     the same line, description below. */
+  /* ---------- Experience (LinkedIn company-page style) ----------
+     One header per company (logo + name), then roles beneath it, each
+     with dates inline after the title and an optional client/project
+     context line. Role blocks indent to align under the company name. */
   #experience .section-body {
-    @apply space-y-4;
+    @apply space-y-5;
   }
   .exp-item {
-    @apply flex items-start gap-3 leading-snug;
+    @apply leading-snug;
+  }
+  .exp-company-line {
+    @apply flex items-center gap-2.5 mb-1.5;
   }
   .exp-logo {
-    @apply w-9 h-9 rounded-full object-cover shrink-0 mt-0.5;
+    @apply w-9 h-9 rounded-full object-cover shrink-0;
   }
   .exp-logo--inline {
     @apply w-4 h-4 rounded-full inline-block align-middle mr-1 shrink-0;
+  }
+  .exp-company {
+    @apply font-semibold text-base;
   }
   .exp-body {
     @apply flex-1 min-w-0;
   }
   .exp-role-line {
-    @apply font-semibold;
+    @apply font-semibold pl-12;
   }
   .exp-dates {
     @apply font-normal italic text-neutral-500;
   }
-  .exp-org {
-    @apply text-black block;
+  .exp-context {
+    @apply text-black/85 pl-12;
   }
   .exp-description {
-    @apply text-neutral-500 text-sm block mt-0.5;
+    @apply text-neutral-500 text-sm block mt-0.5 pl-12;
   }
 
   /* ---------- Skills ----------

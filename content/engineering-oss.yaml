@@ -14,15 +14,15 @@
 # =============================================================================
 
 - title: "React Headless Token Auth"
-  description: "Open-source contribution improving a headless React authentication library — fixed token expiration issues and added hooks, contexts, and Axios request interceptors for better developer experience."
+  description: "Hardened a headless React authentication library — fixed token-expiry handling, added hooks and contexts, and introduced Axios interceptors; contributions merged upstream through reviewed pull requests."
   link: "https://github.com/aagam41"
 
 - title: "Django Dynamic Models"
-  description: "Open-source contribution to a runtime model generation system for Django, improving stability, usability, and documentation for dynamically creating models at runtime."
+  description: "Runtime model generation for Django — resolved long-standing stability bugs, closed five issues, landed three accepted pull requests, and grew the contributor documentation."
   link: "https://github.com/aagam41"
 
 - title: "Django DB File Storage"
-  description: "Forked and patched a Django file storage library for Django 4.x compatibility, fixing cross-platform path bugs. Contribution recognized by the Berlin Institute of Health; patch submitted upstream."
+  description: "Patched a DB-backed file-storage library for Django 4.x, fixing cross-platform path separators — adopted by the Berlin Institute of Health and submitted upstream as a pull request."
   link: "https://github.com/aagam41"
 
 - title: "SPAPAS — Student Prediction and Performance Analysis System"

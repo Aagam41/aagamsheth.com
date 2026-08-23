@@ -148,3 +148,12 @@ Placeholder publications replaced with two real papers (supplied as PDFs, text e
 2. **AI4Life Open Calls and Public Challenges: why, how, and what we have learned.** — Preprint, 2026; full author list incl. AI4Life Consortium, self bolded.
 
 Research project "Unsupervised Denoising for Fluorescence Microscopy" updated around Restormer3D (topped all four AI4Life challenge leaderboards); [GitHub] now points at the Restormer3D repo.
+
+## Amendment 2026-08-23 — Round-6 refinement pass
+
+1. **Nav**: "Home" (capitalized) in all three navs.
+2. **Work Experience**: LinkedIn company-page layout — one header per company (logo + name, rendered when the entry's `org` differs from the previous entry's; driven by a `companyHeader` flag computed in build.js), roles beneath with dates inline after the title and an optional `context` line naming the client/project. All seven roles now correctly grouped under **Tirth Infotech** (Archives Portal/FDCA is the client context, not the employer).
+3. **Descriptions**: Work Experience, Research Projects, and Engineering Projects descriptions rewritten — outcome-first, concrete numbers kept (21.5% FP reduction, 0.921 ROC-AUC / 0.812 PR-AUC / ~83.6% recall, ~5000 rpm / ~70% CPU, etc.).
+4. **Skills**: new "Techniques" category (PEFT/LoRA, multi-object tracking, feature engineering & SMOTE, full-text search); Frameworks += Hugging Face Transformers, Optuna, SHAP, Noise2Noise/N2V; Tools += MySQL; Software += Crystal Reports.
+
+All other decisions stand. (Owner's list item 5 was empty — nothing omitted intentionally.)

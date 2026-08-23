@@ -236,8 +236,8 @@ ok(/\.side-nav\{position:fixed/.test(css), "side nav floats fixed on the right")
 ok(/@media ?\(min-width:1100px\)\{\.site-nav\{display:none/.test(css.replace(/\s/g, "")), "top bar yields to side nav on wide screens");
 ok(/IntersectionObserver/.test(html), "scroll-spy highlights the current section");
 const expSection = extractSection(html, "experience") || "";
-ok(/exp-org">[^<]*<span class="exp-dates"/.test(expSection.replace(/\n\s*/g, " ")),
-  "experience rows show dates inline after the company (LinkedIn pattern)");
+ok(/exp-role-line">[^<]*<span class="exp-dates"/.test(expSection.replace(/\n\s*/g, " ")),
+  "experience rows show dates inline after the role title");
 ok(/\.news-item\{[^}]*padding-left/.test(css) && /\.news-date\{position:absolute/.test(css),
   "news items use a hanging indent (wrapped lines align past the date)");
 ok(/\.hero\{margin-bottom/.test(css), "hero block carries bottom spacing before News");
@@ -252,6 +252,28 @@ ok(!html.includes("contact.me@aagamsheth.com"), "email address never appears as 
 ok(!/mailto:[a-z0-9._%+-]+@/.test(html), "no plaintext mailto: links in the static HTML");
 ok(/class="js-email"/.test(hero) && /data-domain=/.test(html), "email assembled client-side from data attributes");
 ok(!/\+91|78780/.test(html), "phone number removed from the page");
+
+// -----------------------------------------------------------------------------
+// 8c. Experience grouped by company (one org header, roles beneath)
+// -----------------------------------------------------------------------------
+
+const expSectionGrouped = extractSection(html, "experience") || "";
+const expEntriesGrouped = readYaml("content/experience.yaml") || [];
+const distinctCompanies = [...new Set(expEntriesGrouped.map((e) => e.org).filter(Boolean))];
+ok(count(expSectionGrouped.replace(/\n\s*/g, ""), 'class="exp-company-line"') === distinctCompanies.length,
+  `one company header per distinct org (${distinctCompanies.length}: ${distinctCompanies.join(", ")})`);
+ok(/class="exp-role-line"/.test(expSectionGrouped), "roles render under their company header");
+ok(/class="exp-company-line"[^>]*>[^<]*<img/.test(expSectionGrouped.replace(/\n\s*/g, "")),
+  "company header carries the org logo");
+
+// -----------------------------------------------------------------------------
+// 8d. Skills coverage: every yaml skill renders as a pill
+// -----------------------------------------------------------------------------
+
+const skillsEntries = readYaml("content/skills.yaml") || [];
+const expectedPills = skillsEntries.reduce((n, s) => n + ((s.items && s.items.length) || 0), 0);
+const renderedPills = count(html, 'class="skill-pill"');
+ok(renderedPills === expectedPills, `skill pills (${renderedPills}) == skills.yaml entries (${expectedPills})`);
 ok(/\.site-footer-line\{[^}]*text-align:center/.test(css), "footer line is centered");
 
 // -----------------------------------------------------------------------------

@@ -169,14 +169,20 @@ function build() {
 
     entries = sortEntries(entries, section.sort);
 
-    const isListSection = ["news"].includes(section.id);
+    // Group consecutive entries sharing an org under one company header
+    // (LinkedIn company-page style). The first entry of each run renders
+    // the org name + logo; subsequent ones render as plain roles.
+    let prevOrg = null;
     const htmlParts = entries.map((entry) => {
       const templateName = entry.template || section.default_template;
       const renderFn = readTemplate(section.template_dir, templateName);
       const prepped = prepEntry(entry);
+      prepped.companyHeader = !!prepped.org && prepped.org !== prevOrg;
+      prevOrg = prepped.org || prevOrg;
       return renderFn(prepped);
     });
 
+    const isListSection = ["news"].includes(section.id);
     const bodyHtml = isListSection
       ? `<ul class="entry-list">\n${htmlParts.join("\n")}\n</ul>`
       : htmlParts.join("\n");
