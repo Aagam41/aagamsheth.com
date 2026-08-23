@@ -29,6 +29,10 @@
     </div>
   </nav>
 
+  <nav class="side-nav" aria-label="Section outline">
+    {{#each sections}}<a href="#{{this.id}}">{{this.title}}</a>{{/each}}
+  </nav>
+
   <div class="page">
 
     <header class="hero">
@@ -82,6 +86,22 @@
           toggle.setAttribute("aria-expanded", "false");
         });
       });
+      if ("IntersectionObserver" in window) {
+        var spy = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            var active = document.querySelector('.side-nav a[href="#' + entry.target.id + '"]');
+            if (!active) return;
+            document.querySelectorAll(".side-nav a.active").forEach(function (el) {
+              el.classList.remove("active");
+            });
+            active.classList.add("active");
+          });
+        }, { rootMargin: "-35% 0px -55% 0px" });
+        document.querySelectorAll(".content-section").forEach(function (section) {
+          spy.observe(section);
+        });
+      }
     })();
   </script>
 </body>

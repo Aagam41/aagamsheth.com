@@ -97,7 +97,7 @@ const expectedOrder = [
   "Publications",
   "Research Projects",
   "Engineering Projects",
-  "Experience",
+  "Work Experience",
   "Skills",
   "Other",
   "Certificates",
@@ -135,9 +135,9 @@ ok(/fonts\.googleapis\.com[^"']*Inter/.test(html), "index.html references Inter 
 ok(css.includes("Inter"), "built CSS sets Inter as font family");
 ok(!/prefers-color-scheme/.test(css), "no prefers-color-scheme rules (light only)");
 ok(css.includes("1000px"), "page column at Anjali's 1000px content size");
-ok(/font-size:clamp\(\.825rem[\s\S]*?1\.0625rem\)/.test(css), "body uses Anjali's exact fluid type clamp");
-ok(/clamp\(1\.743rem/.test(css), "name heading uses Anjali's exact clamp");
-ok(/1\.953rem/.test(css), "section headings use Anjali's x-large clamp");
+ok(/font-size:clamp\(\.78rem[\s\S]*?\.95rem\)/.test(css), "body uses a smaller fluid type clamp");
+ok(/clamp\(1\.563rem[\s\S]*?2\.6rem\)/.test(css), "name heading uses a smaller fluid clamp");
+ok(/1\.75rem\)/.test(css), "section headings use a smaller fluid clamp");
 ok(/grid-template-columns:20% auto/.test(css), "entry rows use a 20% thumbnail column");
 
 // -----------------------------------------------------------------------------
@@ -154,6 +154,16 @@ ok(/\[GitHub\]<\/a>/.test(engSection) && /class="entry-link"/.test(engSection),
   "Engineering Projects rows carry bracketed [GitHub] entry-links");
 ok(/class="entry-meta"/.test(researchSection), "research rows carry an institute · date line");
 ok(/class="entry-meta"/.test(pubsSection) === false, "publication rows unchanged (venue line, no meta line)");
+const researchLinkEntries = readYaml("content/research.yaml") || [];
+const researchLinkCount = researchLinkEntries.reduce(
+  (n, e) => n + (Array.isArray(e.links) ? e.links.length : e.link ? 1 : 0),
+  0
+);
+const renderedResearchLinks = count(researchSection, 'class="entry-link"');
+ok(renderedResearchLinks === researchLinkCount && researchLinkCount >= 10,
+  `research rows render every configured link (${renderedResearchLinks}/${researchLinkCount})`);
+ok(/\[Paper\]<\/a>/.test(researchSection) && /\[Video\]<\/a>/.test(researchSection),
+  "research links include [Paper] and [Video] alongside [GitHub]");
 const eduEntries = readYaml("content/education.yaml") || [];
 const coursesCount = eduEntries.filter((e) => e.courses).length;
 ok(count(html, 'class="edu-courses"') === coursesCount, `coursework lines (${count(html, 'class="edu-courses"')}) == education entries with courses (${coursesCount})`);
@@ -195,6 +205,15 @@ ok(/id="nav-toggle"/.test(html) && /aria-label="Toggle navigation"/.test(html), 
 ok(/nav--scrolled/.test(html), "scroll listener wired to nav--scrolled class");
 ok(/aria-expanded/.test(html), "hamburger manages aria-expanded");
 ok(/\.nav-link\{[^}]*text-transform:none/.test(css), "nav links are lowercase (no uppercase transform)");
+ok(/class="side-nav"/.test(html), "floating right-hand outline nav present");
+ok(/\.side-nav\{position:fixed/.test(css), "side nav floats fixed on the right");
+ok(/@media ?\(min-width:1100px\)\{\.site-nav\{display:none/.test(css.replace(/\s/g, "")), "top bar yields to side nav on wide screens");
+ok(/IntersectionObserver/.test(html), "scroll-spy highlights the current section");
+const expSection = extractSection(html, "experience") || "";
+ok(/exp-org">[^<]*<span class="exp-dates"/.test(expSection.replace(/\n\s*/g, " ")),
+  "experience rows show dates inline after the company (LinkedIn pattern)");
+ok(/\.news-item\{[^}]*padding-left/.test(css) && /\.news-date\{position:absolute/.test(css),
+  "news items use a hanging indent (wrapped lines align past the date)");
 ok(/\.site-footer-line\{[^}]*text-align:center/.test(css), "footer line is centered");
 
 // -----------------------------------------------------------------------------

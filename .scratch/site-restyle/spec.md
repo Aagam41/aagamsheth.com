@@ -109,3 +109,13 @@ Owner reviewed the round-1 result and directed five further changes:
 5. **Research & Engineering rows**: publication-style stacked lines — title / description / `institute · date` line / authors line — via new optional entry fields `org`, `dates`, `authors`; institute+date text removed from descriptions in research.yaml and engineering-oss.yaml.
 
 All other decisions stand.
+
+## Amendment 2026-08-23 — Round-3 refinement pass (owner feedback)
+
+1. **Navigation**: wide screens get a floating right-hand outline nav (docs-site style) with scroll-spy highlighting of the section in view; the fixed top bar (with hamburger) remains below 1100px and hides above it.
+2. **News**: hanging indent — wrapped text lines align under the first text line, not under the bold M/YY. date.
+3. **Research Projects**: typed link lists (`links: [{label,url}]`) rendered as bracketed [GitHub] / [Paper] / [Video] links; single `link` still supported as [GitHub]. Placeholder URLs point at the GitHub profile until real ones exist.
+4. **Experience**: renamed to "Work Experience"; rows restyled LinkedIn-style — role line bold, company followed by italic dates on the same line, description below.
+5. **Type scale**: everything one notch smaller — body clamp(.78rem→.95rem), name clamp(1.563rem→2.6rem), section headings clamp(1.35rem→1.75rem), intro clamp(.85rem→1.2rem); entry titles 16px, socials/links/cert rows/details trimmed ~1px each.
+
+All other decisions stand.

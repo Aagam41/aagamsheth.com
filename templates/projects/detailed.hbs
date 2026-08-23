@@ -13,6 +13,12 @@
     {{#if description}}<div class="entry-desc">{{description}}</div>{{/if}}
     {{#if org}}<div class="entry-meta">{{org}}{{#if dates}} · {{dates}}{{/if}}</div>{{/if}}
     {{#if authors}}<div class="entry-authors">{{{authorsHtml}}}</div>{{/if}}
-    {{#if link}}<div class="entry-links"><a href="{{link}}" class="entry-link" target="_blank" rel="noopener">[GitHub]</a></div>{{/if}}
+    {{#if links}}
+    <div class="entry-links">
+      {{#each links}}<a href="{{this.url}}" class="entry-link" target="_blank" rel="noopener">[{{this.label}}]</a>{{/each}}
+    </div>
+    {{else if link}}
+    <div class="entry-links"><a href="{{link}}" class="entry-link" target="_blank" rel="noopener">[GitHub]</a></div>
+    {{/if}}
   </div>
 </div>

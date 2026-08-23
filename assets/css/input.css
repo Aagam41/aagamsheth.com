@@ -15,7 +15,7 @@
   }
   body {
     @apply bg-white text-black font-sans antialiased;
-    font-size: clamp(0.825rem, 0.825rem + ((1vw - 0.2rem) * 0.389), 1.0625rem);
+    font-size: clamp(0.78rem, 0.78rem + ((1vw - 0.2rem) * 0.35), 0.95rem);
     font-weight: 400;
     line-height: 1.6;
   }
@@ -39,18 +39,20 @@
 }
 
 @layer components {
-  /* ---------- Page shell: centered 1000px column ---------- */
+  /* ---------- Page shell: centered 1000px column ----------
+     Top padding clears the fixed mobile top bar; wide screens use the
+     floating side outline instead, so they need less clearance. */
   .page {
-    @apply mx-auto w-full max-w-[1000px] px-5 sm:px-8 pt-[84px] pb-12;
+    @apply mx-auto w-full max-w-[1000px] px-5 sm:px-8 pt-[84px] pb-12 min-[1100px]:pt-10;
   }
 
-  /* ---------- Fixed navigation bar ----------
-     Transparent at rest; white + shadow once scrolled (class toggled
-     by a few lines of vanilla JS in page.hbs). Links are lowercase,
-     muted slate — darkening on hover. Collapses to a hamburger below
-     600px. */
+  /* ---------- Navigation ----------
+     Two modes: below 1100px a fixed top bar with a hamburger; at and
+     above 1100px the bar disappears and a floating right-hand outline
+     (docs-site style) takes over, with a scroll-spy highlighting the
+     section currently in view. */
   .site-nav {
-    @apply fixed inset-x-0 top-0 z-50 bg-transparent transition-shadow duration-200;
+    @apply fixed inset-x-0 top-0 z-50 bg-transparent transition-shadow duration-200 min-[1100px]:hidden;
   }
   .site-nav.nav--scrolled {
     @apply bg-white shadow-[0_1px_8px_rgba(0,0,0,0.14)];
@@ -85,12 +87,23 @@
     }
   }
 
+  /* ---------- Floating side outline (wide screens) ---------- */
+  .side-nav {
+    @apply fixed right-6 top-1/2 z-40 hidden -translate-y-1/2 flex-col items-end gap-1.5 min-[1100px]:flex;
+  }
+  .side-nav a {
+    @apply text-xs text-neutral-400 no-underline transition-colors duration-150 hover:text-black hover:no-underline;
+  }
+  .side-nav a.active {
+    color: theme('colors.accent');
+  }
+
   /* ---------- Hero: photo column + intro statement + socials ----------
      Socials follow the Ying Wang pattern: one plain pipe-separated
      row under the intro statement. */
   .hero-name {
     @apply font-bold tracking-normal mb-2;
-    font-size: clamp(1.743rem, 1.743rem + ((1vw - 0.2rem) * 2.052), 3rem);
+    font-size: clamp(1.563rem, 1.563rem + ((1vw - 0.2rem) * 1.7), 2.6rem);
     line-height: 1.2;
   }
   .hero-row {
@@ -107,11 +120,11 @@
   }
   .hero-intro {
     @apply m-0;
-    font-size: clamp(0.929rem, 0.929rem + ((1vw - 0.2rem) * 0.769), 1.4rem);
+    font-size: clamp(0.85rem, 0.85rem + ((1vw - 0.2rem) * 0.65), 1.2rem);
     line-height: 1.4;
   }
   .hero-socials {
-    @apply mt-4 mb-0 flex flex-wrap items-center text-[15px];
+    @apply mt-4 mb-0 flex flex-wrap items-center text-sm;
   }
   .hero-socials a {
     @apply text-accent no-underline hover:underline hover:text-accent;
@@ -122,24 +135,26 @@
 
   /* ---------- Sections: whitespace-only separation, generous rhythm ---------- */
   .content-section {
-    @apply mb-16 scroll-mt-[76px];
+    @apply mb-16 scroll-mt-[76px] min-[1100px]:scroll-mt-4;
   }
   .section-title {
     @apply font-semibold mb-4;
-    font-size: clamp(1.563rem, 1.563rem + ((1vw - 0.2rem) * 0.637), 1.953rem);
+    font-size: clamp(1.35rem, 1.35rem + ((1vw - 0.2rem) * 0.55), 1.75rem);
     line-height: 1.2;
   }
 
   /* ---------- News ----------
-     Bold numeric M/YY. prefix per line (Anjali Gupta pattern). */
+     Bold numeric M/YY. prefix per line (Anjali Gupta pattern) with a
+     hanging indent: wrapped text lines up under the first text line,
+     not under the date. */
   .entry-list {
     @apply space-y-1.5 list-none p-0 m-0;
   }
   .news-item {
-    @apply leading-relaxed;
+    @apply relative leading-relaxed pl-[6ch];
   }
   .news-date {
-    @apply font-bold mr-1;
+    @apply font-bold absolute left-0;
   }
   .news-text {
     @apply text-black;
@@ -173,10 +188,10 @@
     @apply text-black block;
   }
   .edu-detail {
-    @apply text-neutral-500 text-[15px] block;
+    @apply text-neutral-500 text-sm block;
   }
   .edu-courses {
-    @apply text-neutral-500 text-[15px] block mt-0.5;
+    @apply text-neutral-500 text-sm block mt-0.5;
   }
 
   /* ---------- Shared entry-row anatomy (Publications / Research /
@@ -220,7 +235,7 @@
     @apply min-w-0;
   }
   .entry-title {
-    @apply font-bold text-[18px] leading-snug;
+    @apply font-bold text-base leading-snug;
   }
   .entry-authors {
     @apply text-black/85 mt-0.5 leading-snug;
@@ -245,10 +260,12 @@
     @apply flex flex-wrap gap-x-3 gap-y-1 mt-1.5;
   }
   .entry-link {
-    @apply text-accent no-underline hover:underline hover:text-accent text-[15px] font-medium;
+    @apply text-accent no-underline hover:underline hover:text-accent text-sm font-medium;
   }
 
-  /* ---------- Experience ---------- */
+  /* ---------- Experience (LinkedIn-style rows) ----------
+     Logo circle, bold role line, company with dates following it on
+     the same line, description below. */
   #experience .section-body {
     @apply space-y-4;
   }
@@ -274,7 +291,7 @@
     @apply text-black block;
   }
   .exp-description {
-    @apply text-neutral-500 text-[15px] block mt-0.5;
+    @apply text-neutral-500 text-sm block mt-0.5;
   }
 
   /* ---------- Skills ----------
@@ -306,7 +323,7 @@
     @apply space-y-2;
   }
   .cert-item {
-    @apply flex flex-wrap gap-x-3 items-baseline text-[16px] leading-relaxed;
+    @apply flex flex-wrap gap-x-3 items-baseline text-[15px] leading-relaxed;
   }
   .cert-date {
     @apply text-[11px] font-semibold uppercase tracking-[0.06em] px-2 py-0.5 rounded-full bg-neutral-100 text-black shrink-0;
@@ -320,6 +337,6 @@
     @apply mt-14 pb-6;
   }
   .site-footer-line {
-    @apply text-center text-sm text-neutral-500 m-0;
+    @apply text-center text-[13px] text-neutral-500 m-0;
   }
 }

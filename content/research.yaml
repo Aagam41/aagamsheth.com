@@ -7,7 +7,11 @@
 #   org         : optional institute / company line
 #   dates       : optional engagement dates — rendered with org as "org · dates"
 #   authors     : optional author list; **bold** marks yourself
-#   link        : optional GitHub repo URL — shown as a bracketed [GitHub] link
+#   links       : optional list of { label, url } — rendered as bracketed
+#                 [label] links (GitHub, Paper, Video, …). Single `link`
+#                 still works and renders as [GitHub]. Placeholder URLs
+#                 point at the GitHub profile until real ones exist.
+#   link        : optional single GitHub repo URL (legacy shorthand)
 #   image       : optional path to a project thumbnail image. If left out,
 #                 a placeholder box showing the project title is shown instead.
 #                 Thumbnails are static (no hover zoom).
@@ -18,6 +22,9 @@
   description: "A classical machine-learning-based re-identification system using SIFT and Random Forest to improve UAV multi-object tracking, achieving better identity consistency than baseline methods."
   org: "Ahmedabad University"
   dates: "Jan–Apr 2026"
+  links:
+    - label: "GitHub"
+      url: "https://github.com/aagam41"
   image: "assets/img/project-placeholder-1.png"
   template: "detailed"
 
@@ -25,6 +32,11 @@
   description: "A deep learning pipeline combining YOLOv11, SAHI tiling, and Siamese re-identification with contrastive learning to improve small-object detection and tracking in UAV footage — reduced false positives by 21.5%."
   org: "Ahmedabad University"
   dates: "Jan–Apr 2026"
+  links:
+    - label: "GitHub"
+      url: "https://github.com/aagam41"
+    - label: "Video"
+      url: "https://github.com/aagam41"
   image: "assets/img/project-placeholder-2.png"
   template: "detailed"
 
@@ -32,22 +44,42 @@
   description: "Unsupervised deep learning models (3D U-Net, Noise2Noise) for calcium imaging denoising without ground-truth data. Placed 4th in the AI4Life Grand Challenge, improving from 5th place."
   org: "Ahmedabad University"
   dates: "Jan–Apr 2026"
+  links:
+    - label: "GitHub"
+      url: "https://github.com/aagam41"
+    - label: "Paper"
+      url: "https://github.com/aagam41"
   template: "detailed"
 
 - title: "Early Sepsis Detection from Electronic Health Records"
   description: "An ML pipeline for early sepsis prediction from ICU EHR data (MIMIC-IV), using feature engineering, SMOTE, and ensemble models (LightGBM, XGBoost). Achieved a 0.921 ROC-AUC and ~83.6% recall."
   org: "Ahmedabad University"
   dates: "Jan–Mar 2026"
+  links:
+    - label: "GitHub"
+      url: "https://github.com/aagam41"
+    - label: "Paper"
+      url: "https://github.com/aagam41"
   template: "detailed"
 
 - title: "LayoutLM vs. RoBERTa for Document Understanding"
   description: "A comparative analysis of RoBERTa and LayoutLMv3 for classification and key information extraction on the DocILE dataset, showing multimodal models significantly outperform text-only models — 0.756 accuracy and 0.704 F1 with LayoutLMv3."
   org: "Ahmedabad University"
   dates: "Aug–Nov 2025"
+  links:
+    - label: "GitHub"
+      url: "https://github.com/aagam41"
+    - label: "Paper"
+      url: "https://github.com/aagam41"
   template: "detailed"
 
 - title: "Reflex-Based Control & A* Planning for a Planetary Rover"
   description: "An autonomous rover using reflex-based control and A* path planning with custom terrain-aware heuristics to optimize navigation and energy usage."
   org: "Ahmedabad University"
   dates: "Oct–Nov 2025"
+  links:
+    - label: "GitHub"
+      url: "https://github.com/aagam41"
+    - label: "Video"
+      url: "https://github.com/aagam41"
   template: "detailed"

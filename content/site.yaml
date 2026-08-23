@@ -88,7 +88,7 @@ sections:
     sort: "manual"
 
   - id: experience
-    title: "Experience"
+    title: "Work Experience"
     enabled: true
     content_file: "content/experience.yaml"
     template_dir: "templates/experience"
