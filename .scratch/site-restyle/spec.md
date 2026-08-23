@@ -1,0 +1,80 @@
+# Spec: Research-led restyle of the academic site
+
+Status: ready-for-agent
+Labels: ready-for-agent
+
+## Problem Statement
+
+The site owner has a working one-page hybrid site, but it reads as a generic card-based template rather than a credible academic homepage. The Academic reader — a professor, peer, or admissions committee member — lands on a busy page where placeholder Publications compete with Django patches for attention, and a wall of fifteen MOOC certificates dilutes the research signal. The Industry reader can't quickly separate shipping ability from coursework. The owner admires the dense, text-first aesthetic of reference academic homepages and wants his site to look and feel like those, without giving up either audience or the simple "edit YAML in a browser" maintenance model.
+
+## Solution
+
+Restyle the entire page to an extracted design system from the reference site the owner chose: Nunito type throughout, black text on white, a single blue accent, uppercase pill links, thumbnail-plus-info entry rows, whitespace instead of hairlines, and a 1000px column. Replace the centered business-card hero with a photo-column-plus-intro-statement layout (Ying Wang style — short first-person bio, no numbered threads, no tagline). Add a fixed navigation bar that gains a white background and shadow on scroll and collapses to a hamburger on small screens. Split the single Projects Section into two adjacent Sections — Research and Engineering & OSS — so each audience gets its own reading path. Switch Certificates to its compact one-line-per-entry Template. All content remains Placeholder-driven where it already is; nothing is hidden and no real papers are added yet.
+
+## User Stories
+
+1. As an Academic reader, I want a short first-person intro statement at the top, so that I can tell within seconds who this person is, where they study, and what they work on
+2. As an Academic reader, I want Publications to appear high on the page with venue names and paper/code/arxiv pill links, so that I can scan research output the way I do on colleagues' homepages
+3. As an Academic reader, I want research projects separated from general software work, so that I don't have to wade through framework patches to find UAV tracking and clinical ML
+4. As an Academic reader, I want my own name bolded and accented in author lists, so that authorship position is instantly clear when scanning entries
+5. As an Industry reader, I want a dedicated Engineering & OSS Section, so that I can evaluate real-world shipping ability without hunting through research projects
+6. As an Industry reader, I want Experience rows with company logos and date ranges kept intact, so that employment history stays verifiable
+7. As an Industry reader, I want Skills grouped by category as scannable pills, so that I can check a stack match quickly
+8. As a Site owner, I want the visual design to use Nunito, black-on-white, and a single blue accent, so that the page looks like the dense academic homepages I admire rather than a card template
+9. As a Site owner, I want the hero to show my headshot beside my existing bio paragraph, so that my identity is personal and immediate without inventing new copy
+10. As a Site owner, I want Email, CV, GitHub, LeetCode, and Kaggle links in the hero, so that every way of reaching or checking me is one click from the top
+11. As a Site owner, I want my placeholder Publications to stay exactly as they are, so that the section's structure is proven now and I only swap in real papers later
+12. As a Site owner, I want to keep editing only YAML to change any Entry, Section order, or Section title, so that maintaining the site never requires touching code
+13. As a Site owner, I want the Certificates Section compressed to one line per certificate, so that evidence of continuous learning exists without dominating the page
+14. As a Site owner, I want light-only styling with no dark-mode variant, so that the aesthetic matches my chosen reference and ships without extra theming work
+15. As a Mobile visitor, I want the navigation bar to collapse into a hamburger below phone-width, so that section jumps stay reachable on a small screen
+16. As a Mobile visitor, I want all multi-column rows to stack full-width, so that nothing is cramped or horizontally scrolled on my phone
+17. As a First-time visitor, I want a fixed navigation bar that becomes white with a shadow once I scroll, so that I always know where I am on a long single page
+18. As a First-time visitor, I want anchor links to every Section, so that I can jump directly to Publications or Contact
+19. As a First-time visitor, I want sections separated by generous whitespace with no divider lines, so that the page feels calm and editorial rather than boxed-in
+20. As a First-time visitor, I want News items rendered with a bold month-year prefix, so that recency is scannable at a glance
+21. As an Academic reader, I want publication and research-project Entries to show a rounded thumbnail beside their info, so that each item has visual identity like reference homepage paper rows
+22. As an Industry reader, I want Engineering & OSS Entries rendered compactly with direct GitHub pill links, so that I can open the actual code in a new tab
+23. As a Screen-reader user, I want semantic headings and preserved image alt text throughout the restyle, so that the redesigned page remains navigable non-visually
+24. As a Returning visitor, I want the page to remain a single generated HTML document with no client framework, so that load times stay instant on any connection
+25. As the Site owner, I want the pre-build validator extended to cover the new Sections automatically, so that a typo in the new content files still can never blank the live site
+
+## Implementation Decisions
+
+- **Design tokens**: replace the current serif/paper theme in the Tailwind theme configuration with the extracted system — Nunito (weights ~200–1000) as the sole family, white background, black text, accent blue #1772d0; body text ~18px, name heading ~40px regular weight, Section headings bold ~30px.
+- **Pill link component**: restyle all link pills to small uppercase bold labels (~11px, wide letter-spacing) with a thin accent border that fills accent-blue with white text on hover; apply uniformly across hero links, publication link pills, project GitHub links, and the footer source-code link.
+- **Page shell**: rework the shell Template to a centered 1000px container; hero becomes a flex row — narrow left column stacking headshot, contact icons/email, and the link row; right column holding the existing Intro statement text unchanged. Existing mini-markdown rendering of the bio is preserved.
+- **Navigation**: add a fixed top bar with uppercase anchor links to every enabled Section; transparent at rest, switching to white background with drop shadow after scroll via a few lines of vanilla JS; hamburger toggle below ~600px replacing inline links. Section anchor ids come from the site configuration manifest, so renaming the Projects Section updates nav automatically.
+- **Projects split**: rename the existing Projects Section to "Research" (keeping its detailed row Template and manual sort) and add a new adjacent Section "Engineering & OSS" with a second content file; both Sections point at the same Templates folder. Entry classification: Research = both UAV tracking/detection projects, fluorescence microscopy denoising, sepsis detection, LayoutLM vs RoBERTa document understanding, planetary rover; Engineering & OSS = React Headless Token Auth, Django Dynamic Models, Django DB File Storage, SahajPranali, SPAPAS.
+- **Engineering & OSS default Template**: use the compact variant by default — title plus one-line description plus GitHub pill; individual Entries may override if they ever need thumbnails.
+- **Certificates**: flip the Section's default Template to its existing compact variant (one line per credential: month-year pill, name, issuer) with no content changes.
+- **Entry rows**: standardize detailed rows on thumbnail-column + info-column anatomy with rounded static thumbnails; the hover-to-zoom effect on thumbnails is dropped in favor of the reference system's static images.
+- **News**: keep the existing dated list markup; styling only (bold month-year prefix).
+- **Education/Experience/Skills/Other/Contact**: content untouched; Templates reskinned to the token system (logo circles retained, hairlines removed, spacing normalized to whitespace-only separation).
+- **No dark mode**: no prefers-color-scheme rules anywhere; light palette only.
+- **Validation/build contract unchanged**: the pipeline still emits a single index.html at the repo root; the input-side validator already validates Sections generically, so the new Section needs no special-casing beyond satisfying the same required-field rules as Projects.
+- **Anchor id change accepted**: renaming Projects → Research gives it a new anchor id; inbound links to the old #projects anchor will break and are accepted (no redirects exist in a static Pages deploy anyway).
+
+## Testing Decisions
+
+- **One seam**: the highest seam in this codebase is the full pipeline — run validation and the build, then assert against the emitted HTML document. A single new smoke-test script does exactly this; no unit tests touch build-script internals or Handlebars helpers.
+- **Good tests assert external behavior**: presence and order of Section headings ("News", "Education", "Publications", "Research", "Engineering & OSS", "Experience", "Skills", "Other", "Certificates", "Contact"), hero containing email plus the five agreed links, Nunito font referenced, pill classes on known links, compact single-line Certificate rows, hamburger/nav markup present, and zero occurrences of the old serif theme tokens. Tests never inspect how templates achieve these outputs.
+- **Prior art**: the existing pre-build validator is the model — declarative checks over the artifact with hard failure. The smoke test is its output-side sibling, runnable locally and suitable as a CI step after build.
+- **Count checks over exact-match checks**: e.g., assert the number of certificate rows equals the number of Entries in its content file, rather than asserting specific certificate titles, so content edits don't break tests.
+
+## Out of Scope
+
+- Dark mode or any prefers-color-scheme support
+- Multi-page architecture; the site stays one generated page
+- Custom-domain DNS setup (aagamsheth.com currently does not resolve)
+- Replacing Placeholder Publications or the placeholder CV with real content
+- Adding a Google Scholar link (explicitly declined)
+- Rewriting the Intro statement copy or inventing numbered research threads/taglines (explicitly rejected)
+- Press/media pill variants, analytics, RSS, SEO work beyond the existing meta description
+- Any change to deployment workflows, hosting, or the admin-via-GitHub-web-UI story
+
+## Further Notes
+
+- The site auto-deploys on every push to main and is publicly reachable at its github.io URL right now; the owner has explicitly accepted placeholder Papers remaining publicly visible during and after this rebuild.
+- Domain vocabulary (Section, Entry, Template, Intro statement, Placeholder, Academic reader, Industry reader) is defined in CONTEXT.md at the repo root; consumer rules in docs/agents/domain.md. The rejected terms "research statement" and "research thread" are recorded there as Avoid-language.
+- Design tokens were extracted from the live reference site chosen by the owner (its stylesheet and markup were fetched and analyzed); they are faithful copies, not approximations, and deviations should be flagged rather than silently smoothed over.

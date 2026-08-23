@@ -5,34 +5,54 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{{site.title}}</title>
   <meta name="description" content="{{site.meta_description}}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@200..1000&display=swap" />
   <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="icon" href="data:,">
 </head>
 <body>
+
+  <nav class="site-nav" id="site-nav">
+    <div class="site-nav-inner">
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-mobile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M4 7h16M4 12h16M4 17h16"></path>
+        </svg>
+      </button>
+      <div class="nav-links">
+        {{#each sections}}<a class="nav-link" href="#{{this.id}}">{{this.title}}</a>{{/each}}
+      </div>
+    </div>
+    <div class="nav-mobile" id="nav-mobile">
+      {{#each sections}}<a class="nav-link" href="#{{this.id}}">{{this.title}}</a>{{/each}}
+    </div>
+  </nav>
+
   <div class="page">
 
     <header class="hero">
-      <div class="hero-photo">
-        <img src="{{header.photo}}" alt="{{header.name}}" />
-      </div>
-      <div class="hero-text">
-        <h1 class="hero-name">{{header.name}}</h1>
-        <p class="hero-tagline">{{{header.tagline}}}</p>
-        <div class="hero-contact-row">
-          <a href="mailto:{{header.email}}" class="hero-email-icon" aria-label="Email {{header.name}}" title="{{header.email}}">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="4" width="20" height="16" rx="2"></rect>
-              <path d="M22 6L12 13 2 6"></path>
-            </svg>
-          </a>
-          {{#each header.links}}<a href="{{this.url}}" class="hero-link tag-link" target="_blank" rel="noopener">{{this.label}}</a>{{/each}}
+      <h1 class="hero-name">{{header.name}}</h1>
+      <div class="hero-row">
+        <div class="hero-photo-col">
+          <div class="hero-photo">
+            <img src="{{header.photo}}" alt="{{header.name}}" />
+          </div>
+          <div class="hero-contact">
+            <a href="mailto:{{header.email}}" class="hero-email-icon" aria-label="Email {{header.name}}" title="{{header.email}}">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                <path d="M22 6L12 13 2 6"></path>
+              </svg>
+            </a>
+          </div>
+          <div class="hero-links">
+            {{#each header.links}}<a href="{{this.url}}" class="pill-link" target="_blank" rel="noopener">{{this.label}}</a>{{/each}}
+          </div>
         </div>
+        <p class="hero-intro">{{{header.tagline}}}</p>
       </div>
     </header>
-
-    <nav class="section-nav">
-      {{#each sections}}<a href="#{{this.id}}">{{this.title}}</a>{{/each}}
-    </nav>
 
     <main>
       {{#each sections}}
@@ -46,9 +66,33 @@
     </main>
 
     <footer class="site-footer">
-      <p>&copy; {{currentYear}} {{header.name}}. Built with a static, open-source site generator.</p>
+      <p>&copy; {{currentYear}} {{header.name}}. Built with a static, open-source site generator.
+        <a class="pill-link" href="https://github.com/Aagam41/aagamsheth.com" target="_blank" rel="noopener">source</a>
+      </p>
     </footer>
 
   </div>
+
+  <script>
+    (function () {
+      var nav = document.getElementById("site-nav");
+      var toggle = document.getElementById("nav-toggle");
+      function onScroll() {
+        nav.classList.toggle("nav--scrolled", window.scrollY > 8);
+      }
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+      toggle.addEventListener("click", function () {
+        var open = nav.classList.toggle("nav--open");
+        toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+      document.querySelectorAll("#nav-mobile .nav-link").forEach(function (link) {
+        link.addEventListener("click", function () {
+          nav.classList.remove("nav--open");
+          toggle.setAttribute("aria-expanded", "false");
+        });
+      });
+    })();
+  </script>
 </body>
 </html>

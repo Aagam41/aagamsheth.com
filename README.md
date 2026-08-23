@@ -10,7 +10,8 @@ itself automatically.
 
 1. Go to your repo on GitHub.com and open the **`content/`** folder.
 2. Click the file for the section you want to change (e.g. `news.yaml`,
-   `education.yaml`, `publications.yaml`, `projects.yaml`, `experience.yaml`,
+   `education.yaml`, `publications.yaml`, `research.yaml`,
+   `engineering-oss.yaml`, `experience.yaml`,
    `other.yaml`, `certificates.yaml`, `contact.yaml`).
 3. Click the pencil icon (✏️) in the top right to edit.
 4. Add, remove, or change entries. Each entry starts with `- ` and has a few
@@ -140,7 +141,8 @@ content/
   news.yaml
   education.yaml
   publications.yaml
-  projects.yaml
+  research.yaml         ← research projects (UAV tracking, clinical ML, …)
+  engineering-oss.yaml  ← open-source contributions + shipping work
   experience.yaml
   other.yaml
   certificates.yaml
@@ -166,6 +168,7 @@ assets/
 scripts/
   build.js              ← reads yaml + templates, writes index.html
   validate.js            ← checks yaml for errors before build/deploy
+  smoke-test.js          ← runs the pipeline and asserts the built page
 
 .github/workflows/deploy.yml   ← validates, builds, deploys on every push
 ```

@@ -1,84 +1,71 @@
 # =============================================================================
 # CERTIFICATES
 # Fields:
-#   date     : YYYY-MM-DD (used for sorting, newest first)
+#   date     : YYYY-MM-DD (used for sorting, newest first; shown as a
+#              month-year pill)
 #   title    : certificate/credential name
 #   issuer   : who issued it
 #   link     : optional URL to verify/view the certificate
-#   template : optional template override
+#   template : optional template override (default is the compact
+#              one-line-per-credential row — see site.yaml)
 # =============================================================================
 
 - date: "2023-03-01"
   title: "Data Science Tools"
   issuer: "IBM Developer Skills Network [DS0105EN]"
-  template: "default"
 
 - date: "2023-03-01"
   title: "Advanced SQL for Data Scientists"
   issuer: "LinkedIn Learning"
-  template: "default"
 
 - date: "2023-03-01"
   title: "SQL for Data Analysis"
   issuer: "LinkedIn Learning"
-  template: "default"
 
 - date: "2023-03-01"
   title: "Data Strategy"
   issuer: "NASBA & Project Management Institute (CPE Credit: 1.6)"
-  template: "default"
 
 - date: "2023-03-01"
   title: "Python Data Analysis"
   issuer: "NASBA (CPE Credit: 4.8)"
-  template: "default"
 
 - date: "2023-03-01"
   title: "Designing Highly Scalable and Highly Available SQL Databases"
   issuer: "LinkedIn Learning"
-  template: "default"
 
 - date: "2023-03-01"
   title: "Machine Learning with Python: Foundations"
   issuer: "LinkedIn Learning"
-  template: "default"
 
 - date: "2023-03-01"
   title: "Level Up: Advanced Python"
   issuer: "LinkedIn Learning"
-  template: "default"
 
 - date: "2023-02-01"
   title: "Data Science 101"
   issuer: "IBM Developer Skills Network [DS0101EN]"
-  template: "default"
 
 - date: "2023-02-01"
   title: "Data Visualization with Python"
   issuer: "IBM Developer Skills Network [DV0101EN]"
-  template: "default"
 
 - date: "2023-02-01"
   title: "Machine Learning with Python"
   issuer: "IBM Developer Skills Network [ML0101EN]"
-  template: "default"
 
 - date: "2023-02-01"
   title: "Python 101 for Data Science"
   issuer: "IBM Developer Skills Network [PY0101EN]"
-  template: "default"
 
 - date: "2020-09-01"
   title: "Introduction to Data Science in Python"
   issuer: "University of Michigan (Coursera)"
-  template: "default"
 
 - date: "2020-05-01"
   title: "Programming for Everybody (Getting Started with Python)"
   issuer: "University of Michigan (Coursera)"
-  template: "default"
 
 - date: "2020-04-01"
   title: "Python Data Structures"
   issuer: "University of Michigan (Coursera)"
-  template: "default"

@@ -1,14 +1,14 @@
 # =============================================================================
-# PROJECTS
+# RESEARCH
+# Research projects (UAV tracking, clinical ML, document understanding, …).
 # Fields:
 #   title       : project name
 #   description : one or two sentences
-#   link        : optional GitHub repo URL — shown as a [GitHub] link
+#   link        : optional GitHub repo URL — shown as a pill link
 #   image       : optional path to a project thumbnail image. If left out,
-#                 a placeholder box showing the project title is shown
-#                 instead. Hover over any thumbnail to see it full-size.
-#   template    : "detailed" (thumbnail + description + GitHub link)
-#                 or "compact" (text-only, one line)
+#                 a placeholder box showing the project title is shown instead.
+#                 Thumbnails are static (no hover zoom).
+#   template    : "detailed" (thumbnail + description) or "compact" (one line)
 # =============================================================================
 
 - title: "Improving Online Trackers via Classical ML Feature Evolution"
@@ -35,27 +35,4 @@
 
 - title: "Reflex-Based Control & A* Planning for a Planetary Rover"
   description: "An autonomous rover using reflex-based control and A* path planning with custom terrain-aware heuristics to optimize navigation and energy usage. Ahmedabad University, Oct–Nov 2025."
-  template: "detailed"
-
-- title: "SahajPranali — Digital Revenue Records System"
-  description: "A digital archive for the Collector Office, Buldhana (Government of Maharashtra) providing citizen and official access to revenue records with search by district, taluka, village, and case number. Includes a secure dual-login system with OTP for citizens, role-based access for officials, watermarking, and audit logging. Built at Tirth Infotech, Jul 2024 – Mar 2025."
-  template: "detailed"
-
-- title: "React Headless Token Auth"
-  description: "Open-source contribution improving a headless React authentication library — fixed token expiration issues and added hooks, contexts, and Axios request interceptors for better developer experience."
-  link: "https://github.com/aagam41"
-  template: "detailed"
-
-- title: "Django Dynamic Models"
-  description: "Open-source contribution to a runtime model generation system for Django, improving stability, usability, and documentation for dynamically creating models at runtime."
-  link: "https://github.com/aagam41"
-  template: "detailed"
-
-- title: "Django DB File Storage"
-  description: "Forked and patched a Django file storage library for Django 4.x compatibility, fixing cross-platform path bugs. Contribution recognized by the Berlin Institute of Health; patch submitted upstream."
-  link: "https://github.com/aagam41"
-  template: "detailed"
-
-- title: "SPAPAS — Student Prediction and Performance Analysis System"
-  description: "A Django-based system using linear and logistic regression to predict student performance and visualize insights through dashboards for data-driven academic evaluation. Government Polytechnic Ahmedabad, Jan–Mar 2021."
   template: "detailed"

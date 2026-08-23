@@ -71,12 +71,20 @@ sections:
     default_template: "detailed"
     sort: "date"
 
-  - id: projects
-    title: "Projects"
+  - id: research
+    title: "Research"
     enabled: true
-    content_file: "content/projects.yaml"
+    content_file: "content/research.yaml"
     template_dir: "templates/projects"
     default_template: "detailed"
+    sort: "manual"
+
+  - id: engineering-oss
+    title: "Engineering & OSS"
+    enabled: true
+    content_file: "content/engineering-oss.yaml"
+    template_dir: "templates/projects"
+    default_template: "compact"
     sort: "manual"
 
   - id: experience
@@ -108,7 +116,7 @@ sections:
     enabled: true
     content_file: "content/certificates.yaml"
     template_dir: "templates/certificates"
-    default_template: "default"
+    default_template: "compact"
     sort: "date"
 
   - id: contact
