@@ -72,7 +72,7 @@ sections:
     sort: "date"
 
   - id: research
-    title: "Research"
+    title: "Research Projects"
     enabled: true
     content_file: "content/research.yaml"
     template_dir: "templates/projects"
@@ -80,7 +80,7 @@ sections:
     sort: "manual"
 
   - id: engineering-oss
-    title: "Engineering & OSS"
+    title: "Engineering Projects"
     enabled: true
     content_file: "content/engineering-oss.yaml"
     template_dir: "templates/projects"

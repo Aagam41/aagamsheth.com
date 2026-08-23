@@ -7,7 +7,7 @@ module.exports = {
         accent: "#1772d0",
       },
       fontFamily: {
-        sans: ["Nunito", "'Segoe UI'", "'Helvetica Neue'", "Arial", "sans-serif"],
+        sans: ["Inter", "'Segoe UI'", "'Helvetica Neue'", "Arial", "sans-serif"],
       },
     },
   },

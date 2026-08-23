@@ -1,10 +1,12 @@
-<div class="pub-item pub-item--compact">
-  <div class="pub-title">{{title}}</div>
-  <div class="pub-authors">{{{authorsHtml}}}</div>
-  <div class="pub-venue-inline">{{venue}}</div>
-  {{#if links}}
-  <div class="pub-links">
-    {{#each links}}<a href="{{this.url}}" class="pill-link" target="_blank" rel="noopener">{{this.label}}</a>{{/each}}
+<div class="entry-row entry-row--textonly">
+  <div class="entry-info">
+    <div class="entry-title">{{title}}</div>
+    {{#if authors}}<div class="entry-authors">{{{authorsHtml}}}</div>{{/if}}
+    <div class="entry-venue-inline"><em>{{venue}}</em></div>
+    {{#if links}}
+    <div class="entry-links">
+      {{#each links}}<a href="{{this.url}}" class="entry-link" target="_blank" rel="noopener">[{{this.label}}]</a>{{/each}}
+    </div>
+    {{/if}}
   </div>
-  {{/if}}
 </div>

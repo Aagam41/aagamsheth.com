@@ -3,9 +3,10 @@
 @tailwind utilities;
 
 /* -----------------------------------------------------------------------
-   Design system: Nunito everywhere, black text on white, a single
-   accent blue (#1772d0). Whitespace instead of hairlines. Light only —
-   no prefers-color-scheme rules anywhere.
+   Design system: Inter everywhere (Anjali Gupta reference), black text
+   on white, a single accent blue (#1772d0). Muted slate links in the
+   navbar. Whitespace instead of hairlines. Light only — no
+   prefers-color-scheme rules anywhere.
 ----------------------------------------------------------------------- */
 
 @layer base {
@@ -14,8 +15,8 @@
   }
   body {
     @apply bg-white text-black font-sans antialiased;
-    font-size: 18px;
-    line-height: 1.65;
+    font-size: 17px;
+    line-height: 1.6;
   }
   a {
     @apply text-accent no-underline;
@@ -37,32 +38,33 @@
 }
 
 @layer components {
-  /* ---------- Page shell: centered 1000px column ---------- */
+  /* ---------- Page shell: centered 1100px column ---------- */
   .page {
-    @apply mx-auto w-full max-w-[1000px] px-5 sm:px-8 pt-[88px] pb-16;
+    @apply mx-auto w-full max-w-[1100px] px-5 sm:px-8 pt-[84px] pb-12;
   }
 
   /* ---------- Fixed navigation bar ----------
      Transparent at rest; white + shadow once scrolled (class toggled
-     by a few lines of vanilla JS in page.hbs). Collapses to a
-     hamburger below 600px. */
+     by a few lines of vanilla JS in page.hbs). Links are lowercase,
+     muted slate — darkening on hover. Collapses to a hamburger below
+     600px. */
   .site-nav {
     @apply fixed inset-x-0 top-0 z-50 bg-transparent transition-shadow duration-200;
   }
   .site-nav.nav--scrolled {
     @apply bg-white shadow-[0_1px_8px_rgba(0,0,0,0.14)];
   }
-  .site-nav.nav-open {
+  .site-nav.nav--open {
     @apply bg-white;
   }
   .site-nav-inner {
-    @apply mx-auto flex w-full max-w-[1000px] items-center px-5 sm:px-8 min-h-[56px];
+    @apply mx-auto flex w-full max-w-[1100px] items-center px-5 sm:px-8 min-h-[56px];
   }
   .nav-links {
     @apply hidden min-[600px]:flex flex-wrap items-center gap-x-5 gap-y-1 py-3;
   }
   .nav-link {
-    @apply uppercase text-xs font-bold tracking-[0.08em] text-black no-underline hover:text-accent hover:no-underline whitespace-nowrap;
+    @apply normal-case tracking-normal whitespace-nowrap text-sm font-medium text-[#8c909c] no-underline hover:text-black hover:no-underline;
   }
   .nav-toggle {
     @apply min-[600px]:hidden inline-flex items-center justify-center p-2 -ml-2 text-black hover:text-accent bg-transparent border-0 cursor-pointer;
@@ -81,21 +83,12 @@
       display: none !important;
     }
   }
-  .nav-mobile .nav-link {
-    @apply py-1.5;
-  }
 
-  /* ---------- Pill link component ----------
-     Small uppercase bold label, thin accent border; fills accent blue
-     with white text on hover. Used for hero links, publication link
-     pills, project GitHub links, and the footer source link. */
-  .pill-link {
-    @apply inline-block rounded-full border border-accent px-2.5 py-[3px] text-[11px] leading-snug font-bold uppercase tracking-[0.08em] no-underline text-accent bg-transparent transition-colors duration-150 hover:bg-accent hover:text-white hover:no-underline;
-  }
-
-  /* ---------- Hero: photo column + intro statement ---------- */
+  /* ---------- Hero: photo column + intro statement + socials ----------
+     Socials follow the Ying Wang pattern: one plain pipe-separated
+     row under the intro statement. */
   .hero-name {
-    @apply text-[32px] min-[600px]:text-[40px] font-normal leading-tight tracking-tight mb-6;
+    @apply text-[34px] min-[600px]:text-[48px] font-bold leading-tight tracking-tight mb-6;
   }
   .hero-row {
     @apply flex flex-col min-[600px]:flex-row gap-8 min-[600px]:gap-10;
@@ -106,39 +99,40 @@
   .hero-photo img {
     @apply w-44 h-auto rounded-lg object-cover;
   }
-  .hero-contact {
-    @apply mt-4 flex items-center gap-3;
-  }
-  .hero-email-icon {
-    @apply inline-flex items-center justify-center text-accent hover:text-accent hover:opacity-80;
-  }
-  .hero-email-icon svg {
-    @apply w-5 h-5;
-  }
-  .hero-links {
-    @apply mt-3 flex flex-wrap gap-1.5;
+  .hero-intro-col {
+    @apply flex-1 min-w-0;
   }
   .hero-intro {
-    @apply flex-1 min-w-0 leading-relaxed;
+    @apply leading-relaxed m-0;
+  }
+  .hero-socials {
+    @apply mt-4 mb-0 flex flex-wrap items-center text-[15px];
+  }
+  .hero-socials a {
+    @apply text-accent no-underline hover:underline hover:text-accent;
+  }
+  .hero-socials .sep {
+    @apply mx-2.5 text-neutral-300 select-none;
   }
 
-  /* ---------- Sections: whitespace-only separation ---------- */
+  /* ---------- Sections: whitespace-only separation, tight rhythm ---------- */
   .content-section {
-    @apply mb-14 scroll-mt-[76px];
+    @apply mb-10 scroll-mt-[76px];
   }
   .section-title {
-    @apply text-[24px] min-[600px]:text-[30px] font-bold leading-tight mb-5;
+    @apply text-[24px] min-[600px]:text-[31px] font-semibold leading-tight mb-4;
   }
 
-  /* ---------- News ---------- */
+  /* ---------- News ----------
+     Bold numeric M/YY. prefix per line (Anjali Gupta pattern). */
   .entry-list {
-    @apply space-y-2 list-none p-0 m-0;
+    @apply space-y-1.5 list-none p-0 m-0;
   }
   .news-item {
     @apply leading-relaxed;
   }
   .news-date {
-    @apply font-bold mr-2;
+    @apply font-bold mr-1;
   }
   .news-text {
     @apply text-black;
@@ -163,7 +157,7 @@
     @apply flex-1 min-w-0;
   }
   .edu-institution-line {
-    @apply font-bold;
+    @apply font-semibold;
   }
   .edu-dates {
     @apply font-normal italic text-neutral-500;
@@ -175,95 +169,69 @@
     @apply text-neutral-500 text-[15px] block;
   }
 
-  /* ---------- Publications ----------
-     Thumbnail column left (rounded, static — no hover zoom), info
-     column right: title, authors, venue, link pills. The site owner's
-     own name is bolded in the author list and accented blue. */
+  /* ---------- Shared entry-row anatomy (Publications / Research /
+     Engineering Projects) ----------
+     Anjali Gupta pattern: thumbnail column at 20% row width, info as
+     stacked lines — bold title, authors/description, italic venue,
+     bracketed plain-text [label] links. Rows stack full-width below
+     600px. */
   #publications .section-body {
     @apply space-y-6;
   }
-  .pub-item--detailed {
-    @apply flex items-start gap-4;
-  }
-  .pub-image {
-    @apply w-20 h-20 shrink-0;
-  }
-  .pub-image img {
-    @apply w-20 h-20 object-cover rounded-lg;
-  }
-  .pub-image--placeholder {
-    @apply w-20 h-20 rounded-lg flex items-center justify-center text-center px-1 bg-neutral-100;
-  }
-  .pub-image-placeholder-text {
-    @apply font-normal text-neutral-500 text-[10px] leading-tight;
-  }
-  .pub-body {
-    @apply flex-1 min-w-0;
-  }
-  .pub-title {
-    @apply font-bold leading-snug text-[19px] mb-1;
-  }
-  .pub-authors {
-    @apply text-black mb-1;
-  }
-  .pub-authors strong {
-    color: theme('colors.accent');
-  }
-  .pub-venue {
-    @apply italic text-black mb-1.5;
-  }
-  .pub-venue-inline {
-    @apply text-black mb-1.5;
-  }
-  .pub-links {
-    @apply flex flex-wrap gap-1.5;
-  }
-
-  /* ---------- Research / Engineering & OSS ----------
-     Both sections share the projects template folder and anatomy:
-     detailed rows = thumbnail column + info column; compact rows =
-     title + one-line description + GitHub pill. */
   #research .section-body {
-    @apply space-y-5;
+    @apply space-y-6;
   }
   #engineering-oss .section-body {
     @apply space-y-4;
   }
-  .project-item--detailed {
-    @apply flex items-start gap-4;
+  .entry-row {
+    @apply grid items-start gap-6;
+    grid-template-columns: 20% auto;
   }
-  .project-image {
-    @apply w-20 h-20 shrink-0;
+  @media (max-width: 599px) {
+    .entry-row {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
   }
-  .project-image img {
-    @apply w-20 h-20 object-cover rounded-lg;
+  .entry-row--textonly {
+    display: block;
   }
-  .project-image--placeholder {
-    @apply w-20 h-20 rounded-lg flex items-center justify-center text-center px-1 bg-neutral-100;
+  .entry-thumb img {
+    @apply w-full aspect-[16/10] object-cover rounded-lg;
   }
-  .project-image-placeholder-text {
-    @apply font-normal text-neutral-500 text-[10px] leading-tight;
+  .entry-thumb--placeholder {
+    @apply w-full aspect-[16/10] rounded-lg flex items-center justify-center text-center px-3 bg-neutral-100;
   }
-  .project-body {
-    @apply flex-1 min-w-0;
+  .entry-thumb-placeholder-text {
+    @apply text-neutral-500 text-xs leading-snug;
   }
-  .project-title {
-    @apply font-bold text-black text-[19px] leading-snug;
+  .entry-info {
+    @apply min-w-0;
   }
-  .project-description {
-    @apply text-black/80 text-[16px] mt-1 leading-snug;
+  .entry-title {
+    @apply font-bold text-[18px] leading-snug;
   }
-  .project-item--compact {
-    @apply leading-snug;
+  .entry-authors {
+    @apply text-black/85 mt-0.5 leading-snug;
   }
-  .project-item--compact .project-title {
-    @apply font-bold text-black text-[17px];
+  .entry-authors strong {
+    color: theme('colors.accent');
   }
-  .project-item--compact .project-description {
-    @apply text-[16px];
+  .entry-venue {
+    @apply italic text-black/85 mt-0.5;
   }
-  .project-github-link {
-    @apply ml-1.5;
+  .entry-venue-inline {
+    @apply text-black/85 mt-0.5;
+  }
+  .entry-desc {
+    @apply text-black/85 text-[16px] mt-0.5 leading-snug;
+  }
+  .entry-links {
+    @apply flex flex-wrap gap-x-3 gap-y-1 mt-1.5;
+  }
+  .entry-link {
+    @apply text-accent no-underline hover:underline hover:text-accent text-[15px] font-medium;
   }
 
   /* ---------- Experience ---------- */
@@ -283,7 +251,7 @@
     @apply flex-1 min-w-0;
   }
   .exp-role-line {
-    @apply font-bold;
+    @apply font-semibold;
   }
   .exp-dates {
     @apply font-normal italic text-neutral-500;
@@ -296,7 +264,7 @@
   }
 
   /* ---------- Skills ----------
-     Bold category label, skill names as scannable pills. */
+     Semibold category label, skill names as scannable pills. */
   #skills .section-body {
     @apply space-y-3;
   }
@@ -304,7 +272,7 @@
     @apply flex flex-col min-[600px]:flex-row min-[600px]:gap-4;
   }
   .skill-category {
-    @apply text-xs uppercase tracking-wide text-neutral-500 shrink-0 w-full min-[600px]:w-44 pt-0.5 font-bold;
+    @apply text-xs uppercase tracking-wide text-neutral-500 shrink-0 w-full min-[600px]:w-44 pt-0.5 font-semibold;
   }
   .skill-items {
     @apply flex flex-wrap gap-1.5 mt-1 min-[600px]:mt-0;
@@ -327,14 +295,17 @@
     @apply flex flex-wrap gap-x-3 items-baseline text-[16px] leading-relaxed;
   }
   .cert-date {
-    @apply text-[11px] font-bold uppercase tracking-[0.06em] px-2 py-0.5 rounded-full bg-neutral-100 text-black shrink-0;
+    @apply text-[11px] font-semibold uppercase tracking-[0.06em] px-2 py-0.5 rounded-full bg-neutral-100 text-black shrink-0;
   }
   .cert-issuer {
     @apply text-neutral-500 text-sm;
   }
 
-  /* ---------- Footer ---------- */
+  /* ---------- Footer: single centered muted line ---------- */
   .site-footer {
-    @apply mt-20 pb-4 text-sm text-neutral-500;
+    @apply mt-14 pb-6;
+  }
+  .site-footer-line {
+    @apply text-center text-sm text-neutral-500 m-0;
   }
 }

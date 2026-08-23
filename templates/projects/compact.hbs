@@ -1,4 +1,7 @@
-<div class="project-item project-item--compact">
-  <span class="project-title">{{title}}</span> — <span class="project-description">{{description}}</span>
-  {{#if link}} <a href="{{link}}" class="pill-link project-github-link" target="_blank" rel="noopener">GitHub</a>{{/if}}
+<div class="entry-row entry-row--textonly">
+  <div class="entry-info">
+    <div class="entry-title">{{title}}</div>
+    <div class="entry-desc">{{description}}</div>
+    {{#if link}}<div class="entry-links"><a href="{{link}}" class="entry-link" target="_blank" rel="noopener">[GitHub]</a></div>{{/if}}
+  </div>
 </div>

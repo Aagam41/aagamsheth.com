@@ -78,3 +78,18 @@ Restyle the entire page to an extracted design system from the reference site th
 - The site auto-deploys on every push to main and is publicly reachable at its github.io URL right now; the owner has explicitly accepted placeholder Papers remaining publicly visible during and after this rebuild.
 - Domain vocabulary (Section, Entry, Template, Intro statement, Placeholder, Academic reader, Industry reader) is defined in CONTEXT.md at the repo root; consumer rules in docs/agents/domain.md. The rejected terms "research statement" and "research thread" are recorded there as Avoid-language.
 - Design tokens were extracted from the live reference site chosen by the owner (its stylesheet and markup were fetched and analyzed); they are faithful copies, not approximations, and deviations should be flagged rather than silently smoothed over.
+
+## Amendment 2026-08-23 — Reference refinement pass (owner feedback)
+
+Owner reviewed the rebuilt page against two references and directed a second pass:
+
+1. **Navbar**: muted, lowercase links; page column widened past 1000px (→1100px).
+2. **Socials**: Ying Wang (yingwangg.github.io) style — a plain pipe-separated text row under the Intro statement (`email | CV | GitHub | LeetCode | Kaggle`); pill row and envelope icon removed.
+3. **Type**: Anjali Gupta (anjaliwgupta.com) typography — Inter family (400–700), body ~17px, name ~48px bold, section headings ~31px semibold; link color muted slate #8c909c darkening on hover.
+4. **Entry rows (Publications, Research, Engineering)**: Anjali Gupta pattern — thumbnail column at 20% row width (larger thumbnails), info side as stacked lines: bold title, description/authors, italic venue where present, bracketed plain-text links `[label]`; rows stack full-width on mobile.
+5. **Section titles**: "Research Projects" and "Engineering Projects".
+6. **News**: Anjali Gupta pattern — bold numeric `M/YY.` date prefix per line.
+7. **Footer**: copyright/generator/source removed; single centered muted line: "Applying design and engineering principles to solve complex problems through sound analytical and creative skills" ("though" corrected to "through").
+8. **Spacing**: tighter, Anjali-style (~30–40px between sections).
+
+All other Implementation Decisions (placeholders, YAML-only maintenance, light-only, validator contract) stand.

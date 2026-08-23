@@ -1,20 +1,20 @@
-<div class="pub-item pub-item--detailed">
+<div class="entry-row">
   {{#if image}}
-  <div class="pub-image">
+  <div class="entry-thumb">
     <img src="{{image}}" alt="{{title}} teaser" loading="lazy" />
   </div>
   {{else}}
-  <div class="pub-image pub-image--placeholder">
-    <span class="pub-image-placeholder-text">{{title}}</span>
+  <div class="entry-thumb entry-thumb--placeholder">
+    <span class="entry-thumb-placeholder-text">{{title}}</span>
   </div>
   {{/if}}
-  <div class="pub-body">
-    <div class="pub-title">{{title}}</div>
-    <div class="pub-authors">{{{authorsHtml}}}</div>
-    <div class="pub-venue">{{venue}}</div>
+  <div class="entry-info">
+    <div class="entry-title">{{title}}</div>
+    {{#if authors}}<div class="entry-authors">{{{authorsHtml}}}</div>{{/if}}
+    <div class="entry-venue"><em>{{venue}}</em></div>
     {{#if links}}
-    <div class="pub-links">
-      {{#each links}}<a href="{{this.url}}" class="pill-link" target="_blank" rel="noopener">{{this.label}}</a>{{/each}}
+    <div class="entry-links">
+      {{#each links}}<a href="{{this.url}}" class="entry-link" target="_blank" rel="noopener">[{{this.label}}]</a>{{/each}}
     </div>
     {{/if}}
   </div>

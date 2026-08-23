@@ -95,8 +95,8 @@ const expectedOrder = [
   "News",
   "Education",
   "Publications",
-  "Research",
-  "Engineering & OSS",
+  "Research Projects",
+  "Engineering Projects",
   "Experience",
   "Skills",
   "Other",
@@ -112,7 +112,7 @@ ok(
 );
 
 // -----------------------------------------------------------------------------
-// 3. Hero: email + the five agreed links
+// 3. Hero: email + the five agreed links, Ying Wang-style socials row
 // -----------------------------------------------------------------------------
 
 const heroStart = html.indexOf("<header");
@@ -120,40 +120,36 @@ const heroEnd = html.indexOf("</header>");
 const hero = heroStart !== -1 && heroEnd !== -1 ? html.slice(heroStart, heroEnd) : "";
 
 const siteConfig = readYaml("content/site.yaml");
-ok(hero.includes(`href="mailto:${siteConfig.header.email}"`), `hero has mailto link for ${siteConfig.header.email}`);
+ok(hero.includes(`href="mailto:${siteConfig.header.email}"`), `hero socials link email (${siteConfig.header.email})`);
 for (const link of siteConfig.header.links) {
-  const re = new RegExp(`<a href="${link.url.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"[^>]*class="pill-link`);
-  ok(re.test(hero), `hero pill link "${link.label}"`);
+  ok(hero.includes(`href="${link.url}"`), `hero socials link "${link.label}"`);
 }
-// Email icon counts as the fifth agreed link; CV/GitHub/LeetCode/Kaggle come from site.yaml.
-ok(
-  ["CV", "GitHub", "LeetCode", "Kaggle"].every((l) => siteConfig.header.links.some((x) => x.label === l)),
-  "hero carries the five agreed reach links (Email + CV/GitHub/LeetCode/Kaggle)"
-);
+ok(/class="hero-socials"/.test(hero), "socials rendered as a pipe-separated text row");
+ok(/class="hero-socials"[^<]*<a/.test(hero.replace(/\n\s*/g, "")), "email is the first item in the socials row");
 
 // -----------------------------------------------------------------------------
-// 4. Nunito font referenced
+// 4. Anjali Gupta typography: Inter, sizes, width
 // -----------------------------------------------------------------------------
 
-ok(/fonts\.googleapis\.com[^"']*Nunito/.test(html), "index.html references Nunito via Google Fonts");
-ok(css.includes("Nunito"), "built CSS sets Nunito as font family");
+ok(/fonts\.googleapis\.com[^"']*Inter/.test(html), "index.html references Inter via Google Fonts");
+ok(css.includes("Inter"), "built CSS sets Inter as font family");
 ok(!/prefers-color-scheme/.test(css), "no prefers-color-scheme rules (light only)");
+ok(css.includes("1100px"), "page column widened to 1100px");
+ok(/font-size:17px/.test(css), "body text sized ~17px");
+ok(/grid-template-columns:20% auto/.test(css), "entry rows use a 20% thumbnail column");
 
 // -----------------------------------------------------------------------------
-// 5. Pill classes on known links
+// 5. Bracketed plain-text links on entries
 // -----------------------------------------------------------------------------
 
 const pubsSection = extractSection(html, "publications") || "";
 const researchSection = extractSection(html, "research") || "";
 const engSection = extractSection(html, "engineering-oss") || "";
 
-ok(/<div class="pub-links">/.test(pubsSection) && /class="pill-link[ "]/.test(pubsSection),
-  "publication link pills use .pill-link");
-ok(/GitHub<\/a>/.test(engSection) && /class="pill-link[ "]/.test(engSection),
-  "Engineering & OSS GitHub pills use .pill-link");
-ok(/class="pill-link"/.test(hero), "hero links use .pill-link");
-ok(/Built with a static, open-source site generator\./.test(html) && /github\.com\/Aagam41\/aagamsheth\.com/.test(html),
-  "footer keeps generator line and links the source repo");
+ok(/\[pdf\]|\[arxiv\]|\[code\]/.test(pubsSection) && /class="entry-link"/.test(pubsSection),
+  "publication links render as bracketed [label] entry-links");
+ok(/\[GitHub\]<\/a>/.test(engSection) && /class="entry-link"/.test(engSection),
+  "Engineering Projects rows carry bracketed [GitHub] entry-links");
 
 // -----------------------------------------------------------------------------
 // 6. Count checks (not exact-match)
@@ -164,13 +160,13 @@ const certRows = count(extractSection(html, "certificates") || "", 'class="cert-
 ok(!!certEntries && certRows === certEntries.length, `certificate rows (${certRows}) == entries in certificates.yaml (${certEntries ? certEntries.length : "missing"})`);
 
 const pubEntries = readYaml("content/publications.yaml");
-const pubRows = count(pubsSection, 'class="pub-item');
+const pubRows = count(pubsSection, 'class="entry-row');
 ok(!!pubEntries && pubRows === pubEntries.length, `publication rows (${pubRows}) == entries (${pubEntries ? pubEntries.length : "missing"})`);
 
 const researchEntries = readYaml("content/research.yaml");
 const engEntries = readYaml("content/engineering-oss.yaml");
-const researchRows = count(researchSection, 'class="project-item');
-const engRows = count(engSection, 'class="project-item');
+const researchRows = count(researchSection, 'class="entry-row');
+const engRows = count(engSection, 'class="entry-row');
 ok(!!researchEntries && researchRows === researchEntries.length, `research rows (${researchRows}) == entries in research.yaml (${researchEntries ? researchEntries.length : "missing"})`);
 ok(!!engEntries && engRows === engEntries.length, `engineering rows (${engRows}) == entries in engineering-oss.yaml (${engEntries ? engEntries.length : "missing"})`);
 
@@ -184,31 +180,44 @@ ok(certRowsHtml.every((row) => /class="cert-date">[A-Z][a-z]{2} \d{4}</.test(row
 ok(certRowsHtml.length > 0 && certRowsHtml.every((row) => !/\n\s*\n/.test(row)), "certificate rows are single-line markup");
 
 // -----------------------------------------------------------------------------
-// 8. Nav: hamburger markup + scrolled-state hook
+// 8. Nav: muted lowercase links, hamburger markup + scrolled-state hook
 // -----------------------------------------------------------------------------
 
 ok(/id="site-nav"/.test(html), "fixed nav bar present");
 ok(/id="nav-toggle"/.test(html) && /aria-label="Toggle navigation"/.test(html), "hamburger toggle present with aria-label");
 ok(/nav--scrolled/.test(html), "scroll listener wired to nav--scrolled class");
 ok(/aria-expanded/.test(html), "hamburger manages aria-expanded");
+ok(/\.nav-link\{[^}]*text-transform:none/.test(css), "nav links are lowercase (no uppercase transform)");
+ok(/\.site-footer-line\{[^}]*text-align:center/.test(css), "footer line is centered");
 
 // -----------------------------------------------------------------------------
-// 9. News: bold month-year prefix
+// 9. News: bold numeric M/YY. prefix
 // -----------------------------------------------------------------------------
 
 const newsItems = [...html.matchAll(/<li class="news-item">(.*?)<\/li>/gs)].map((m) => m[1]);
 ok(newsItems.length > 0, "news items rendered");
 ok(
-  newsItems.every((item) => /^<span class="news-date">[A-Z][a-z]{2} \d{4}<\/span>/.test(item.trim())),
-  "every news item starts with a month-year prefix"
+  newsItems.every((item) => /^<strong class="news-date">\d{1,2}\/\d{2}\.<\/strong>/.test(item.trim())),
+  "every news item starts with a bold M/YY. prefix"
 );
 ok(/\.news-date\{[^}]*font-weight:(700|800|900)/.test(css), "news date prefix styled bold in CSS");
 
 // -----------------------------------------------------------------------------
-// 10. Old serif theme tokens fully gone
+// 10. Footer reduced to one centered muted line
 // -----------------------------------------------------------------------------
 
-const OLD_TOKENS = ["Georgia", "Times New Roman", "#2673b9", "#333332", "bg-paper", "text-muted", "hairline"];
+ok(
+  /Applying design and engineering principles to solve complex problems through sound analytical and creative skills/.test(html),
+  "footer carries the centered tagline line"
+);
+ok(!/Built with a static, open-source site generator/.test(html), "old generator footer sentence removed");
+ok(!/github\.com\/Aagam41\/aagamsheth\.com/.test(html), "footer source pill removed");
+
+// -----------------------------------------------------------------------------
+// 11. Old theme tokens fully gone (Nunito joined after refinement pass)
+// -----------------------------------------------------------------------------
+
+const OLD_TOKENS = ["Georgia", "Times New Roman", "#2673b9", "#333332", "bg-paper", "text-muted", "hairline", "Nunito"];
 for (const token of OLD_TOKENS) {
   ok(!html.toLowerCase().includes(token.toLowerCase()), `index.html free of old token "${token}"`);
   ok(!css.toLowerCase().includes(token.toLowerCase()), `style.css free of old token "${token}"`);
@@ -216,10 +225,11 @@ for (const token of OLD_TOKENS) {
 ok(!css.includes("scale(2.6"), "hover-to-zoom thumbnail transform removed");
 
 // -----------------------------------------------------------------------------
-// 11. Research thumbnails: rounded static images present
+// 12. Entry thumbnails: larger rounded static images present
 // -----------------------------------------------------------------------------
 
-ok(/class="project-image">\s*<img[^>]*loading="lazy"/.test(researchSection), "research detailed rows keep lazy thumbnails");
+ok(/class="entry-row">\s*<div class="entry-thumb">\s*<img[^>]*loading="lazy"/.test(researchSection),
+  "research rows keep lazy thumbnails in the thumb column");
 
 // -----------------------------------------------------------------------------
 // Summary

@@ -1,16 +1,16 @@
-<div class="project-item project-item--detailed">
+<div class="entry-row">
   {{#if image}}
-  <div class="project-image">
+  <div class="entry-thumb">
     <img src="{{image}}" alt="{{title}}" loading="lazy" />
   </div>
   {{else}}
-  <div class="project-image project-image--placeholder">
-    <span class="project-image-placeholder-text">{{title}}</span>
+  <div class="entry-thumb entry-thumb--placeholder">
+    <span class="entry-thumb-placeholder-text">{{title}}</span>
   </div>
   {{/if}}
-  <div class="project-body">
-    <div class="project-title">{{title}}</div>
-    <div class="project-description">{{description}}</div>
-    {{#if link}}<a href="{{link}}" class="pill-link project-github-link" target="_blank" rel="noopener">GitHub</a>{{/if}}
+  <div class="entry-info">
+    <div class="entry-title">{{title}}</div>
+    <div class="entry-desc">{{description}}</div>
+    {{#if link}}<div class="entry-links"><a href="{{link}}" class="entry-link" target="_blank" rel="noopener">[GitHub]</a></div>{{/if}}
   </div>
 </div>

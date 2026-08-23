@@ -107,7 +107,13 @@ function sortEntries(entries, sortMode) {
 
 function prepEntry(entry) {
   const prepped = { ...entry };
-  if (entry.date) prepped.dateLabel = formatDateLabel(entry.date);
+  if (entry.date) {
+    prepped.dateLabel = formatDateLabel(entry.date);
+    const d = new Date(entry.date + "T00:00:00");
+    if (!isNaN(d.getTime())) {
+      prepped.dateLabelShort = `${d.getMonth() + 1}/${String(d.getFullYear()).slice(-2)}.`;
+    }
+  }
   if (entry.text) prepped.textHtml = mdToHtml(entry.text);
   if (entry.authors) {
     prepped.authorsHtml = entry.authors.map((a) => mdToHtml(a)).join(", ");

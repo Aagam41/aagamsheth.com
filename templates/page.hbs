@@ -7,7 +7,7 @@
   <meta name="description" content="{{site.meta_description}}" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@200..1000&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&display=swap" />
   <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="icon" href="data:,">
 </head>
@@ -38,19 +38,11 @@
           <div class="hero-photo">
             <img src="{{header.photo}}" alt="{{header.name}}" />
           </div>
-          <div class="hero-contact">
-            <a href="mailto:{{header.email}}" class="hero-email-icon" aria-label="Email {{header.name}}" title="{{header.email}}">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
-                <path d="M22 6L12 13 2 6"></path>
-              </svg>
-            </a>
-          </div>
-          <div class="hero-links">
-            {{#each header.links}}<a href="{{this.url}}" class="pill-link" target="_blank" rel="noopener">{{this.label}}</a>{{/each}}
-          </div>
         </div>
-        <p class="hero-intro">{{{header.tagline}}}</p>
+        <div class="hero-intro-col">
+          <p class="hero-intro">{{{header.tagline}}}</p>
+          <p class="hero-socials"><a href="mailto:{{header.email}}">{{header.email}}</a>{{#each header.links}}<span class="sep">|</span><a href="{{this.url}}" target="_blank" rel="noopener">{{this.label}}</a>{{/each}}</p>
+        </div>
       </div>
     </header>
 
@@ -66,9 +58,7 @@
     </main>
 
     <footer class="site-footer">
-      <p>&copy; {{currentYear}} {{header.name}}. Built with a static, open-source site generator.
-        <a class="pill-link" href="https://github.com/Aagam41/aagamsheth.com" target="_blank" rel="noopener">source</a>
-      </p>
+      <p class="site-footer-line">Applying design and engineering principles to solve complex problems through sound analytical and creative skills</p>
     </footer>
 
   </div>
