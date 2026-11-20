@@ -46,7 +46,7 @@
       <div class="hero-row">
         <div class="hero-photo-col">
           <div class="hero-photo">
-            <img src="{{header.photo}}" alt="{{header.name}}" />
+            <img src="{{header.photo}}" alt="{{header.name}}" width="400" height="370" loading="eager" fetchpriority="high" decoding="async" />
           </div>
           <p class="hero-email">{{emailParts header.email}}</p>
           <p class="hero-socials">{{#each header.links}}<a href="{{this.url}}" target="_blank" rel="noopener">{{this.label}}</a>{{#unless @last}}<span class="sep">|</span>{{/unless}}{{/each}}</p>

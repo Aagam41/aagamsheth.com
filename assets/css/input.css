@@ -170,7 +170,7 @@
   /* ---------- Mobile drawer items: match the side-nav font/menu,
      compact dock-like cards (height only slightly larger than text) ---------- */
   .nav-mobile .nav-link {
-    @apply text-xs text-neutral-400 no-underline transition-colors duration-150 hover:text-black hover:no-underline;
+    @apply text-xs text-black no-underline transition-colors duration-150 hover:text-accent hover:no-underline;
   }
   .nav-mobile .nav-link.active {
     color: theme('colors.accent');

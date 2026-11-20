@@ -25,7 +25,7 @@
   links:
     - label: "GitHub"
       url: "https://github.com/Aagam41/ML_2026_5_Epochalypse"
-  image: "assets/img/project-placeholder-1.png"
+  image: "assets/img/project-placeholder-1.jpg"
   template: "detailed"
 
 - title: "Small Object Detection & Tracking for UAV Videos"
@@ -37,7 +37,7 @@
       url: "https://github.com/Aagam41/CV_2026_7_TheConvolutioners"
     - label: "Video"
       url: "https://github.com/aagam41"
-  image: "assets/img/project-placeholder-2.png"
+  image: "assets/img/project-placeholder-2.jpg"
   template: "detailed"
 
 - title: "Unsupervised Denoising for Fluorescence Microscopy"
