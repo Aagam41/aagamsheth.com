@@ -25,13 +25,14 @@
       </button>
       <span class="nav-brand">Aagam Sheth</span>
     </div>
-    <div class="nav-mobile" id="nav-mobile">
-      <a class="nav-link" href="#top">Home</a>
-      <a class="nav-link" href="#education">Education</a><a class="nav-link" href="#publications">Publications</a><a class="nav-link" href="#research">Research Projects</a><a class="nav-link" href="#engineering-oss">Engineering Projects</a><a class="nav-link" href="#experience">Work Experience</a><a class="nav-link" href="#skills">Skills</a><a class="nav-link" href="#other">Other</a><a class="nav-link" href="#certificates">Certificates</a>
-    </div>
   </nav>
 
   <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
+
+  <div class="nav-mobile" id="nav-mobile">
+    <a class="nav-link" href="#top">Home</a>
+    <a class="nav-link" href="#education">Education</a><a class="nav-link" href="#publications">Publications</a><a class="nav-link" href="#research">Research Projects</a><a class="nav-link" href="#engineering-oss">Engineering Projects</a><a class="nav-link" href="#experience">Work Experience</a><a class="nav-link" href="#skills">Skills</a><a class="nav-link" href="#other">Other</a><a class="nav-link" href="#certificates">Certificates</a>
+  </div>
 
   <nav class="side-nav" aria-label="Section outline">
     <a href="#top">Home</a>
@@ -517,9 +518,11 @@
       if (overlay) {
         overlay.addEventListener("click", closeDrawer);
       }
+      var navMobile = document.getElementById("nav-mobile");
       document.addEventListener("click", function (e) {
         if (!nav.classList.contains("nav--open")) return;
         if (nav.contains(e.target)) return;
+        if (navMobile && navMobile.contains(e.target)) return;
         closeDrawer();
       });
       document.querySelectorAll("#nav-mobile .nav-link").forEach(function (link) {
