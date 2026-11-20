@@ -33,11 +33,11 @@ jobs:
       - name: Validate content (yaml + references)
         run: npm run validate
 
-      - name: Build site (yaml -> index.html)
-        run: npm run build
-
       - name: Build CSS
         run: npm run css
+
+      - name: Build site (yaml -> index.html, inlines CSS)
+        run: npm run build
 
       - name: Assemble deploy folder
         run: |

@@ -220,6 +220,13 @@ function build() {
   );
   const pageTemplate = Handlebars.compile(pageTemplateSrc);
 
+  // Inline the compiled (minified) stylesheet so the page renders without a
+  // render-blocking CSS request on slow networks.
+  const cssPath = path.join(ROOT, "assets", "css", "style.css");
+  const inlinedCss = fs.existsSync(cssPath)
+    ? fs.readFileSync(cssPath, "utf8")
+    : "";
+
   const html = pageTemplate({
     site,
     header: {
@@ -228,9 +235,15 @@ function build() {
     },
     sections: renderedSections,
     currentYear: new Date().getFullYear(),
+    css: inlinedCss,
   });
 
-  fs.writeFileSync(OUTPUT_FILE, html, "utf8");
+  // Minify the final HTML to reduce transfer size on slow networks.
+  const minified = html
+    .replace(/<!--[\s\S]*?-->/g, "")
+    .replace(/>\s+</g, "><")
+    .trim();
+  fs.writeFileSync(OUTPUT_FILE, minified, "utf8");
   console.log(`Built index.html (${renderedSections.length} sections).`);
 }
 
