@@ -79,6 +79,40 @@ Restyle the entire page to an extracted design system from the reference site th
 - Domain vocabulary (Section, Entry, Template, Intro statement, Placeholder, Academic reader, Industry reader) is defined in CONTEXT.md at the repo root; consumer rules in docs/agents/domain.md. The rejected terms "research statement" and "research thread" are recorded there as Avoid-language.
 - Design tokens were extracted from the live reference site chosen by the owner (its stylesheet and markup were fetched and analyzed); they are faithful copies, not approximations, and deviations should be flagged rather than silently smoothed over.
 
+---
+
+## Amendment: Responsive UI/UX (QA follow-up)
+
+### Problem Statement
+
+The initial restyle pinned a desktop layout and a hamburger below 600px but left intermediate breakpoints and exact stacking behavior unspecified. QA testing across laptop, tablet, and mobile widths exposed ambiguity in the hero and entry rows. This amendment resolves those responsive decisions.
+
+### Solution
+
+Pin three hero breakpoints and one entry-row breakpoint, plus a mobile navigation drawer, so the layout is deterministic at every width.
+
+### Amendment User Stories
+
+1. As a Laptop visitor, I want the hero in a row with a 40% photo column (headshot, then email on its own line, then CV | GitHub | LeetCode | Kaggle on one line) and a 60% intro column with a 4rem gap, so that the page reads like the reference homepage on my screen
+2. As a Tablet visitor, I want the hero to stay a row but with the image section and intro section centered toward each other below 900px, so that neither column looks stranded
+3. As a Mobile visitor, I want the hero stacked (image on top at 50% width centered in a flex column, socials below the image, intro below that) below 700px, so that everything fits without horizontal scrolling
+4. As a Mobile visitor, I want a top bar that is always visible on scroll showing the menu icon and "Aagam Sheth", so that I always know where I am and can open navigation
+5. As a Mobile visitor, I want tapping the menu icon to slide a side nav in from the right, and tapping an item to scroll to that section and close the drawer, so that navigation is reachable without cluttering the page
+6. As a Tablet or Mobile visitor, I want Research project and Publication entry rows to stack thumbnail-above-info at 900px and below, so that thumbnails are not squished beside long text
+7. As a QA reviewer, I want every breakpoint's expected layout documented and testable, so that regressions are caught by the smoke test rather than by eye
+
+### Responsive Decisions
+
+- **Hero ≥ 900px**: row layout. Left column 40% (headshot, then email on its own line, then `CV | GitHub | LeetCode | Kaggle` on one line). Right column 60% intro statement. 4rem gap between the name title and the intro.
+- **Hero < 900px**: row retained; image section and intro section centered toward each other (tighter centered alignment).
+- **Hero < 700px**: vertical stack — image on top at 50% width centered in a flex column, socials below the image, intro below that.
+- **Mobile nav**: top bar always visible on scroll with menu icon + "Aagam Sheth". Tapping the menu slides a right-side drawer in; tapping an item scrolls to that section and closes the drawer.
+- **Entry rows (Research projects + Publications) ≤ 900px**: thumbnail stacks above info; stays stacked at all smaller widths.
+
+### Out of Scope (amendment)
+
+- No new breakpoints beyond those listed; no content or section-structure changes; no changes to the desktop design tokens.
+
 ## Amendment 2026-08-23 — Reference refinement pass (owner feedback)
 
 Owner reviewed the rebuilt page against two references and directed a second pass:

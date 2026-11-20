@@ -16,20 +16,22 @@
   <nav class="site-nav" id="site-nav">
     <div class="site-nav-inner">
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-mobile">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
           <path d="M4 7h16M4 12h16M4 17h16"></path>
         </svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M6 6l12 12M18 6L6 18"></path>
+        </svg>
       </button>
-      <div class="nav-links">
-        <a class="nav-link" href="#top">Home</a>
-        {{#each sections}}<a class="nav-link" href="#{{this.id}}">{{this.title}}</a>{{/each}}
-      </div>
+      <span class="nav-brand">Aagam Sheth</span>
     </div>
     <div class="nav-mobile" id="nav-mobile">
       <a class="nav-link" href="#top">Home</a>
       {{#each sections}}<a class="nav-link" href="#{{this.id}}">{{this.title}}</a>{{/each}}
     </div>
   </nav>
+
+  <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
 
   <nav class="side-nav" aria-label="Section outline">
     <a href="#top">Home</a>
@@ -45,10 +47,11 @@
           <div class="hero-photo">
             <img src="{{header.photo}}" alt="{{header.name}}" />
           </div>
+          <p class="hero-email">{{emailParts header.email}}</p>
+          <p class="hero-socials">{{#each header.links}}<a href="{{this.url}}" target="_blank" rel="noopener">{{this.label}}</a>{{#unless @last}}<span class="sep">|</span>{{/unless}}{{/each}}</p>
         </div>
         <div class="hero-intro-col">
           <div class="hero-intro">{{{header.tagline}}}</div>
-          <p class="hero-socials">{{emailParts header.email}}{{#each header.links}}<span class="sep">|</span><a href="{{this.url}}" target="_blank" rel="noopener">{{this.label}}</a>{{/each}}</p>
         </div>
       </div>
     </header>
@@ -79,15 +82,33 @@
       }
       window.addEventListener("scroll", onScroll, { passive: true });
       onScroll();
+      var overlay = document.getElementById("nav-overlay");
+      function closeDrawer() {
+        nav.classList.remove("nav--open");
+        toggle.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "";
+      }
+      function openDrawer() {
+        nav.classList.add("nav--open");
+        toggle.setAttribute("aria-expanded", "true");
+        document.body.style.overflow = "hidden";
+      }
       toggle.addEventListener("click", function () {
-        var open = nav.classList.toggle("nav--open");
-        toggle.setAttribute("aria-expanded", open ? "true" : "false");
+        if (nav.classList.contains("nav--open")) closeDrawer(); else openDrawer();
+      });
+      if (overlay) {
+        overlay.addEventListener("click", closeDrawer);
+      }
+      document.addEventListener("click", function (e) {
+        if (!nav.classList.contains("nav--open")) return;
+        if (nav.contains(e.target)) return;
+        closeDrawer();
       });
       document.querySelectorAll("#nav-mobile .nav-link").forEach(function (link) {
-        link.addEventListener("click", function () {
-          nav.classList.remove("nav--open");
-          toggle.setAttribute("aria-expanded", "false");
-        });
+        link.addEventListener("click", closeDrawer);
+      });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && nav.classList.contains("nav--open")) closeDrawer();
       });
       if ("IntersectionObserver" in window) {
         var spy = new IntersectionObserver(function (entries) {

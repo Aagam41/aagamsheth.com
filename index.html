@@ -16,20 +16,22 @@
   <nav class="site-nav" id="site-nav">
     <div class="site-nav-inner">
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-mobile">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
           <path d="M4 7h16M4 12h16M4 17h16"></path>
         </svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M6 6l12 12M18 6L6 18"></path>
+        </svg>
       </button>
-      <div class="nav-links">
-        <a class="nav-link" href="#top">Home</a>
-        <a class="nav-link" href="#education">Education</a><a class="nav-link" href="#publications">Publications</a><a class="nav-link" href="#research">Research Projects</a><a class="nav-link" href="#engineering-oss">Engineering Projects</a><a class="nav-link" href="#experience">Work Experience</a><a class="nav-link" href="#skills">Skills</a><a class="nav-link" href="#other">Other</a><a class="nav-link" href="#certificates">Certificates</a>
-      </div>
+      <span class="nav-brand">Aagam Sheth</span>
     </div>
     <div class="nav-mobile" id="nav-mobile">
       <a class="nav-link" href="#top">Home</a>
       <a class="nav-link" href="#education">Education</a><a class="nav-link" href="#publications">Publications</a><a class="nav-link" href="#research">Research Projects</a><a class="nav-link" href="#engineering-oss">Engineering Projects</a><a class="nav-link" href="#experience">Work Experience</a><a class="nav-link" href="#skills">Skills</a><a class="nav-link" href="#other">Other</a><a class="nav-link" href="#certificates">Certificates</a>
     </div>
   </nav>
+
+  <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
 
   <nav class="side-nav" aria-label="Section outline">
     <a href="#top">Home</a>
@@ -45,10 +47,11 @@
           <div class="hero-photo">
             <img src="assets/img/headshot.jpg" alt="Aagam Sheth" />
           </div>
+          <p class="hero-email"><a class="js-email" href="#" data-user="contact.me" data-domain="aagamsheth.com">contact [dot] me [at] aagamsheth [dot] com</a></p>
+          <p class="hero-socials"><a href="assets/files/cv-placeholder.pdf" target="_blank" rel="noopener">CV</a><span class="sep">|</span><a href="https://github.com/aagam41" target="_blank" rel="noopener">GitHub</a><span class="sep">|</span><a href="https://leetcode.com/u/Aagam41/" target="_blank" rel="noopener">LeetCode</a><span class="sep">|</span><a href="https://www.kaggle.com/aagamsheth" target="_blank" rel="noopener">Kaggle</a></p>
         </div>
         <div class="hero-intro-col">
           <div class="hero-intro"><p>I'm an M.Tech student in Computer Science and Engineering at Ahmedabad University. My work sits at the intersection of computer vision, large language models, and document intelligence. I am drawn to problems that require a model to reason about structure and layout rather than treating pixels or text as flat, undifferentiated input. This interest extends naturally into vision language models more broadly, and into information science as a way of understanding how knowledge is organized, represented, and retrieved.</p><p>Alongside my research, I serve as Chief Technology Officer at <a href="https://tirthinfotech.com" target="_blank" rel="noopener">Tirth Infotech</a>, where I direct technical strategy and oversee the delivery of secure production platforms for government and enterprise clients. The role keeps me equally engaged with systems design and applied research, and each informs the other.</p><p>I enjoy conversations that wander from research to everyday things, so feel free to reach out if you would like to talk shop over coffee or compare notes on a good cycling route. I can be reached at my email below.</p></div>
-          <p class="hero-socials"><a class="js-email" href="#" data-user="contact.me" data-domain="aagamsheth.com">contact [dot] me [at] aagamsheth [dot] com</a><span class="sep">|</span><a href="assets/files/cv-placeholder.pdf" target="_blank" rel="noopener">CV</a><span class="sep">|</span><a href="https://github.com/aagam41" target="_blank" rel="noopener">GitHub</a><span class="sep">|</span><a href="https://leetcode.com/u/Aagam41/" target="_blank" rel="noopener">LeetCode</a><span class="sep">|</span><a href="https://www.kaggle.com/aagamsheth" target="_blank" rel="noopener">Kaggle</a></p>
         </div>
       </div>
     </header>
@@ -372,35 +375,42 @@
           <div class="skill-group">
   <div class="skill-category">Languages</div>
   <div class="skill-items">
-    <span class="skill-pill">Python</span><span class="skill-pill">C/C++</span><span class="skill-pill">C#</span><span class="skill-pill">VB.NET</span><span class="skill-pill">JavaScript</span><span class="skill-pill">SQL</span><span class="skill-pill">HTML/CSS</span>
+    <span class="skill-pill">Python</span><span class="skill-pill">C/C++</span><span class="skill-pill">C#</span><span class="skill-pill">VB.NET</span><span class="skill-pill">JavaScript</span><span class="skill-pill">SQL</span><span class="skill-pill">HTML/CSS</span><span class="skill-pill">TypeScript</span><span class="skill-pill">Kotlin</span><span class="skill-pill">Java</span><span class="skill-pill">Bash / Shell</span><span class="skill-pill">YAML</span>
   </div>
 </div>
 
 <div class="skill-group">
   <div class="skill-category">ML / Deep Learning &amp; Computer Vision</div>
   <div class="skill-items">
-    <span class="skill-pill">TensorFlow/Keras</span><span class="skill-pill">PyTorch</span><span class="skill-pill">Scikit-Learn</span><span class="skill-pill">Hugging Face Transformers</span><span class="skill-pill">Ultralytics YOLO</span><span class="skill-pill">SAHI (tiling inference)</span><span class="skill-pill">OpenCV</span><span class="skill-pill">Noise2Noise / Noise2Void</span><span class="skill-pill">Pandas</span><span class="skill-pill">NumPy</span><span class="skill-pill">Matplotlib</span><span class="skill-pill">Seaborn</span><span class="skill-pill">Optuna</span><span class="skill-pill">SHAP</span>
+    <span class="skill-pill">TensorFlow/Keras</span><span class="skill-pill">PyTorch</span><span class="skill-pill">Scikit-Learn</span><span class="skill-pill">Hugging Face Transformers</span><span class="skill-pill">Ultralytics YOLO</span><span class="skill-pill">SAHI (tiling inference)</span><span class="skill-pill">OpenCV</span><span class="skill-pill">Noise2Noise / Noise2Void</span><span class="skill-pill">Pandas</span><span class="skill-pill">NumPy</span><span class="skill-pill">Matplotlib</span><span class="skill-pill">Seaborn</span><span class="skill-pill">Optuna</span><span class="skill-pill">SHAP</span><span class="skill-pill">SciPy</span><span class="skill-pill">ONNX</span><span class="skill-pill">ONNX Runtime</span><span class="skill-pill">CUDA</span><span class="skill-pill">pynvml</span>
   </div>
 </div>
 
 <div class="skill-group">
   <div class="skill-category">Web &amp; Backend Frameworks</div>
   <div class="skill-items">
-    <span class="skill-pill">Django</span><span class="skill-pill">Django REST Framework</span><span class="skill-pill">Next.js</span><span class="skill-pill">React.js</span><span class="skill-pill">jQuery</span><span class="skill-pill">.NET Framework</span><span class="skill-pill">Tailwind CSS</span><span class="skill-pill">shadcn/ui</span><span class="skill-pill">DataTables.js</span><span class="skill-pill">Chart.js</span>
+    <span class="skill-pill">Django</span><span class="skill-pill">Django REST Framework</span><span class="skill-pill">Next.js</span><span class="skill-pill">React.js</span><span class="skill-pill">jQuery</span><span class="skill-pill">.NET Framework</span><span class="skill-pill">Tailwind CSS</span><span class="skill-pill">Handlebars</span><span class="skill-pill">js-yaml</span><span class="skill-pill">shadcn/ui</span><span class="skill-pill">SimpleJWT</span><span class="skill-pill">React Native</span><span class="skill-pill">Expo</span><span class="skill-pill">PostCSS</span><span class="skill-pill">ESLint</span><span class="skill-pill">Jinja</span><span class="skill-pill">DataTables.js</span><span class="skill-pill">Chart.js</span>
   </div>
 </div>
 
 <div class="skill-group">
   <div class="skill-category">Databases &amp; Messaging</div>
   <div class="skill-items">
-    <span class="skill-pill">PostgreSQL</span><span class="skill-pill">MySQL</span><span class="skill-pill">MS SQL Server</span><span class="skill-pill">MongoDB</span><span class="skill-pill">Redis</span><span class="skill-pill">RabbitMQ</span>
+    <span class="skill-pill">PostgreSQL</span><span class="skill-pill">MySQL</span><span class="skill-pill">MS SQL Server</span><span class="skill-pill">MongoDB</span><span class="skill-pill">Redis</span><span class="skill-pill">RabbitMQ</span><span class="skill-pill">psycopg2</span>
+  </div>
+</div>
+
+<div class="skill-group">
+  <div class="skill-category">Mobile &amp; Android</div>
+  <div class="skill-items">
+    <span class="skill-pill">Android</span><span class="skill-pill">CameraX</span><span class="skill-pill">ML Kit</span><span class="skill-pill">LiteRT</span><span class="skill-pill">React Native SVG</span>
   </div>
 </div>
 
 <div class="skill-group">
   <div class="skill-category">DevOps &amp; Servers</div>
   <div class="skill-items">
-    <span class="skill-pill">AWS (Elastic Services, RDS, SageMaker, LightSail)</span><span class="skill-pill">Docker</span><span class="skill-pill">Nginx</span><span class="skill-pill">Apache httpd / mod_wsgi</span><span class="skill-pill">Cron / Celery</span><span class="skill-pill">Prometheus / Grafana</span>
+    <span class="skill-pill">AWS (Elastic Services, RDS, SageMaker, LightSail)</span><span class="skill-pill">Docker</span><span class="skill-pill">Nginx</span><span class="skill-pill">Apache httpd / mod_wsgi</span><span class="skill-pill">Cron / Celery</span><span class="skill-pill">Prometheus / Grafana</span><span class="skill-pill">GitHub Actions</span><span class="skill-pill">OpenStack</span><span class="skill-pill">Ansible</span><span class="skill-pill">Kolla</span><span class="skill-pill">Qt</span>
   </div>
 </div>
 
@@ -414,7 +424,7 @@
 <div class="skill-group">
   <div class="skill-category">Tools &amp; Platforms</div>
   <div class="skill-items">
-    <span class="skill-pill">Git / GitHub / Gitea</span><span class="skill-pill">LaTeX</span><span class="skill-pill">JupyterLab</span><span class="skill-pill">Power BI</span><span class="skill-pill">Postman / Insomnia</span><span class="skill-pill">Figma</span><span class="skill-pill">Crystal Reports</span><span class="skill-pill">Ubuntu / RHEL / Windows Server</span>
+    <span class="skill-pill">Git / GitHub / Gitea</span><span class="skill-pill">GitHub Pages</span><span class="skill-pill">LaTeX</span><span class="skill-pill">JupyterLab</span><span class="skill-pill">Power BI</span><span class="skill-pill">Postman / Insomnia</span><span class="skill-pill">Figma</span><span class="skill-pill">Crystal Reports</span><span class="skill-pill">Ubuntu / RHEL / Windows Server</span>
   </div>
 </div>
 
@@ -435,37 +445,41 @@
       <section class="content-section" id="certificates">
         <h2 class="section-title">Certificates</h2>
         <div class="section-body section-body--certificates">
-          <div class="cert-item"><span class="cert-date">Mar 2023</span> <span class="cert-title">Data Science Tools</span> <span class="cert-issuer">IBM Developer Skills Network [DS0105EN]</span></div>
+          <div class="cert-item"><span class="cert-date">May 2026</span><div class="cert-body"><span class="cert-title">AWS Academy Graduate - Data Engineering - Training Badge</span><span class="cert-issuer">Amazon Web Services Training and Certification (AWS Academy)</span></div></div>
 
-<div class="cert-item"><span class="cert-date">Mar 2023</span> <span class="cert-title">Advanced SQL for Data Scientists</span> <span class="cert-issuer">LinkedIn Learning</span></div>
+<div class="cert-item"><span class="cert-date">Dec 2025</span><div class="cert-body"><span class="cert-title">AWS Academy Graduate - Cloud Foundations - Training Badge</span><span class="cert-issuer">Amazon Web Services Training and Certification (AWS Academy)</span></div></div>
 
-<div class="cert-item"><span class="cert-date">Mar 2023</span> <span class="cert-title">SQL for Data Analysis</span> <span class="cert-issuer">LinkedIn Learning</span></div>
+<div class="cert-item"><span class="cert-date">Mar 2023</span><div class="cert-body"><span class="cert-title">Data Science Tools</span><span class="cert-issuer">IBM Developer Skills Network [DS0105EN]</span></div></div>
 
-<div class="cert-item"><span class="cert-date">Mar 2023</span> <span class="cert-title">Data Strategy</span> <span class="cert-issuer">NASBA &amp; Project Management Institute (CPE Credit: 1.6)</span></div>
+<div class="cert-item"><span class="cert-date">Mar 2023</span><div class="cert-body"><span class="cert-title">Advanced SQL for Data Scientists</span><span class="cert-issuer">LinkedIn Learning</span></div></div>
 
-<div class="cert-item"><span class="cert-date">Mar 2023</span> <span class="cert-title">Python Data Analysis</span> <span class="cert-issuer">NASBA (CPE Credit: 4.8)</span></div>
+<div class="cert-item"><span class="cert-date">Mar 2023</span><div class="cert-body"><span class="cert-title">SQL for Data Analysis</span><span class="cert-issuer">LinkedIn Learning</span></div></div>
 
-<div class="cert-item"><span class="cert-date">Mar 2023</span> <span class="cert-title">Designing Highly Scalable and Highly Available SQL Databases</span> <span class="cert-issuer">LinkedIn Learning</span></div>
+<div class="cert-item"><span class="cert-date">Mar 2023</span><div class="cert-body"><span class="cert-title">Data Strategy</span><span class="cert-issuer">NASBA &amp; Project Management Institute (CPE Credit: 1.6)</span></div></div>
 
-<div class="cert-item"><span class="cert-date">Mar 2023</span> <span class="cert-title">Machine Learning with Python: Foundations</span> <span class="cert-issuer">LinkedIn Learning</span></div>
+<div class="cert-item"><span class="cert-date">Mar 2023</span><div class="cert-body"><span class="cert-title">Python Data Analysis</span><span class="cert-issuer">NASBA (CPE Credit: 4.8)</span></div></div>
 
-<div class="cert-item"><span class="cert-date">Mar 2023</span> <span class="cert-title">Level Up: Advanced Python</span> <span class="cert-issuer">LinkedIn Learning</span></div>
+<div class="cert-item"><span class="cert-date">Mar 2023</span><div class="cert-body"><span class="cert-title">Designing Highly Scalable and Highly Available SQL Databases</span><span class="cert-issuer">LinkedIn Learning</span></div></div>
 
-<div class="cert-item"><span class="cert-date">Feb 2023</span> <span class="cert-title">Data Science 101</span> <span class="cert-issuer">IBM Developer Skills Network [DS0101EN]</span></div>
+<div class="cert-item"><span class="cert-date">Mar 2023</span><div class="cert-body"><span class="cert-title">Machine Learning with Python: Foundations</span><span class="cert-issuer">LinkedIn Learning</span></div></div>
 
-<div class="cert-item"><span class="cert-date">Feb 2023</span> <span class="cert-title">Data Visualization with Python</span> <span class="cert-issuer">IBM Developer Skills Network [DV0101EN]</span></div>
+<div class="cert-item"><span class="cert-date">Mar 2023</span><div class="cert-body"><span class="cert-title">Level Up: Advanced Python</span><span class="cert-issuer">LinkedIn Learning</span></div></div>
 
-<div class="cert-item"><span class="cert-date">Feb 2023</span> <span class="cert-title">Machine Learning with Python</span> <span class="cert-issuer">IBM Developer Skills Network [ML0101EN]</span></div>
+<div class="cert-item"><span class="cert-date">Feb 2023</span><div class="cert-body"><span class="cert-title">Data Science 101</span><span class="cert-issuer">IBM Developer Skills Network [DS0101EN]</span></div></div>
 
-<div class="cert-item"><span class="cert-date">Feb 2023</span> <span class="cert-title">Python 101 for Data Science</span> <span class="cert-issuer">IBM Developer Skills Network [PY0101EN]</span></div>
+<div class="cert-item"><span class="cert-date">Feb 2023</span><div class="cert-body"><span class="cert-title">Data Visualization with Python</span><span class="cert-issuer">IBM Developer Skills Network [DV0101EN]</span></div></div>
 
-<div class="cert-item"><span class="cert-date">Sep 2020</span> <span class="cert-title">Introduction to Data Science in Python</span> <span class="cert-issuer">University of Michigan (Coursera)</span></div>
+<div class="cert-item"><span class="cert-date">Feb 2023</span><div class="cert-body"><span class="cert-title">Machine Learning with Python</span><span class="cert-issuer">IBM Developer Skills Network [ML0101EN]</span></div></div>
 
-<div class="cert-item"><span class="cert-date">May 2020</span> <span class="cert-title">Programming for Everybody (Getting Started with Python)</span> <span class="cert-issuer">University of Michigan (Coursera)</span></div>
+<div class="cert-item"><span class="cert-date">Feb 2023</span><div class="cert-body"><span class="cert-title">Python 101 for Data Science</span><span class="cert-issuer">IBM Developer Skills Network [PY0101EN]</span></div></div>
 
-<div class="cert-item"><span class="cert-date">Apr 2020</span> <span class="cert-title">Python Data Structures</span> <span class="cert-issuer">University of Michigan (Coursera)</span></div>
+<div class="cert-item"><span class="cert-date">Sep 2020</span><div class="cert-body"><span class="cert-title">Introduction to Data Science in Python</span><span class="cert-issuer">University of Michigan (Coursera)</span></div></div>
 
-<div class="cert-item"><span class="cert-date">Jan 2013</span> <span class="cert-title">GESE Grade 2 (CEFR A1)</span> <span class="cert-issuer">Trinity College London</span></div>
+<div class="cert-item"><span class="cert-date">May 2020</span><div class="cert-body"><span class="cert-title">Programming for Everybody (Getting Started with Python)</span><span class="cert-issuer">University of Michigan (Coursera)</span></div></div>
+
+<div class="cert-item"><span class="cert-date">Apr 2020</span><div class="cert-body"><span class="cert-title">Python Data Structures</span><span class="cert-issuer">University of Michigan (Coursera)</span></div></div>
+
+<div class="cert-item"><span class="cert-date">Jan 2013</span><div class="cert-body"><span class="cert-title">GESE Grade 2 (CEFR A1)</span><span class="cert-issuer">Trinity College London</span></div></div>
 
         </div>
       </section>
@@ -486,15 +500,33 @@
       }
       window.addEventListener("scroll", onScroll, { passive: true });
       onScroll();
+      var overlay = document.getElementById("nav-overlay");
+      function closeDrawer() {
+        nav.classList.remove("nav--open");
+        toggle.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "";
+      }
+      function openDrawer() {
+        nav.classList.add("nav--open");
+        toggle.setAttribute("aria-expanded", "true");
+        document.body.style.overflow = "hidden";
+      }
       toggle.addEventListener("click", function () {
-        var open = nav.classList.toggle("nav--open");
-        toggle.setAttribute("aria-expanded", open ? "true" : "false");
+        if (nav.classList.contains("nav--open")) closeDrawer(); else openDrawer();
+      });
+      if (overlay) {
+        overlay.addEventListener("click", closeDrawer);
+      }
+      document.addEventListener("click", function (e) {
+        if (!nav.classList.contains("nav--open")) return;
+        if (nav.contains(e.target)) return;
+        closeDrawer();
       });
       document.querySelectorAll("#nav-mobile .nav-link").forEach(function (link) {
-        link.addEventListener("click", function () {
-          nav.classList.remove("nav--open");
-          toggle.setAttribute("aria-expanded", "false");
-        });
+        link.addEventListener("click", closeDrawer);
+      });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && nav.classList.contains("nav--open")) closeDrawer();
       });
       if ("IntersectionObserver" in window) {
         var spy = new IntersectionObserver(function (entries) {

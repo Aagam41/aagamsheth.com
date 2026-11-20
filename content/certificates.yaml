@@ -10,6 +10,14 @@
 #              one-line-per-credential row — see site.yaml)
 # =============================================================================
 
+- date: "2026-05-31"
+  title: "AWS Academy Graduate - Data Engineering - Training Badge"
+  issuer: "Amazon Web Services Training and Certification (AWS Academy)"
+
+- date: "2025-12-29"
+  title: "AWS Academy Graduate - Cloud Foundations - Training Badge"
+  issuer: "Amazon Web Services Training and Certification (AWS Academy)"
+
 - date: "2023-03-01"
   title: "Data Science Tools"
   issuer: "IBM Developer Skills Network [DS0105EN]"
