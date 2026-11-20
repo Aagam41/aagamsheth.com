@@ -1,4 +1,4 @@
 <div class="exp-item exp-item--compact">
-  {{#if logo}}<img src="{{logo}}" alt="{{org}} logo" class="exp-logo exp-logo--inline" width="16" height="16" loading="lazy" decoding="async" />{{/if}}
+  {{#if logo}}<picture><source srcset="{{webp logo}}" type="image/webp"><img src="{{logo}}" alt="{{org}} logo" class="exp-logo exp-logo--inline" width="16" height="16" loading="lazy" decoding="async" /></picture>{{/if}}
   <span class="exp-role">{{role}}</span> — <span class="exp-dates">{{dates_label}}</span>, <span class="exp-org">{{org}}</span>
 </div>

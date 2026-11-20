@@ -40,6 +40,9 @@ function readYaml(relPath) {
 // [at]/[dot] form), so the plaintext address never appears in the static HTML.
 // The yaml field accepts either the raw address or an already-obfuscated
 // display string ("me [at] host [dot] com") — both normalize to the same output.
+Handlebars.registerHelper("webp", function (p) {
+  return String(p || "").replace(/\\.[^.]+$/, ".webp");
+});
 Handlebars.registerHelper("emailParts", function (email) {
   const addr = String(email)
     .replace(/\s*\[\s*at\s*\]\s*/gi, "@")

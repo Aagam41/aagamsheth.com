@@ -2,7 +2,7 @@
   <div class="exp-body">
     {{#if companyHeader}}
     <div class="exp-company-line">
-      {{#if logo}}<img src="{{logo}}" alt="{{org}} logo" class="exp-logo" width="36" height="36" loading="lazy" decoding="async" />{{/if}}
+      {{#if logo}}<picture><source srcset="{{webp logo}}" type="image/webp"><img src="{{logo}}" alt="{{org}} logo" class="exp-logo" width="36" height="36" loading="lazy" decoding="async" /></picture>{{/if}}
       <span class="exp-company">{{org}}</span>
     </div>
     {{/if}}
