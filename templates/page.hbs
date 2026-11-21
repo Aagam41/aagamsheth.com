@@ -114,6 +114,21 @@
       }
       window.addEventListener("scroll", onScroll, { passive: true });
       onScroll();
+
+      // Desktop: slide the navbar down once the user scrolls past the hero name.
+      var heroName = document.querySelector(".hero-name");
+      function updateNavShown() {
+        if (!window.matchMedia("(min-width: 1100px)").matches) {
+          nav.classList.remove("nav--shown");
+          return;
+        }
+        if (!heroName) { nav.classList.add("nav--shown"); return; }
+        var threshold = heroName.getBoundingClientRect().bottom + window.scrollY - 80;
+        nav.classList.toggle("nav--shown", window.scrollY > threshold);
+      }
+      window.addEventListener("scroll", updateNavShown, { passive: true });
+      window.addEventListener("resize", updateNavShown);
+      updateNavShown();
       var overlay = document.getElementById("nav-overlay");
       function closeDrawer() {
         nav.classList.remove("nav--open");
