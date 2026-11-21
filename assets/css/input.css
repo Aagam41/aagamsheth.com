@@ -13,9 +13,9 @@
   html {
     scroll-behavior: smooth;
   }
-  /* Low-quality image placeholder blur-up */
+  /* Low-quality image placeholder (real low-res JPEG) blur-up */
   .lazy-img {
-    filter: blur(10px);
+    filter: blur(3px);
     transition: filter 0.4s ease;
   }
   .lazy-img.is-loaded {

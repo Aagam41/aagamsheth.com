@@ -23,19 +23,25 @@ function generateLqip(relPath) {
   if (lqipCache.has(relPath)) return lqipCache.get(relPath);
   const full = path.join(ROOT, relPath);
   if (!fs.existsSync(full)) {
-    lqipCache.set(relPath, "");
-    return "";
+    console.warn("LQIP: missing file", relPath);
+    const fallback = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1' height='1'/>";
+    lqipCache.set(relPath, fallback);
+    return fallback;
   }
-  const tmp = path.join("/tmp/opencode", "lqip_" + Buffer.from(relPath).toString("base64").replace(/[^a-z0-9]/gi, "") + ".webp");
+  const tmp = path.join("/tmp/opencode", "lqip_" + Buffer.from(relPath).toString("base64").replace(/[^a-z0-9]/gi, "") + ".jpg");
   try {
-    execFileSync("convert", [full, "-resize", "32x", "-quality", "20", "-strip", tmp], { stdio: "ignore" });
+    // Keep original dimensions; very low quality -> real (but soft) image, not a smear.
+    execFileSync("convert", [full, "-quality", "12", "-strip", "-blur", "0x1", tmp], { stdio: "ignore" });
     const buf = fs.readFileSync(tmp);
-    const uri = "data:image/webp;base64," + buf.toString("base64");
+    if (!buf || buf.length < 100) throw new Error("empty lqip output");
+    const uri = "data:image/jpeg;base64," + buf.toString("base64");
     lqipCache.set(relPath, uri);
     return uri;
   } catch (e) {
-    lqipCache.set(relPath, "");
-    return "";
+    console.warn("LQIP generation failed for", relPath, ":", e.message);
+    const fallback = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1' height='1'/>";
+    lqipCache.set(relPath, fallback);
+    return fallback;
   }
 }
 
