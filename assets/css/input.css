@@ -91,15 +91,6 @@
       opacity: 1;
       pointer-events: auto;
     }
-    .nav-brand {
-      opacity: 0;
-      transform: translateY(8px);
-      transition: opacity 0.35s ease, transform 0.35s ease;
-    }
-    .site-nav.nav--shown .nav-brand {
-      opacity: 1;
-      transform: translateY(0);
-    }
     .hero-name {
       transition: opacity 0.35s ease, transform 0.35s ease;
     }
