@@ -92,8 +92,8 @@
           return;
         }
         if (!heroName) { nav.classList.add("nav--shown"); return; }
-        var threshold = heroName.getBoundingClientRect().bottom + window.scrollY - 80;
-        var shown = window.scrollY > threshold;
+        var rect = heroName.getBoundingClientRect();
+        var shown = rect.bottom < 80;
         nav.classList.toggle("nav--shown", shown);
         heroName.classList.toggle("is-scrolled", shown);
       }
