@@ -1,5 +1,5 @@
 // Service worker: cache-first with 30-day TTL for offline repeat visits.
-const CACHE = "site-v1";
+const CACHE = "site-v2";
 const TTL = 30 * 24 * 60 * 60 * 1000;
 
 self.addEventListener("install", (event) => {

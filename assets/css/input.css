@@ -79,32 +79,32 @@
      (docs-site style) takes over, with a scroll-spy highlighting the
      section currently in view. */
   .site-nav {
-    @apply fixed inset-x-0 top-0 z-50 bg-white/40 backdrop-blur-md transition-shadow duration-200;
+    @apply fixed inset-x-0 top-0 z-50;
+  }
+  .site-nav-bar {
+    @apply w-full bg-white/40 backdrop-blur-md;
   }
   @media (min-width: 1100px) {
     .site-nav {
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.35s ease, box-shadow 0.2s ease;
     }
     .site-nav.nav--shown {
       opacity: 1;
       pointer-events: auto;
     }
-    .hero-name {
-      transform: translateY(0);
-      transition: opacity 0.35s ease, transform 0.35s ease;
+    .site-nav-bar {
+      @apply bg-white/40 backdrop-blur-md;
     }
     .hero-name.is-scrolled {
       opacity: 0;
-      transform: translateY(-16px);
     }
   }
-  .site-nav.nav--scrolled {
-    @apply bg-white/40 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.14)];
+  .site-nav.nav--scrolled .site-nav-bar {
+    @apply shadow-[0_1px_8px_rgba(0,0,0,0.14)];
   }
-  .site-nav.nav--open {
-    @apply bg-white;
+  .site-nav.nav--open .site-nav-bar {
+    @apply bg-white/90;
   }
   .site-nav-inner {
     @apply mx-auto flex w-full max-w-[1000px] items-center px-5 sm:px-8 min-h-[56px] relative;
@@ -145,7 +145,7 @@
     background: transparent;
     z-index: 40;
   }
-  .nav-mobile {
+  .nav-links {
     position: fixed;
     top: 0;
     bottom: 0;
@@ -174,20 +174,53 @@
     gap: 0.375rem;
     box-shadow: -2px 0 12px rgba(0, 0, 0, 0.1);
   }
-  .site-nav.nav--open ~ #nav-mobile {
+  .site-nav.nav--open #nav-links {
     transform: translateX(0);
     box-shadow: -2px 0 12px rgba(0, 0, 0, 0.1);
   }
   @media (min-width: 1100px) {
-    #nav-mobile {
-      display: none !important;
+    #nav-links {
+      position: fixed;
+      right: 1.5rem;
+      top: 50%;
+      z-index: 40;
+      display: flex;
+      transform: translateY(-50%);
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.375rem;
+      width: auto;
+      max-width: none;
+      min-width: 0;
+      height: auto;
+      max-height: none;
+      margin: 0;
+      padding: 0;
+      background: transparent;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      border-radius: 0;
+      box-shadow: none;
+      text-align: right;
     }
     #nav-overlay {
       display: none !important;
     }
+    #nav-links .nav-link {
+      font-size: 0.75rem;
+      line-height: 1rem;
+      color: rgb(163 163 163);
+      transition: color 0.15s;
+    }
+    #nav-links .nav-link:hover {
+      color: rgb(0 0 0);
+    }
+    #nav-links .nav-link.active {
+      color: #1772d0;
+    }
   }
   @media (min-width: 600px) {
-    .nav-mobile {
+    .nav-links {
       width: auto;
       max-width: min(220px, 90vw);
       min-width: 140px;
@@ -196,10 +229,10 @@
 
   /* ---------- Mobile drawer items: match the side-nav font/menu,
      compact dock-like cards (height only slightly larger than text) ---------- */
-  .nav-mobile .nav-link {
+  .nav-links .nav-link {
     @apply text-xs text-black no-underline transition-colors duration-150 hover:text-accent hover:no-underline;
   }
-  .nav-mobile .nav-link.active {
+  .nav-links .nav-link.active {
     color: theme('colors.accent');
   }
 

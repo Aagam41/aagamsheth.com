@@ -14,29 +14,27 @@
 </head>
 <body id="top">
 
-  <nav class="site-nav" id="site-nav">
-    <div class="site-nav-inner">
-      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-mobile">
-        <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-          <path d="M4 7h16M4 12h16M4 17h16"></path>
-        </svg>
-        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-          <path d="M6 6l12 12M18 6L6 18"></path>
-        </svg>
-      </button>
-      <span class="nav-brand">Aagam Sheth</span>
+  <nav class="site-nav" id="site-nav" aria-label="Site navigation">
+    <div class="site-nav-bar">
+      <div class="site-nav-inner">
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+          <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M4 7h16M4 12h16M4 17h16"></path>
+          </svg>
+          <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M6 6l12 12M18 6L6 18"></path>
+          </svg>
+        </button>
+        <span class="nav-brand">Aagam Sheth</span>
+      </div>
+    </div>
+
+    <div class="nav-links" id="nav-links">
+      {{> navLinks linkClass="nav-link"}}
     </div>
   </nav>
 
   <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
-
-  <div class="nav-mobile" id="nav-mobile">
-    {{> navLinks linkClass="nav-link"}}
-  </div>
-
-  <nav class="side-nav" aria-label="Section outline">
-    {{> navLinks}}
-  </nav>
 
   <div class="page">
 
@@ -107,6 +105,7 @@
       }
       var nav = document.getElementById("site-nav");
       var toggle = document.getElementById("nav-toggle");
+      var navLinks = document.getElementById("nav-links");
       function onScroll() {
         nav.classList.toggle("nav--scrolled", window.scrollY > 8);
       }
@@ -122,8 +121,8 @@
           return;
         }
         if (!heroName) { nav.classList.add("nav--shown"); return; }
-        var rect = heroName.getBoundingClientRect();
-        var shown = rect.bottom < 80;
+        var heroBottom = heroName.offsetTop + heroName.offsetHeight;
+        var shown = window.scrollY > heroBottom - 80;
         nav.classList.toggle("nav--shown", shown);
         heroName.classList.toggle("is-scrolled", shown);
       }
@@ -147,16 +146,17 @@
       if (overlay) {
         overlay.addEventListener("click", closeDrawer);
       }
-      var navMobile = document.getElementById("nav-mobile");
       document.addEventListener("click", function (e) {
         if (!nav.classList.contains("nav--open")) return;
         if (nav.contains(e.target)) return;
-        if (navMobile && navMobile.contains(e.target)) return;
+        if (navLinks && navLinks.contains(e.target)) return;
         closeDrawer();
       });
-      document.querySelectorAll("#nav-mobile .nav-link").forEach(function (link) {
-        link.addEventListener("click", closeDrawer);
-      });
+      if (navLinks) {
+        navLinks.querySelectorAll(".nav-link").forEach(function (link) {
+          link.addEventListener("click", closeDrawer);
+        });
+      }
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && nav.classList.contains("nav--open")) closeDrawer();
       });
@@ -164,9 +164,9 @@
         var spy = new IntersectionObserver(function (entries) {
           entries.forEach(function (entry) {
             if (!entry.isIntersecting) return;
-            var active = document.querySelector('.side-nav a[href="#' + entry.target.id + '"]');
+            var active = document.querySelector('.nav-links a[href="#' + entry.target.id + '"]');
             if (!active) return;
-            document.querySelectorAll(".side-nav a.active").forEach(function (el) {
+            document.querySelectorAll(".nav-links a.active").forEach(function (el) {
               el.classList.remove("active");
             });
             active.classList.add("active");
