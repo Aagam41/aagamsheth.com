@@ -69,6 +69,10 @@ function readYaml(relPath) {
 // [at]/[dot] form), so the plaintext address never appears in the static HTML.
 // The yaml field accepts either the raw address or an already-obfuscated
 // display string ("me [at] host [dot] com") — both normalize to the same output.
+Handlebars.registerPartial(
+  "navLinks",
+  '{{#if linkClass}}<a class="{{linkClass}}" href="#top">Home</a>{{#each sections}}<a class="{{../linkClass}}" href="#{{this.id}}">{{this.title}}</a>{{/each}}{{else}}<a href="#top">Home</a>{{#each sections}}<a href="#{{this.id}}">{{this.title}}</a>{{/each}}{{/if}}'
+);
 Handlebars.registerHelper("webp", function (p) {
   return String(p || "").replace(/\\.[^.]+$/, ".webp");
 });
