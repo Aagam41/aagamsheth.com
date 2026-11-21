@@ -120,11 +120,14 @@
       function updateNavShown() {
         if (!window.matchMedia("(min-width: 1100px)").matches) {
           nav.classList.remove("nav--shown");
+          if (heroName) heroName.classList.remove("is-scrolled");
           return;
         }
         if (!heroName) { nav.classList.add("nav--shown"); return; }
         var threshold = heroName.getBoundingClientRect().bottom + window.scrollY - 80;
-        nav.classList.toggle("nav--shown", window.scrollY > threshold);
+        var shown = window.scrollY > threshold;
+        nav.classList.toggle("nav--shown", shown);
+        heroName.classList.toggle("is-scrolled", shown);
       }
       window.addEventListener("scroll", updateNavShown, { passive: true });
       window.addEventListener("resize", updateNavShown);
