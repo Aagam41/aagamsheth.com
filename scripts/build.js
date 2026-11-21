@@ -13,8 +13,31 @@
 
 const fs = require("fs");
 const path = require("path");
+const { execFileSync } = require("child_process");
 const yaml = require("js-yaml");
 const Handlebars = require("handlebars");
+
+// Cache of low-quality image placeholders (LQIP) keyed by source path.
+const lqipCache = new Map();
+function generateLqip(relPath) {
+  if (lqipCache.has(relPath)) return lqipCache.get(relPath);
+  const full = path.join(ROOT, relPath);
+  if (!fs.existsSync(full)) {
+    lqipCache.set(relPath, "");
+    return "";
+  }
+  const tmp = path.join("/tmp/opencode", "lqip_" + Buffer.from(relPath).toString("base64").replace(/[^a-z0-9]/gi, "") + ".webp");
+  try {
+    execFileSync("convert", [full, "-resize", "32x", "-quality", "20", "-strip", tmp], { stdio: "ignore" });
+    const buf = fs.readFileSync(tmp);
+    const uri = "data:image/webp;base64," + buf.toString("base64");
+    lqipCache.set(relPath, uri);
+    return uri;
+  } catch (e) {
+    lqipCache.set(relPath, "");
+    return "";
+  }
+}
 
 const ROOT = path.resolve(__dirname, "..");
 const CONTENT_DIR = path.join(ROOT, "content");
@@ -42,6 +65,9 @@ function readYaml(relPath) {
 // display string ("me [at] host [dot] com") — both normalize to the same output.
 Handlebars.registerHelper("webp", function (p) {
   return String(p || "").replace(/\\.[^.]+$/, ".webp");
+});
+Handlebars.registerHelper("lqip", function (p) {
+  return generateLqip(String(p || ""));
 });
 Handlebars.registerHelper("emailParts", function (email) {
   const addr = String(email)

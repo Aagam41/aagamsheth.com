@@ -47,10 +47,7 @@
       <div class="hero-row">
         <div class="hero-photo-col">
           <div class="hero-photo">
-            <picture>
-              <source srcset="{{webp header.photo}}" type="image/webp">
-              <img src="{{header.photo}}" alt="{{header.name}}" width="400" height="370" loading="eager" fetchpriority="high" decoding="async" />
-            </picture>
+            <img src="{{lqip header.photo}}" data-src="{{header.photo}}" alt="{{header.name}}" width="400" height="370" loading="eager" fetchpriority="high" decoding="async" class="lazy-img" />
           </div>
           <p class="hero-email">{{emailParts header.email}}</p>
           <p class="hero-socials">{{#each header.links}}<a href="{{this.url}}" target="_blank" rel="noopener">{{this.label}}</a>{{#unless @last}}<span class="sep">|</span>{{/unless}}{{/each}}</p>
@@ -80,6 +77,36 @@
 
   <script>
     (function () {
+      // LQIP blur-up: swap low-res placeholder for full image as it enters view
+      function upgrade(img) {
+        var src = img.getAttribute("data-src");
+        if (!src || img.dataset.upgraded) return;
+        img.dataset.upgraded = "1";
+        var full = new Image();
+        full.onload = function () {
+          img.src = src;
+          img.classList.add("is-loaded");
+        };
+        full.src = src;
+      }
+      if ("IntersectionObserver" in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { upgrade(e.target); io.unobserve(e.target); }
+          });
+        }, { rootMargin: "200px" });
+        document.querySelectorAll("img.lazy-img").forEach(function (img) { io.observe(img); });
+      } else {
+        document.querySelectorAll("img.lazy-img").forEach(upgrade);
+      }
+      // Eager images (hero) upgrade immediately
+      document.querySelectorAll('img.lazy-img[loading="eager"]').forEach(upgrade);
+
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function () {
+          navigator.serviceWorker.register("/assets/sw.js").catch(function () {});
+        });
+      }
       var nav = document.getElementById("site-nav");
       var toggle = document.getElementById("nav-toggle");
       function onScroll() {

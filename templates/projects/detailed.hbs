@@ -1,10 +1,7 @@
 <div class="entry-row">
   {{#if image}}
   <div class="entry-thumb">
-    <picture>
-      <source srcset="{{webp image}}" type="image/webp">
-      <img src="{{image}}" alt="{{title}}" width="700" height="438" loading="lazy" decoding="async" />
-    </picture>
+    <img src="{{lqip image}}" data-src="{{image}}" alt="{{title}}" width="700" height="438" loading="lazy" decoding="async" class="lazy-img" />
   </div>
   {{else}}
   <div class="entry-thumb entry-thumb--placeholder">

@@ -1,17 +1,15 @@
 <div class="edu-item">
   {{#if logo}}
-  <picture>
-    <source srcset="{{webp logo}}" type="image/webp">
-    <img
-      src="{{logo}}"
-      alt="{{institution}} logo"
-      class="edu-logo"
-      width="36"
-      height="36"
-      loading="lazy"
-      decoding="async"
-    />
-  </picture>
+  <img
+    src="{{lqip logo}}"
+    data-src="{{logo}}"
+    alt="{{institution}} logo"
+    class="edu-logo lazy-img"
+    width="36"
+    height="36"
+    loading="lazy"
+    decoding="async"
+  />
   {{/if}}
   <div class="edu-body">
     <div class="edu-institution-line">{{institution}} — <span class="edu-dates">{{dates}}</span></div>

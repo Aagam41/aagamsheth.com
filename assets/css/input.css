@@ -13,6 +13,14 @@
   html {
     scroll-behavior: smooth;
   }
+  /* Low-quality image placeholder blur-up */
+  .lazy-img {
+    filter: blur(10px);
+    transition: filter 0.4s ease;
+  }
+  .lazy-img.is-loaded {
+    filter: none;
+  }
   body {
     @apply bg-white text-black font-sans antialiased;
     font-size: clamp(0.78rem, 0.78rem + ((1vw - 0.2rem) * 0.35), 0.95rem);
@@ -349,26 +357,26 @@
     @apply font-bold text-base leading-snug;
   }
   .entry-authors {
-    @apply text-black/85 mt-0.5 leading-snug;
+    @apply text-neutral-500 mt-0.5 leading-snug;
   }
   .entry-authors strong {
     color: theme('colors.accent');
   }
   .entry-summary {
-    @apply text-black/85 mt-0.5 leading-snug;
+    @apply text-black mt-0.5 leading-snug;
   }
   .entry-venue {
-    @apply italic text-black/85 mt-0.5;
+    @apply italic text-neutral-500 mt-0.5;
   }
   .entry-venue-inline {
     @apply text-black/85 mt-0.5;
   }
   /* Institute · date line for project-style rows */
   .entry-meta {
-    @apply italic text-black/85 mt-0.5;
+    @apply italic text-neutral-500 mt-0.5;
   }
   .entry-desc {
-    @apply text-black/85 mt-0.5 leading-snug;
+    @apply text-black mt-0.5 leading-snug;
   }
   .entry-links {
     @apply flex flex-wrap gap-x-3 gap-y-1 mt-1.5;

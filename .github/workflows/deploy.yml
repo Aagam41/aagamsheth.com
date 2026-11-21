@@ -46,6 +46,7 @@ jobs:
           cp -r assets/css _site/assets/css
           cp -r assets/img _site/assets/img
           cp -r assets/files _site/assets/files
+          cp assets/sw.js _site/assets/sw.js
           touch _site/.nojekyll
           if [ -f CNAME ]; then cp CNAME _site/CNAME; fi
 
