@@ -269,7 +269,7 @@ const heroRegion = (html.match(/<header class="hero">[\s\S]*?<\/header>/) || [""
 const taglinePs = heroRegion.match(/<div class="hero-intro">[\s\S]*?<\/div>/);
 ok(!!taglinePs && (taglinePs[0].match(/<p>/g) || []).length === 3,
   "tagline renders as exactly three paragraphs");
-ok(/intersection of computer vision/.test(heroRegion) && /Chief Technology Officer at/.test(heroRegion)
+ok(/intersection of computer vision/.test(heroRegion) && /Principal Engineer at/.test(heroRegion)
   && /cycling route/.test(heroRegion), "all three tagline paragraphs present");
 ok(/<a href="https:\/\/tirthinfotech\.com"/.test(heroRegion), "tagline markdown link rendered");
 ok(!html.includes("contact.me@aagamsheth.com"), "email address never appears as plaintext in the static HTML");
