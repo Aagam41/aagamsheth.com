@@ -20,7 +20,7 @@ site:
 header:
   name: "Aagam Sheth"
   tagline: 
-    - "I'm an M.Tech student in Computer Science and Engineering at Ahmedabad University. My work sits at the intersection of computer vision, large language models, and document intelligence. I am drawn to problems that require a model to reason about structure and layout rather than treating pixels or text as flat, undifferentiated input. This interest extends naturally into vision language models more broadly, and into information science as a way of understanding how knowledge is organized, represented, and retrieved."
+    - "I'm an M.Tech student in Computer Science and Engineering at Ahmedabad University. I'm interested in the intersection of computer vision, large language models, and document intelligence. In particular, I'm drawn to problems where a model must reason about structure and layout rather than treating pixels or text as flat, undifferentiated input. That interest extends into vision-language models more broadly, and into information science as a way of understanding how knowledge is organized, represented, and retrieved."
     - "Alongside my research, I serve as Principal Engineer at [Tirth Infotech](https://tirthinfotech.com), where I direct technical strategy and oversee the delivery of secure production platforms for government and enterprise clients. The role keeps me equally engaged with systems design and applied research, and each informs the other."
     - "I enjoy conversations that wander from research to everyday things, so feel free to reach out if you would like to talk shop over coffee or compare notes on a good cycling route. I can be reached at my email below."
   photo: "assets/img/headshot.jpg"
