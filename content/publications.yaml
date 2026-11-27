@@ -47,7 +47,7 @@
     - "U. Pal"
     - "P. Peer"
     - "V. Štruc"
-  description: "Competition paper for SSBC 2026 at IJCB: a sclera segmentation benchmark with two tracks — fully supervised foundation-model adaptation on annotated data, and label-efficient learning restricted to unlabelled imagery. We adapted foundation backbones to reach a new state of the art; our top label-efficient model scored F1 0.870, nearly matching the fully supervised winner at F1 0.876."
+  description: "Summary of the SSBC 2026 competition at IJCB: a sclera segmentation benchmark with two tracks — fully supervised foundation-model adaptation on annotated data, and label-efficient learning restricted to unlabelled imagery. We participated with two models: VLS-SegNet for the fully supervised track and U2Net-SSL for the label-efficient track. Our top label-efficient model scored F1 0.870, nearly matching the fully supervised winner at F1 0.876, setting a new state of the art on both tracks."
   venue: "IEEE International Joint Conference on Biometrics (IJCB) 2026 — Sclera Segmentation Benchmarking Competition (SSBC)"
   links:
     - label: "paper"
